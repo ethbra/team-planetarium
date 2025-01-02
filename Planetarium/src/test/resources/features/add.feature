@@ -12,6 +12,7 @@ Feature: Add Moons/Planets to Home Page
     Then browser alert says "<alert>"
     And table reflects "<alert>"
 
+    ## TODO: change file to append root directory instead of full path in here
     Examples:
       | planet_name                        | file                                                                                                         | alert                       |
       | My 1st _Planet-                    | C:\Users\ethan\IdeaProjects\revature\Project Planetarium\src\test\resources\Celestial-Images\moon-1.jpg      |                             |
