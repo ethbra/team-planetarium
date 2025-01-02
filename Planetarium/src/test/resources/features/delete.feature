@@ -12,7 +12,6 @@ Feature: Deleting Moons/Planets
       Then browser alert says "<alert>"
       And table reflects deletion by "<alert>"
 
-
       Examples:
       |body-type        |name                     |alert                |
       |planet           |Mars                     |                     |
@@ -26,3 +25,5 @@ Feature: Deleting Moons/Planets
       When user enters "Mars"
       And user presses delete
       Then "Titan" is deleted
+
+##  TODO Try to delete another user's planet while logged in; needs its own scenario
