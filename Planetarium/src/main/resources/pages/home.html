@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <style>
+        body {
+        overscroll-behavior-y: none;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        h1 {
+            color: #333;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        select {
+            padding: 5px;
+            margin-top: 10px;
+        }
+
+        input {
+            margin-top: 10px;
+            padding: 5px;
+        }
+
+        img {
+            max-width: 256px;
+            max-height: 256px;
+        }
+
+        .submit-button {
+            margin-top: 10px;
+        }
+        #deleteContainer {
+            margin-top: 20px;
+        }
+        #deleteInput {
+            width: 300px;
+            padding: 5px;
+        }
+
+        #deleteButton {
+            margin-left: 10px;
+            padding: 5px 10px;
+        }
+        .logout-button {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+        }
+
+        .center{
+            margin: auto;
+            width: 50%;
+            padding: 10px;
+            background-color: rgba(192, 192, 192, 0.85);
+            text-align: center;
+            
+        }
+        .heading{
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <button class="logout-button" id="logoutButton" onclick="logout()">Logout</button>
+    <div class="center">
+        <h1 id="greeting">Welcome to the Home Page</h1>
+        <select id="locationSelect" class="heading">
+            <option value="moon">Moon</option>
+            <option value="planet">Planet</option>
+        </select>
+        <div id="deleteContainer" class="heading">
+            <input type="text" id="deleteInput" placeholder="name for celestial body to be deleted">
+            <button id="deleteButton" onclick="deleteCelestial()">Delete</button>
+        </div>
+        <div id="inputContainer"></div>        
+    </div>
+    <div class="center" style="border: 3px solid black;">
+        <table id="celestialTable">
+            <tr>
+                <th>Type</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Owner</th>
+            </tr>
+        </table>        
+    </div>
+    <script>
+        
+        populateCelestialTable();
+        createMoonInputs();
+        greeting.textContent = `Welcome to the Home Page ${sessionStorage.getItem("user")}`
+        document.getElementById('locationSelect').addEventListener('change', function() {
+            let selectedValue = this.value;
+            let inputContainer = document.getElementById('inputContainer');
+            inputContainer.innerHTML = '';
+            if (selectedValue === 'planet') {
+                createPlanetInputs();
+            } else if (selectedValue === 'moon') {
+                createMoonInputs();
+            }
+        });
+
+        async function populateCelestialTable() {
+        document.getElementById('celestialTable').innerHTML = '<tr><th>Type</th><th>ID</th><th>Name</th><th>Owner</th></tr>';
+        const response = await fetch(`http://{URL}:{PORT}/planetarium/planet/owner/${sessionStorage.getItem("userId")}`, {credentials: 'include'});
+        if (response.ok) {
+            const data = await response.json();
+            console.log(data);
+            const table = document.getElementById('celestialTable');
+            data.forEach(planet => {
+                const row = table.insertRow();
+                const typeCell = row.insertCell(0);
+                const idCell = row.insertCell(1);
+                const nameCell = row.insertCell(2);
+                const ownerCell = row.insertCell(3);
+                const imageCell = row.insertCell(4);
+                typeCell.textContent = 'planet';
+                idCell.textContent = planet.planetId;
+                nameCell.textContent = planet.planetName;
+                ownerCell.textContent = planet.ownerId;
+                const planetImageElement = document.createElement('img');
+                planetImageElement.src = `data:image/jpeg;base64,${planet.imageData}`;
+                imageCell.appendChild(planetImageElement);
+
+            });
+        }
+        const moonResponse = await fetch('http://{URL}:{PORT}/planetarium/moon', {credentials: 'include'});
+            if (moonResponse.ok) {
+                const moonData = await moonResponse.json();
+                console.log(moonData);
+                const table = document.getElementById('celestialTable');
+                moonData.forEach(moon => {
+                    const row = table.insertRow();
+                    const typeCell = row.insertCell(0);
+                    const idCell = row.insertCell(1);
+                    const nameCell = row.insertCell(2);
+                    const ownerCell = row.insertCell(3);
+                    const imageCell = row.insertCell(4);
+                    typeCell.textContent = 'moon';
+                    idCell.textContent = moon.moonId;
+                    nameCell.textContent = moon.moonName;
+                    ownerCell.textContent = moon.ownerId;
+                    const moonImageElement = document.createElement('img');
+                    moonImageElement.src = `data:image/jpeg;base64,${moon.imageData}`;
+                    imageCell.appendChild(moonImageElement);
+                });
+            }
+        }
+        
+        async function deleteCelestial() {
+            const selectedOption = document.getElementById('locationSelect').value;
+            const identifier = document.getElementById('deleteInput').value;
+
+            let url;
+            if (selectedOption === 'moon') {
+                url = `http://{URL}:{PORT}/planetarium/moon/${identifier}`;
+            } else if (selectedOption === 'planet') {
+                url = `http://{URL}:{PORT}/planetarium/planet/${identifier}`;
+            } else {
+                alert('Invalid selection: choose moon or planet to delete');
+                return;
+            }
+            const response = await fetch(url, {
+                method: 'DELETE',
+                credentials: 'include'
+            });
+            if (response.status === 200) {
+                populateCelestialTable();
+            } else {
+                alert(`Invalid ${selectedOption} name`);
+            }
+        }
+
+        async function logout() {
+            const response = await fetch('http://{URL}:{PORT}/logout', {method: "POST", credentials: 'include'});
+            if (response.status === 401) {
+                sessionStorage.removeItem("user");
+                sessionStorage.removeItem("userId");
+                window.location.replace("http://{URL}:{PORT}");            
+            } else {
+                alert("Something went wrong, please try again");
+            }
+
+        }
+
+        function convertToBase64(element) {
+            return new Promise((resolve, reject) => {
+                if (element.files.length > 0) {
+                    let file = element.files[0];
+                    if (file.type !== "image/jpeg"){
+                        reject(new Error("Invalid file type: must be an image"));
+                    }
+                    let reader = new FileReader();
+                    reader.onload = function() {
+                        let base64String = reader.result.split(",")[1];
+                        resolve(base64String);
+                    }
+                    reader.onerror = function() {
+                        reject(new Error("Failed to read file"));
+                    }
+                    reader.readAsDataURL(file);
+                } else {
+                    reject(new Error("No file selected"));
+                }
+            });
+        }
+
+        function createPlanetInputs(){
+            let planetNameInput = document.createElement('input');
+            planetNameInput.type = 'text';
+            planetNameInput.id = 'planetNameInput';
+            planetNameInput.name = 'Planet Name';
+            planetNameInput.placeholder = 'Enter Planet Name';
+            inputContainer.appendChild(planetNameInput);
+
+            let planetImageInput = document.createElement('input');
+            planetImageInput.type = 'file';
+            planetImageInput.id = 'planetImageInput';
+            planetImageInput.name = 'Planet Image';
+            planetImageInput.accept = 'image/*';
+            planetImageInput.placeholder = 'Upload Planet Image';
+            inputContainer.appendChild(planetImageInput);
+
+            let submitButton = document.createElement('button');
+            submitButton.textContent = 'Submit Planet';
+            submitButton.className = 'submit-button';
+            submitButton.addEventListener('click', createPlanet);
+            inputContainer.appendChild(submitButton);
+        }
+
+        function createMoonInputs(){
+            let moonNameInput = document.createElement('input');
+            moonNameInput.type = 'text';
+            moonNameInput.id = 'moonNameInput';
+            moonNameInput.name = 'Moon Name';
+            moonNameInput.placeholder = 'Enter Moon Name';
+            inputContainer.appendChild(moonNameInput);
+
+            let orbitedPlanetInput = document.createElement('input');
+            orbitedPlanetInput.type = 'text';
+            orbitedPlanetInput.id = 'orbitedPlanetInput';
+            orbitedPlanetInput.name = 'Orbited Planet';
+            orbitedPlanetInput.placeholder = 'Enter Orbited Planet Id';
+            inputContainer.appendChild(orbitedPlanetInput);
+
+            let moonImageInput = document.createElement('input');
+            moonImageInput.type = 'file';
+            moonImageInput.id = 'moonImageInput';
+            moonImageInput.name = 'Moon Image';
+            moonImageInput.accept = 'image/*';
+            moonImageInput.placeholder = 'Upload Moon Image';
+            inputContainer.appendChild(moonImageInput);
+
+            let submitButton = document.createElement('button');
+            submitButton.textContent = 'Submit Moon';
+            submitButton.className = 'submit-button';
+            submitButton.addEventListener('click', createMoon);
+            inputContainer.appendChild(submitButton);
+        }
+
+        async function createPlanet(){
+            let planetName = document.getElementById('planetNameInput').value;
+            if (!checkCelestialName(planetName)) {
+                alert("Invalid planet name");
+                return;
+            }
+            let planetImageInput = document.getElementById('planetImageInput');
+            let imageData = (planetImageInput.files.length > 0) ? await convertToBase64(planetImageInput) : null;
+            let bodyData;
+            if(imageData){
+                bodyData = {
+                    "planetName": planetName,
+                    "ownerId": sessionStorage.getItem("userId"),
+                    "imageData": imageData
+                }
+            } else{
+                bodyData = {
+                    "planetName": planetName,
+                    "ownerId": sessionStorage.getItem("userId")
+                }
+            }
+            const bodyJson = JSON.stringify(bodyData);
+            const headersList = {
+                "Accept": "*/*",
+                "Content-Type": "application/json"
+            }
+            const response = await fetch('http://{URL}:{PORT}/planetarium/planet', {
+                method: 'POST',
+                body: bodyJson,
+                headers: headersList,
+                credentials: 'include'
+            })
+            if (response.status === 201) {
+                populateCelestialTable();
+            } else {
+                alert(`Invalid planet name`);
+            }  
+        }
+
+        async function createMoon(){
+            let moonName = document.getElementById('moonNameInput').value;
+            if(!checkCelestialName(moonName)){
+                alert("Invalid moon name");
+                return;
+            }
+            let orbitedPlanet = document.getElementById('orbitedPlanetInput').value;
+            if(!validatePlanetId(orbitedPlanet)){
+                alert("Invalid planet id");
+                return;
+            }
+            let moonImageInput = document.getElementById('moonImageInput');
+            let imageData = (moonImageInput.files.length > 0) ? await convertToBase64(moonImageInput) : null;
+            let bodyData;
+            if (imageData){
+                bodyData = {
+                        moonName: moonName,
+                        ownerId: orbitedPlanet,
+                        imageData: imageData
+                    }                
+            } else {
+                bodyData = {
+                    moonName: moonName,
+                    ownerId: orbitedPlanet
+                }
+            }
+            const bodyJson = JSON.stringify(bodyData);
+            const headersList = {
+                "Accept": "*/*",
+                "Content-Type": "application/json"
+            }
+            const response = await fetch('http://{URL}:{PORT}/planetarium/moon', {
+                method: 'POST',
+                body: bodyJson,
+                headers: headersList,
+                credentials: 'include'
+            })
+            if (response.status === 201) {
+                populateCelestialTable();
+            } else {
+                const message = await response.text();
+                switch(message){
+                    case "character length fail":
+                    case "unique name fail":
+                        alert("invalid moon name");
+                        break;
+                }
+            }             
+        }
+
+        function displayImageFromBase64(base64Data, imgElement, callback) {
+            if (base64Data != null) {
+                const reader = new FileReader();
+                reader.onload = function() {
+                    const imageUrl = URL.createObjectURL(new Blob([reader.result], { type: 'image/jpeg' }));
+                    imgElement.src = imageUrl;
+                    if (typeof callback === 'function') {
+                        callback();
+                    }
+                    URL.revokeObjectURL(imageUrl);
+                };
+                reader.readAsArrayBuffer(new Blob([atob(base64Data)]));
+            }
+        }
+
+        async function setBackgroundImage(url) {
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            response.text().then(function (imageData) {
+                document.body.style.backgroundImage = `url(data:image/jpg;base64,${imageData})`;
+                document.body.style.backgroundSize = 'auto 100%';
+                document.body.style.backgroundPosition = 'left top';
+                document.body.style.backgroundAttachment = 'fixed';
+            });
+
+
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+
+        function validatePlanetId(planetId) {
+            const body = document.getElementById('celestialTable').getElementsByTagName("tbody")[0];
+            const rows = body.getElementsByTagName("tr");
+            let first = true;
+            for (let row of rows){
+                if(first){
+                    first = false;
+                    continue;
+                }
+                if(row.getElementsByTagName("td")[0].textContent === "planet" && row.getElementsByTagName("td")[1].textContent === planetId){
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        function checkCelestialName(name){
+            const regex = /^[a-zA-Z0-9\s_-]{1,30}$/;
+            return regex.test(name);
+        }
+        
+        setBackgroundImage('http://{URL}:{PORT}/background');
+    </script>
+</body>
+</html>
