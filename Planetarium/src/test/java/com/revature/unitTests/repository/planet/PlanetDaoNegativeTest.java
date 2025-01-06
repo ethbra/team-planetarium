@@ -1,8 +1,8 @@
-package com.revature.unitTests.repository;
+package com.revature.unitTests.repository.planet;
 
 import org.junit.Test;
 
-public class PlanetDaoTest {
+public class PlanetDaoNegativeTest extends PlanetDaoUtil {
 //TODO: each of these should have sad path tests
 //    Nomenclature should go by root name, plus the specified error
 //    e.g., "createPlanetNameAlreadyExists"

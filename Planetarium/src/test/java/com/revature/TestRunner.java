@@ -1,7 +1,6 @@
 package com.revature;
 
-import com.revature.pom.Home;
-import com.revature.pom.Signup;
+import com.revature.pom.*;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.AfterClass;
@@ -44,7 +43,7 @@ public class TestRunner {
         signup = new Signup();
 
         home = new Home();
-
+        
     }
 
     @AfterClass
