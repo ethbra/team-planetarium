@@ -1,5 +1,5 @@
 # Daily Stand Up 
-## January 6, 2025
+## Week 2: Monday
 
 ## Ethan
 
