@@ -2,8 +2,8 @@ package com.revature.unitTests;
 
 import com.revature.unitTests.repository.moon.MoonDaoNegativeTest;
 import com.revature.unitTests.repository.moon.MoonDaoPositiveTest;
-import com.revature.unitTests.repository.planet.PlanetDaoNegativeTest;
 import com.revature.unitTests.repository.planet.PlanetDaoPositiveTest;
+import com.revature.unitTests.repository.planet.PlanetDaoNegativeTest;
 import com.revature.unitTests.repository.user.UserDaoNegativeTest;
 import com.revature.unitTests.repository.user.UserDaoPositiveTest;
 import org.junit.runner.RunWith;
@@ -15,8 +15,8 @@ import org.junit.runners.Suite;
         UserDaoPositiveTest.class,
         MoonDaoNegativeTest.class,
         MoonDaoPositiveTest.class,
-        PlanetDaoNegativeTest.class,
-        PlanetDaoPositiveTest.class
+        PlanetDaoPositiveTest.class,
+        PlanetDaoNegativeTest.class
 })
 public class UnitSuite {
 

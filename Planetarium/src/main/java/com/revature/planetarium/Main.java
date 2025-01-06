@@ -11,22 +11,22 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) {
-//		javafy();
-		try {
-			AppConfig.configureAppProperties(args);
-			Javalin app = Javalin.create(config ->{
-				config.bundledPlugins.enableCors(cors -> {
-					cors.addRule(it -> {
-						it.anyHost();
-					});
-				});
-				config.bundledPlugins.enableDevLogging();
-			});
-			JavalinSetup.mapRoutes(app);
-			app.start(8080);
-		} catch (ConfigurationFail e) {
-			e.printStackTrace();
-		}
+		javafy();
+//		try {
+//			AppConfig.configureAppProperties(args);
+//			Javalin app = Javalin.create(config ->{
+//				config.bundledPlugins.enableCors(cors -> {
+//					cors.addRule(it -> {
+//						it.anyHost();
+//					});
+//				});
+//				config.bundledPlugins.enableDevLogging();
+//			});
+//			JavalinSetup.mapRoutes(app);
+//			app.start(8080);
+//		} catch (ConfigurationFail e) {
+//			e.printStackTrace();
+//		}
 	}
 
 	private static void javafy() {
@@ -41,7 +41,7 @@ public class Main {
 				break;
 			builder.append(line);
 			if (count % 3 == 2)
-				builder.append("}, {");
+				builder.append("\"}, { \"");
 			else
 				builder.append("\", \"");
 			count++;
