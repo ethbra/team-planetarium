@@ -89,8 +89,7 @@ public class Home {
         try {
             TestRunner.driver.findElement(By.xpath("//td[(text() = '" + arg0 + "')]"));
             return true;
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             return false;
         }
     }
