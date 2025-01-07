@@ -1,0 +1,457 @@
+{
+	"info": {
+		"_postman_id": "f8c10ade-4ab7-41c5-b10d-4d11726c52f1",
+		"name": "Planetarium",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40730693"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"item": [
+				{
+					"name": "Happy Path",
+					"item": [
+						{
+							"name": "Successful Registration",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response has correct message\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.message).to.eql(\"User created successfully\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"{{unique-username}}\",\r\n    \"password\":\"{{unique-password}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/register",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Sad Path",
+					"item": [
+						{
+							"name": "Invalid username",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response has correct message\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.message).to.eql(\"Invalid username\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"{{bad-username}}\",\r\n    \"password\":\"{{unique-password}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/register",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Invalid password",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response has correct message\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.message).to.eql(\"Invalid password\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n{\r\n    \"username\":\"{{unique-username}}\",\r\n    \"password\":\"{{bad-password}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/register",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Login/Logout",
+			"item": [
+				{
+					"name": "Login",
+					"item": [
+						{
+							"name": "Login success",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response status code is 200\", function () {\r",
+											"    pm.expect(pm.response.code).to.equal(200);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response time is within an acceptable range\", function () {\r",
+											"  pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response has the required Content-Type header\", function () {\r",
+											"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.exist;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Batman has ID 1\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.id).to.eql(1);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\" : \"{{valid-username}}\",\r\n    \"password\" : \"{{valid-password}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Log in",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"username\" : \"{{valid-username}}\",\r\n    \"password\" : \"{{valid-password}}\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/login",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"login"
+											]
+										}
+									},
+									"status": "Accepted",
+									"code": 202,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Tue, 31 Dec 2024 15:01:49 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "57"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 1,\n    \"username\": \"Batman\",\n    \"password\": \"Iamthenight1939\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Login fail",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response has correct message\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.message).to.eql(\"invalid credentials\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\" : \"{{bad-username}}\",\r\n    \"password\" : \"{{bad-password}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Logout",
+					"item": [
+						{
+							"name": "New Request",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response status code is 200\", function () {\r",
+											"    pm.expect(pm.response.code).to.equal(200);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/logout",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"logout"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Planet",
+			"item": [
+				{
+					"name": "Add",
+					"item": [
+						{
+							"name": "Happy Path",
+							"item": []
+						},
+						{
+							"name": "Sad Path",
+							"item": []
+						}
+					]
+				},
+				{
+					"name": "View",
+					"item": [
+						{
+							"name": "Happy Path",
+							"item": []
+						},
+						{
+							"name": "Sad Path",
+							"item": []
+						}
+					]
+				},
+				{
+					"name": "Delete",
+					"item": [
+						{
+							"name": "Happy Path",
+							"item": []
+						},
+						{
+							"name": "Sad Path",
+							"item": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Moon",
+			"item": [
+				{
+					"name": "Add",
+					"item": [
+						{
+							"name": "Happy Path",
+							"item": []
+						},
+						{
+							"name": "Sad Path",
+							"item": []
+						}
+					]
+				},
+				{
+					"name": "View",
+					"item": [
+						{
+							"name": "Happy Path",
+							"item": []
+						},
+						{
+							"name": "Sad Path",
+							"item": []
+						}
+					]
+				},
+				{
+					"name": "Delete",
+					"item": [
+						{
+							"name": "Happy Path",
+							"item": []
+						},
+						{
+							"name": "Sad Path",
+							"item": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
