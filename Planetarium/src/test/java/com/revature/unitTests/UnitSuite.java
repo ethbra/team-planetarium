@@ -1,22 +1,16 @@
 package com.revature.unitTests;
 
-import com.revature.unitTests.repository.moon.MoonDaoNegativeTest;
-import com.revature.unitTests.repository.moon.MoonDaoPositiveTest;
-import com.revature.unitTests.repository.planet.PlanetDaoPositiveTest;
-import com.revature.unitTests.repository.planet.PlanetDaoNegativeTest;
-import com.revature.unitTests.repository.user.UserDaoNegativeTest;
-import com.revature.unitTests.repository.user.UserDaoPositiveTest;
+import com.revature.unitTests.service.user.negative.ServiceAuthenticateTest;
+import com.revature.unitTests.service.user.negative.ServiceCreateUserTest;
+import com.revature.unitTests.service.user.positive.ServiceUserTest;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-        UserDaoNegativeTest.class,
-        UserDaoPositiveTest.class,
-        MoonDaoNegativeTest.class,
-        MoonDaoPositiveTest.class,
-        PlanetDaoPositiveTest.class,
-        PlanetDaoNegativeTest.class
+        ServiceUserTest.class,
+        ServiceAuthenticateTest.class,
+        ServiceCreateUserTest.class
 })
 public class UnitSuite {
 

@@ -104,9 +104,7 @@ public class Steps {
                     "//table[@id = 'celestialTable']/tbody/tr"
             ));
 
-            int numOfRows = elems.size();
-
-            return numOfRows;
+            return elems.size();
         }
     }
 

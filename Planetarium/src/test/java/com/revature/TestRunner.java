@@ -1,6 +1,7 @@
 package com.revature;
 
-import com.revature.pom.*;
+import com.revature.endToEnd.pom.Home;
+import com.revature.endToEnd.pom.Signup;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.AfterClass;
@@ -43,6 +44,8 @@ public class TestRunner {
         signup = new Signup();
 
         home = new Home();
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
         
     }
 
