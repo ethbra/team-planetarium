@@ -19,6 +19,8 @@ import com.revature.planetarium.service.user.UserService;
 import com.revature.planetarium.service.user.UserServiceImp;
 
 import io.javalin.Javalin;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class JavalinSetup {
 
@@ -59,6 +61,14 @@ public class JavalinSetup {
         app.get("/", viewController::login);
         app.get("/register", viewController::register);
         app.get("/planetarium", viewController::home);
+
+//        \/\/\/\/\/ EXPERIMENTAL \/\/\/\/\/
+        app.get("/resetDB", (ctx) -> {
+            Logger logger = LoggerFactory.getLogger(JavalinSetup.class);
+            logger.warn("Resetting database ... \n \n");
+            DatabaseConnector.resetTestDatabase(ctx);
+        });
+
 
         /*
          * Mapping User Routes
