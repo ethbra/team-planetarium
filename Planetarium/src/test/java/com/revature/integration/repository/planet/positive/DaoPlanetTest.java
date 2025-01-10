@@ -43,7 +43,7 @@ public class DaoPlanetTest extends PlanetDaoUtil {
     }
 
     @Test
-    public void createPlanet() throws IOException {
+    public void createPlanetPositive() throws IOException {
         Planet planet = new Planet();
         planet.setPlanetName(planetName);
         planet.setOwnerId(ownerId);
@@ -61,15 +61,15 @@ public class DaoPlanetTest extends PlanetDaoUtil {
     }
 
     @Test
-    public void readAllPlanets() {
+    public void readAllPlanetsPositive() {
     }
 
     @Test
-    public void readPlanetsByOwner() {
+    public void readPlanetsByOwnerPositive() {
     }
 
     @Test
-    public void deletePlanetByName() {
+    public void deletePlanetByNamePositive() {
     }
 
 }

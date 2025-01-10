@@ -54,7 +54,7 @@ public class ServiceCreateUserTest extends UserServiceUtil {
     }
 
     @Test
-    public void createUser() {
+    public void createUserNegative() {
         User newUser = new User(id, username, password);
 
 //        The test data should all fail for the repo layer

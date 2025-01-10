@@ -28,38 +28,38 @@ public class DaoMoonTest extends MoonDaoUtil {
 
 
     @Test
-    public void createMoon() {
+    public void createMoonPositive() {
         Optional<Moon> response = dao.createMoon(new Moon(0, "My 1st_Moon-", 1));
         assertTrue(response.isPresent());
         assertEquals("My 1st_Moon-", response.get().getMoonName());
     }
 
     @Test
-    public void readMoonById() {
+    public void readMoonByIdPositive() {
         Optional<Moon> response = dao.readMoon(1);
         assertTrue(response.isPresent());
     }
 
     @Test
-    public void readMoonByName() {
+    public void readMoonByNamePositive() {
         Optional<Moon> response = dao.readMoon("Luna");
         assertTrue(response.isPresent());
     }
 
     @Test
-    public void readAllMoons() {
+    public void readAllMoonsPositive() {
         List<Moon> response = dao.readAllMoons();
         assertFalse(response.isEmpty());
     }
 
     @Test
-    public void readMoonsByPlanet() {
+    public void readMoonsByPlanetPositive() {
         List<Moon> response = dao.readMoonsByPlanet(1);
         assertFalse(response.isEmpty());
     }
 
     @Test
-    public void deleteMoonById() {
+    public void deleteMoonByIdPositive() {
         assertTrue(dao.deleteMoon(1));
 
         Setup.resetTestDatabase();
@@ -67,7 +67,7 @@ public class DaoMoonTest extends MoonDaoUtil {
     }
 
     @Test
-    public void deleteMoonByName() {
+    public void deleteMoonByNamePositive() {
         assertTrue(dao.deleteMoon("Luna"));
 
         Setup.resetTestDatabase();

@@ -39,7 +39,7 @@ public class ServiceAuthenticateTest extends UserServiceUtil {
     }
 
     @Test
-    public void authenticate() {
+    public void authenticateNegative() {
         User user = new User(id, username, password);
 
         Mockito.when(dao.findUserByUsername(Mockito.anyString()))

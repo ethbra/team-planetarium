@@ -22,7 +22,7 @@ public class DaoUserTest extends UserDaoUtil {
      * Unit test to check the nominal example for account creation
      */
     @Test
-    public void createUser() {
+    public void createUserPositive() {
 
         Optional<User> response = dao.createUser(positiveUser);
         assertTrue(response.isPresent());
@@ -34,7 +34,7 @@ public class DaoUserTest extends UserDaoUtil {
      * Unit test to check the nominal example for account search
      */
     @Test
-    public void findUserByName() {
+    public void findUserByNamePositive() {
         Optional<User> response = dao.findUserByUsername("Batman");
         System.out.println("response.toString() = " + response.toString());
         assertTrue(response.isPresent());

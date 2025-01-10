@@ -12,7 +12,7 @@ import org.junit.runners.Suite;
         ServiceAuthenticateTest.class,
         ServiceCreateUserTest.class
 })
-public class UnitSuite {
+public class  UnitSuite {
 
 
 }

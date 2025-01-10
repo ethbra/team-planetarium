@@ -13,22 +13,20 @@ public class ServiceUserTest extends UserServiceUtil {
 
 
     @Test
-    public void createUser() {
+    public void createUserPositive() {
         User newUser = new User(0, uniqueUsername, uniquePassword);
 
         Mockito.when(dao.createUser(newUser))
                 .thenReturn(Optional.of(newUser));
-        System.out.println("test");
 
         String response = service.createUser(newUser);
         assertTrue(response.contains(successResponse));
     }
 
     @Test
-    public void authenticate() {
+    public void authenticatePositive() {
         User validUser = new User(1, usedUsername, usedPassword);
 
-        System.out.println("test");
         Mockito.when(dao.findUserByUsername(usedUsername)).thenReturn(Optional.of(validUser));
 
         User response = service.authenticate(validUser);

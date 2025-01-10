@@ -50,7 +50,7 @@ public class DaoCreatePlanetTest extends PlanetDaoUtil {
     }
 
     @Test
-    public void createPlanet() throws IOException {
+    public void createPlanetNegative() throws IOException {
         Planet planet = new Planet();
         planet.setPlanetName(planetName);
         planet.setOwnerId(ownerId);
