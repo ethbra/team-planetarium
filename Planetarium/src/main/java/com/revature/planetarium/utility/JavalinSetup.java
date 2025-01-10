@@ -62,11 +62,20 @@ public class JavalinSetup {
         app.get("/register", viewController::register);
         app.get("/planetarium", viewController::home);
 
-//        \/\/\/\/\/ EXPERIMENTAL \/\/\/\/\/
+        /**
+         * This endpoint adds a GET request which resets the database
+         *
+         * This will only put the database in its original stand; it does *not* delete cookies
+         */
         app.get("/resetDB", (ctx) -> {
             Logger logger = LoggerFactory.getLogger(JavalinSetup.class);
-            logger.warn("Resetting database ... \n \n");
+            logger.info(" \n Resetting database ... \n");
+
             DatabaseConnector.resetTestDatabase(ctx);
+
+
+            ctx.json("{ \"message\" : \"Database has been reset!\" } \" }");
+            ctx.status(200);
         });
 
 
