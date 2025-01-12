@@ -21,7 +21,7 @@ import java.util.Collection;
 import static org.junit.Assert.assertThrows;
 
 @RunWith(Parameterized.class)
-public class DaoCreatePlanetTest extends PlanetDaoUtil {
+public class DaoCreatePlanetTestNegative extends PlanetDaoUtil {
 
     private final int planetId = 0;
 
@@ -64,16 +64,5 @@ public class DaoCreatePlanetTest extends PlanetDaoUtil {
 
     }
 
-    @Test
-    public void readAllPlanets() {
-    }
-
-    @Test
-    public void readPlanetsByOwner() {
-    }
-
-    @Test
-    public void deletePlanetByName() {
-    }
 
 }

@@ -1,8 +1,10 @@
 package com.revature.integration.repository.planet.positive;
 
 import com.revature.integration.repository.planet.PlanetDaoUtil;
+import com.revature.planetarium.entities.Moon;
 import com.revature.planetarium.entities.Planet;
 import com.revature.util.Steps;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -13,10 +15,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.Base64;
-import java.util.Collection;
-import java.util.Optional;
+import java.util.*;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(Parameterized.class)
 public class DaoPlanetTest extends PlanetDaoUtil {
@@ -59,17 +61,39 @@ public class DaoPlanetTest extends PlanetDaoUtil {
 
         assert (response.isPresent());
     }
+    @Test
+    public void readPlanetByIdPositive() {
+        Optional<Planet> response = dao.readPlanet(1);
+        assertTrue(response.isPresent());
+    }
+
+    @Test
+    public void readMoonByNamePositive() {
+        Optional<Planet> response = dao.readPlanet("Earth");
+        assertTrue(response.isPresent());
+    }
 
     @Test
     public void readAllPlanetsPositive() {
+        Optional<Planet> response = dao.readPlanet(1);
+        assertTrue(response.isPresent());
+
     }
 
     @Test
     public void readPlanetsByOwnerPositive() {
+        List <Planet> planets = dao.readPlanetsByOwner(1);
+        assertFalse(planets.isEmpty());
+
     }
 
     @Test
+    public void deletePlanetByIdPositive() {
+        assertTrue(dao.deletePlanet(1));
+    }
+    @Test
     public void deletePlanetByNamePositive() {
+        assertTrue(dao.deletePlanet("Earth"));
     }
 
 }
