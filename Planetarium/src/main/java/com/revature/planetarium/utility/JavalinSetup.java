@@ -19,6 +19,8 @@ import com.revature.planetarium.service.user.UserService;
 import com.revature.planetarium.service.user.UserServiceImp;
 
 import io.javalin.Javalin;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class JavalinSetup {
 
@@ -59,6 +61,23 @@ public class JavalinSetup {
         app.get("/", viewController::login);
         app.get("/register", viewController::register);
         app.get("/planetarium", viewController::home);
+
+        /**
+         * This endpoint adds a GET request which resets the database
+         *
+         * This will only put the database in its original stand; it does *not* delete cookies
+         */
+        app.get("/resetDB", (ctx) -> {
+            Logger logger = LoggerFactory.getLogger(JavalinSetup.class);
+            logger.info(" \n Resetting database ... \n");
+
+            DatabaseConnector.resetTestDatabase(ctx);
+
+
+            ctx.json("{ \"message\" : \"Database has been reset!\" } \" }");
+            ctx.status(200);
+        });
+
 
         /*
          * Mapping User Routes

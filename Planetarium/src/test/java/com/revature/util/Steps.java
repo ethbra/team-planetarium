@@ -13,6 +13,7 @@ import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.io.File;
 import java.util.List;
 
 public class Steps {
@@ -103,9 +104,7 @@ public class Steps {
                     "//table[@id = 'celestialTable']/tbody/tr"
             ));
 
-            int numOfRows = elems.size();
-
-            return numOfRows;
+            return elems.size();
         }
     }
 
@@ -136,8 +135,8 @@ public class Steps {
      * @return full file path String
      */
     public static String appendFile(String filename) {
-//        TODO: \/ ensure your directory is here, otherwise tests will fail \/
-        return "C:\\Users\\ethan\\IdeaProjects\\revature\\Project Planetarium\\src\\test\\resources\\Celestial-Images\\"
-                + filename;
+        File f = new File("src/test/resources/Celestial-Images/" + filename);
+
+        return f.getAbsolutePath();
     }
 }

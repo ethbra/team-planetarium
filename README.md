@@ -5,10 +5,12 @@ A full-depth testing suite for the Planetarium
 
 ## TODOs   
 
+
 - Daily Stand-ups
 - Unit Testing
   - API
   - Repository Layer
+    - Where is the Planet constructor?
   - Service Layer
 - Integration Testing
   - API <> Repo

@@ -15,6 +15,7 @@ public class UserServiceImp implements UserService {
         this.userDao = userDao;
     }
 
+//    TODO: There is no business logic
     @Override
     public String createUser(User newUser) {
         Optional<User> createdUser = userDao.createUser(newUser);
