@@ -16,7 +16,7 @@ import static org.junit.Assert.fail;
 public class ServicePlanetTest extends ServicePlanetUtil {
 
     @Test
-    public void createPlanet() {
+    public void createPlanetPositive() {
         Planet planet = new Planet();
         planet.setPlanetId(0);
         planet.setPlanetName("My_2nd-Planet");

@@ -59,7 +59,7 @@ public class TestDataLoader {
                 names.add(line[0]);
 
 //                parse and add int for all names of "ID"
-                if (line[0].equals("ID")) {
+                if (line[0].contains("ID")) {
                     try {
 
                         int id = Integer.parseInt(line[1]);

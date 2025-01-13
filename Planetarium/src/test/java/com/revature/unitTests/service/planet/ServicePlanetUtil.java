@@ -23,5 +23,4 @@ public class ServicePlanetUtil {
 
         service = new PlanetServiceImp(dao);
     }
-
 }
