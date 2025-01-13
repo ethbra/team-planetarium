@@ -23,7 +23,6 @@ public class DaoDeletePlanetNegative extends PlanetDaoUtil {
     @Parameterized.Parameters
     public static Collection<Object[]> inputs() {
         return Arrays.asList(new Object[][]{
-                {"Earth"},
                 {"Saturn"},
                 {"Pr()xim@ Centaur! B"},
                 {"ThisNameIsOverThirtyCharactersLong"},

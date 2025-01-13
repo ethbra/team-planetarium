@@ -18,10 +18,11 @@ import java.util.Arrays;
 import java.util.Base64;
 import java.util.Collection;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 
 @RunWith(Parameterized.class)
-public class DaoCreatePlanetTestNegative extends PlanetDaoUtil {
+public class DaoCreatePlanetTestNegativeDueToName extends PlanetDaoUtil {
 
     private final int planetId = 0;
 
@@ -60,7 +61,8 @@ public class DaoCreatePlanetTestNegative extends PlanetDaoUtil {
 
         planet.setImageData(Base64.getEncoder().encodeToString(Files.readAllBytes(path)));
 
-        assertThrows(PlanetFail.class, () -> dao.createPlanet(planet));
+        PlanetFail exception = assertThrows(PlanetFail.class, () -> dao.createPlanet(planet));
+        assertEquals("Invalid planet name", exception.getMessage());
 
     }
 
