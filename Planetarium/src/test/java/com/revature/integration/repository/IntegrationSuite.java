@@ -33,9 +33,6 @@ import static org.junit.runners.Suite.SuiteClasses;
         DaoReadMoonsByPlanetNegative.class
 
 
-
-
-
 })
 public class IntegrationSuite {
 
