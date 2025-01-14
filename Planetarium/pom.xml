@@ -133,7 +133,8 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.3.0</version>
                 <configuration>
-                    <includes>com.revature.unitTests.UnitSuite</includes>
+<!--                    TODO Change to run specific suite -->
+                    <includes>com.revature.integration.repository.IntegrationSuite</includes>
                 </configuration>
             </plugin>
         </plugins>
