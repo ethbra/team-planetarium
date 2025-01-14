@@ -49,6 +49,7 @@ public class ServicePlanetCreateTest extends ServicePlanetUtil {
     public void serviceCreatePlanetNegatives() throws IOException {
         Planet planet = new Planet();
         planet.setPlanetId(planetId);
+//        idiosyncratic, i know, but Im not sure how else to resolve the test data to be empty
         if (planetName.equals("<empty>"))
             planet.setPlanetName("");
         else

@@ -20,10 +20,12 @@ import org.junit.runners.Suite;
         ServiceMoonDeletionTest.class,
         ServiceMoonRetrievalTest.class,
         ServiceMoonTests.class,
+
         ServicePlanetCreateTest.class,
         ServicePlanetDeleteTest.class,
         ServicePlanetSelectTest.class,
         ServicePlanetTest.class,
+
         ServiceAuthenticateTest.class,
         ServiceCreateUserTest.class,
         ServiceUserTest.class
