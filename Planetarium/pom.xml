@@ -134,7 +134,7 @@
                 <version>3.3.0</version>
                 <configuration>
 <!--                    TODO Change to run specific suite -->
-                    <includes>com.revature.integration.repository.IntegrationSuite</includes>
+                    <includes>com.revature.FullSuite</includes>
                 </configuration>
             </plugin>
         </plugins>
