@@ -34,7 +34,6 @@ public class ServiceDeletePlanetTest extends ServicePlanetUtil {
 
     @Test
     public void serviceDeletePlanetFailure() {
-        Planet invalidPlanet = new Planet();
         Mockito.when(dao.deletePlanet(Mockito.any())).thenReturn(false);
 
         try {
