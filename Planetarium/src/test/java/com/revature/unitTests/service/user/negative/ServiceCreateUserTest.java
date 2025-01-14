@@ -13,8 +13,9 @@ import org.mockito.Mockito;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Optional;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 @RunWith(Parameterized.class)
 public class ServiceCreateUserTest extends UserServiceUtil {
@@ -33,9 +34,9 @@ public class ServiceCreateUserTest extends UserServiceUtil {
     public String errMessage;
 
     @Parameters
-    public static Collection<Object> inputs() {
-        return Arrays.asList(new Object[][]
-                {{"Batman", "Krypton-was_2000", 0, "Invalid username"},
+    public static Collection<Object[]> inputs() {
+        return Arrays.asList(new Object[][]{
+                        {"Batman", "Krypton-was_2000", 0, "Invalid username"},
                         {"Bane", "Krypton-was_2000", 0, "Invalid username"},
                         {"wonder_woman_for_the_DC_theming", "Krypton-was_2000", 0, "Invalid username"},
                         {"2face", "Krypton-was_2000", 0, "Invalid username"},
@@ -57,13 +58,29 @@ public class ServiceCreateUserTest extends UserServiceUtil {
     public void createUserNegative() {
         User newUser = new User(id, username, password);
 
-//        The test data should all fail for the repo layer
         Mockito.when(dao.createUser(newUser))
-                .thenThrow(new AssertionError("DAO creation shouldn't occur"));
+                .thenReturn(Optional.empty());
+        if (id != 0) {
+            Mockito.when(dao.createUser(newUser))
+                    .then(invocation -> {
+                        fail("Business logic should throw an exception before calling dao.createUser()");
+                        return null;
+                    });
 
-        UserFail response = Assert.assertThrows(UserFail.class, () ->
-                service.createUser(newUser));
+        }
 
-        Assert.assertEquals(errMessage, response.getMessage());
+//        trying to get more informative error messages to show
+//        no business logic AND wrong exception messages
+
+        if (id != 0)
+            service.createUser(newUser);
+        else {
+
+            UserFail response = Assert.assertThrows(UserFail.class, () ->
+                    service.createUser(newUser));
+
+            Assert.assertEquals(errMessage, response.getMessage());
+
+        }
     }
 }

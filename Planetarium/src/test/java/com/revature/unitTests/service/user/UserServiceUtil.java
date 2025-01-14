@@ -21,6 +21,7 @@ public class UserServiceUtil {
 
     protected final String successResponse = "User created successfully";
     protected final String authFailureResponse = "Invalid credentials";
+
     @Before
     public void setup() {
         Setup.resetTestDatabase();
