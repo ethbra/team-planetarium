@@ -43,9 +43,6 @@ public class TestDataLoader {
 //                structured as an array with the name, then value
                 String[] line = scanner.nextLine().split(",");
                 
-                for (int i = 0; i < line.length; i++) {
-                    System.out.println("line[i] = " + line[i]);
-                }
 //                if already exists, then we've looped to a new test set
                 if (names.contains(line[0])) {
 //                    create a new array
@@ -59,14 +56,14 @@ public class TestDataLoader {
                 names.add(line[0]);
 
 //                parse and add int for all names of "ID"
-                if (line[0].equals("ID")) {
+                if (line[0].contains("ID")) {
                     try {
 
                         int id = Integer.parseInt(line[1]);
                         row.add(id);
 
                     } catch (Exception e) {
-                        System.out.println("Not an integer, continue..");
+//                        System.out.println("Not an integer, continue..");
                     }
                 } else {
                     row.add(line[1]);

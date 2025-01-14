@@ -50,6 +50,5 @@ public class ServiceAuthenticateTest extends UserServiceUtil {
 
         assertEquals(authFailureResponse, fail.getMessage());
 
-        System.out.println("Successfully threw UserFail");
     }
 }

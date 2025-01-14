@@ -13,6 +13,7 @@ public class MoonDaoUtil {
     @Before
     public void setUp() throws Exception {
         Setup.resetTestDatabase();
+
         dao = new MoonDaoImp();
     }
 

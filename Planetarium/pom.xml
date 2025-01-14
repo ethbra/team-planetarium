@@ -11,7 +11,7 @@
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
+<!--TODO make sure all of these dependencies are actually necessary-->
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -69,6 +69,7 @@
             <groupId>commons-lang</groupId>
             <artifactId>commons-lang</artifactId>
             <version>1.0</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
@@ -94,7 +95,7 @@
                 <artifactId>maven-surefire-report-plugin</artifactId>
                 <version>3.5.2</version>
                 <configuration>
-                    <outputName>PlanetariumTestResults</outputName>
+                    <outputName>Planetarium Test Results</outputName>
                 </configuration>
             </plugin>
         </plugins>
@@ -138,7 +139,8 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.3.0</version>
                 <configuration>
-                    <includes>com.revature.unitTests.UnitSuite</includes>
+<!--                    TODO Change to run specific suite -->
+                    <includes>com.revature.FullSuite</includes>
                 </configuration>
             </plugin>
         </plugins>
