@@ -24,46 +24,47 @@ import static org.junit.Assert.assertThrows;
 @RunWith(Parameterized.class)
 public class DaoPlanetCreateTest extends PlanetDaoUtil {
 
-    private final int planetId = 0;
-
-    @Parameter(2)
-    public int ownerId;
-
     @Parameter(0)
     public String planetName;
-
 
     @Parameter(1)
     public String imagePath;
 
+    @Parameter(2)
+    public int ownerId;
+
+    private int planetId = 0;
+
 
     @Parameters
     public static Collection<Object[]> inputs() {
-        return Arrays.asList(new Object[][]
-                {
-                        {"ThisNameIsOverThirtyCharactersLong", "planet-1.jpg", 1},
-                        {"", "planet-1.jpg", 1},
-                        {"Pr()xim@ Centaur! B", "planet-1.jpg", 1},
-                        {"Earth", "planet-1.jpg", 1},
-                        {"PN 1", "rick-roll-rick-astley.gif", 1}
-                }
-        );
+        return Arrays.asList(new Object[][]{
+            {"ThisNameIsOverThirtyCharactersLong", "planet-1.jpg", 1},
+            {"", "planet-1.jpg", 1},
+            {"Pr()xim@ Centaur! B", "planet-1.jpg", 1},
+            {"Earth", "planet-1.jpg", 1},
+            {"My 1st _Planet-", "gearth.png", 1},
+            {"My 1st _Planet-", "rick-roll-rick-astley.gif", 1}
+        });
     }
+
 
     @Test
     public void createPlanetNegative() throws IOException {
         Planet planet = new Planet();
         planet.setPlanetName(planetName);
         planet.setOwnerId(ownerId);
+        planet.setPlanetId(planetId);
 
         Path path = Paths.get(Steps.appendFile(imagePath));
-        System.out.println("path = " + path);
-
         planet.setImageData(Base64.getEncoder().encodeToString(Files.readAllBytes(path)));
 
         PlanetFail exception = assertThrows(PlanetFail.class, () -> dao.createPlanet(planet));
-        assertEquals("Invalid planet name", exception.getMessage());
 
+        if (imagePath.endsWith(".jpg"))
+            assertEquals("Invalid planet name", exception.getMessage());
+        else
+            assertEquals("Invalid file type", exception.getMessage());
     }
 
 
