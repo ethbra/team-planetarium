@@ -23,8 +23,13 @@
 
 ### Work Completed
 
+- Code Review
+- Started on unit tests
+
 ### Work to be Done
 
+- Infosys application
+- Continue working on uint tests 
 
 ## Venjie
 
