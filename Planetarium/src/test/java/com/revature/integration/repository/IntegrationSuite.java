@@ -1,6 +1,5 @@
 package com.revature.integration.repository;
 
-import com.revature.integration.repository.moon.negative.DaoMoonCreateWithFileTest;
 import com.revature.integration.repository.moon.negative.DaoMoonCreateTest;
 import com.revature.integration.repository.moon.negative.DaoMoonDeleteTest;
 import com.revature.integration.repository.moon.negative.DaoMoonReadTest;
@@ -20,19 +19,18 @@ import static org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @SuiteClasses({
         DaoMoonCreateTest.class,
-        DaoMoonCreateWithFileTest.class,
         DaoMoonDeleteTest.class,
         DaoMoonReadTest.class,
         DaoMoonTest.class,
-//
-//        DaoPlanetCreateTest.class,
-//        DaoPlanetDeleteTest.class,
-//        DaoPlanetReadTest.class,
-//        DaoPlanetTest.class,
-//
-//        DaoCreateUserTest.class,
-//        DaoFindUserTest.class,
-//        DaoUserTest.class
+
+        DaoPlanetCreateTest.class,
+        DaoPlanetDeleteTest.class,
+        DaoPlanetReadTest.class,
+        DaoPlanetTest.class,
+
+        DaoCreateUserTest.class,
+        DaoFindUserTest.class,
+        DaoUserTest.class
 
 
 })
