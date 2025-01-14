@@ -1,21 +1,20 @@
 package com.revature.planetarium.service.user;
 
 
-import java.util.Optional;
-
 import com.revature.planetarium.entities.User;
 import com.revature.planetarium.exceptions.UserFail;
 import com.revature.planetarium.repository.user.UserDao;
 
+import java.util.Optional;
+
 public class UserServiceImp implements UserService {
-    
+
     private UserDao userDao;
 
     public UserServiceImp(UserDao userDao) {
         this.userDao = userDao;
     }
 
-//    TODO: There is no business logic
     @Override
     public String createUser(User newUser) {
         Optional<User> createdUser = userDao.createUser(newUser);

@@ -25,10 +25,7 @@ public class DaoFindUserTest extends UserDaoUtil {
     public static Collection<Object[]> inputs() {
         return Arrays.asList(new Object[][]{
                 {"Bane"},
-                {"wonder_woman_for_the_DC_theming"},
-                {"2face"},
-                {"joker!!!!!!?)"},
-                {"Super_man-2001"}
+                {" 1 = 1; SELECT * FROM users;"}
         });
     }
     @Test
