@@ -8,7 +8,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertTrue;
 
-public class DaoReadMoonsByPlanetNegative extends MoonDaoUtil {
+public class DaoMoonReadTest extends MoonDaoUtil {
 
     @Test
     public void readMoonsByPlanetNegative() {

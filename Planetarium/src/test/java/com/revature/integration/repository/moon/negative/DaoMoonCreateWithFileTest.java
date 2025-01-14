@@ -15,7 +15,7 @@ import java.util.Base64;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 
-public class DaoCreateMoonTestNegativeDueToFileType extends MoonDaoUtil {
+public class DaoMoonCreateWithFileTest extends MoonDaoUtil {
 
 
     @Test

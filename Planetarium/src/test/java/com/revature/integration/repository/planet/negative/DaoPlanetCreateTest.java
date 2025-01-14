@@ -22,7 +22,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 
 @RunWith(Parameterized.class)
-public class DaoCreatePlanetTestNegativeDueToFileType extends PlanetDaoUtil {
+public class DaoPlanetCreateTest extends PlanetDaoUtil {
 
     private final int planetId = 0;
 
@@ -41,7 +41,11 @@ public class DaoCreatePlanetTestNegativeDueToFileType extends PlanetDaoUtil {
     public static Collection<Object[]> inputs() {
         return Arrays.asList(new Object[][]
                 {
-                        {"Venus", "rick-roll-rick-astley.gif", 1}
+                        {"ThisNameIsOverThirtyCharactersLong", "planet-1.jpg", 1},
+                        {"", "planet-1.jpg", 1},
+                        {"Pr()xim@ Centaur! B", "planet-1.jpg", 1},
+                        {"Earth", "planet-1.jpg", 1},
+                        {"PN 1", "rick-roll-rick-astley.gif", 1}
                 }
         );
     }
@@ -58,7 +62,7 @@ public class DaoCreatePlanetTestNegativeDueToFileType extends PlanetDaoUtil {
         planet.setImageData(Base64.getEncoder().encodeToString(Files.readAllBytes(path)));
 
         PlanetFail exception = assertThrows(PlanetFail.class, () -> dao.createPlanet(planet));
-        assertEquals("Invalid file type", exception.getMessage());
+        assertEquals("Invalid planet name", exception.getMessage());
 
     }
 

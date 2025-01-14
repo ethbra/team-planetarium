@@ -13,7 +13,7 @@ import java.util.Collection;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class DaoDeleteMoonNegative extends MoonDaoUtil {
+public class DaoMoonDeleteTest extends MoonDaoUtil {
 
     @Parameterized.Parameter(0)
     public String moonName;

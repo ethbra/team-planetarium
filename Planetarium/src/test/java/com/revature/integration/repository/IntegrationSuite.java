@@ -1,13 +1,14 @@
 package com.revature.integration.repository;
 
-import com.revature.integration.repository.moon.negative.DaoCreateMoonTestNegativeDueToFileType;
-import com.revature.integration.repository.moon.negative.DaoCreateMoonTestNegativeDueToName;
-import com.revature.integration.repository.moon.negative.DaoDeleteMoonNegative;
-import com.revature.integration.repository.moon.negative.DaoReadMoonsByPlanetNegative;
+import com.revature.integration.repository.moon.negative.DaoMoonCreateWithFileTest;
+import com.revature.integration.repository.moon.negative.DaoMoonCreateTest;
+import com.revature.integration.repository.moon.negative.DaoMoonDeleteTest;
+import com.revature.integration.repository.moon.negative.DaoMoonReadTest;
 import com.revature.integration.repository.moon.positive.DaoMoonTest;
-import com.revature.integration.repository.planet.negative.DaoCreatePlanetTestNegativeDueToName;
-import com.revature.integration.repository.planet.negative.DaoDeletePlanetNegative;
-import com.revature.integration.repository.planet.negative.DaoReadPlanetsByOwnerNegative;
+import com.revature.integration.repository.planet.negative.DaoPlanetCreateTest;
+import com.revature.integration.repository.planet.negative.DaoPlanetCreateWithFileTest;
+import com.revature.integration.repository.planet.negative.DaoPlanetDeleteTest;
+import com.revature.integration.repository.planet.negative.DaoPlanetReadTest;
 import com.revature.integration.repository.planet.positive.DaoPlanetTest;
 import com.revature.integration.repository.user.negative.DaoCreateUserTest;
 import com.revature.integration.repository.user.negative.DaoFindUserTest;
@@ -18,19 +19,21 @@ import static org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses({
-        DaoUserTest.class,
-        DaoFindUserTest.class,
-        DaoCreateUserTest.class,
-        DaoPlanetTest.class,
-        DaoCreateMoonTestNegativeDueToFileType.class,
-        DaoCreatePlanetTestNegativeDueToName.class,
-        DaoDeletePlanetNegative.class,
-        DaoReadPlanetsByOwnerNegative.class,
+        DaoMoonCreateTest.class,
+        DaoMoonCreateWithFileTest.class,
+        DaoMoonDeleteTest.class,
+        DaoMoonReadTest.class,
         DaoMoonTest.class,
-        DaoCreateMoonTestNegativeDueToFileType.class,
-        DaoCreateMoonTestNegativeDueToName.class,
-        DaoDeleteMoonNegative.class,
-        DaoReadMoonsByPlanetNegative.class
+
+        DaoPlanetCreateTest.class,
+        DaoPlanetCreateWithFileTest.class,
+        DaoPlanetDeleteTest.class,
+        DaoPlanetReadTest.class,
+        DaoPlanetTest.class,
+
+        DaoCreateUserTest.class,
+        DaoFindUserTest.class,
+        DaoUserTest.class
 
 
 })

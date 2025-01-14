@@ -14,7 +14,7 @@ import java.util.Collection;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class DaoDeletePlanetNegative extends PlanetDaoUtil {
+public class DaoPlanetDeleteTest extends PlanetDaoUtil {
 
 
     @Parameterized.Parameter(0)
