@@ -20,7 +20,7 @@ import org.mockito.Mockito;
 @RunWith(Parameterized.class)
 public class ServicePlanetDeleteTest extends ServicePlanetUtil {
     @Parameter(0)
-    public Object invalidPlanetName;
+    public Object invalidInput;
 
     @Parameters
     public static Collection<Object[]> data() {
@@ -32,16 +32,19 @@ public class ServicePlanetDeleteTest extends ServicePlanetUtil {
 
     @Test
     public void serviceDeletePlanetFailure() {
-        Planet invalidPlanet = new Planet();
         Mockito.when(dao.deletePlanet(Mockito.any())).thenReturn(false);
 
         try {
-            Object result = service.deletePlanet(invalidPlanet);
+            Object result = service.deletePlanet(invalidInput);
             if (result instanceof String) {
                 fail("Service method deletePlanet() should return boolean");
             }
         } catch (Exception e) {
-            assertEquals("Invalid planet name", e.getMessage());
+            if (invalidInput instanceof Planet) {
+                assertEquals("Invalid planet name", e.getMessage());
+            } else if (invalidInput instanceof String) {
+                assertEquals("Invalid planet name", e.getMessage());
+            }
         }
     }
 
