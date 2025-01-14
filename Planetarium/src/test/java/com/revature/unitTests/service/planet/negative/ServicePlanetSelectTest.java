@@ -1,8 +1,6 @@
 package com.revature.unitTests.service.planet.negative;
 
-import com.revature.planetarium.entities.Planet;
 import com.revature.unitTests.service.planet.ServicePlanetUtil;
-import com.revature.util.TestDataLoader;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -18,7 +16,7 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class ServiceSelectPlanetTest extends ServicePlanetUtil {
+public class ServicePlanetSelectTest extends ServicePlanetUtil {
 
     @Parameter
     public int ownerId;
@@ -26,7 +24,7 @@ public class ServiceSelectPlanetTest extends ServicePlanetUtil {
 
 
     @Parameters
-    public static Collection<Object[]> data() throws FileNotFoundException {
+    public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
                 {-1000},
                 {9999}
@@ -36,7 +34,7 @@ public class ServiceSelectPlanetTest extends ServicePlanetUtil {
     @Test
     public void serviceSelectPlanetNegatives() {
 
-        Mockito.when(dao.readPlanetsByOwner(Mockito.any())).thenReturn(List.of());
+        Mockito.when(dao.readPlanetsByOwner(Mockito.anyInt())).thenReturn(List.of());
 
         assertEquals(List.of(), service.selectByOwner(ownerId));
 

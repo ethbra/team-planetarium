@@ -23,7 +23,7 @@ import java.util.Collection;
 import java.util.Optional;
 
 @RunWith(Parameterized.class)
-public class ServiceCreatePlanetTest extends ServicePlanetUtil {
+public class ServicePlanetCreateTest extends ServicePlanetUtil {
 
     @Parameter(0)
     public int planetId;

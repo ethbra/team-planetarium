@@ -20,7 +20,7 @@ public class ServiceUserTest extends UserServiceUtil {
                 .thenReturn(Optional.of(newUser));
 
         String response = service.createUser(newUser);
-        assertTrue(response.contains(successResponse));
+        assertEquals(successResponse, response);
     }
 
     @Test

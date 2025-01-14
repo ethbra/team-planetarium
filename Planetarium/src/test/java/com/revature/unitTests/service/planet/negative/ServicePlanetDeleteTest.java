@@ -3,8 +3,6 @@ package com.revature.unitTests.service.planet.negative;
 import com.revature.planetarium.entities.Planet;
 import com.revature.unitTests.service.planet.ServicePlanetUtil;
 
-import dev.failsafe.internal.util.Assert;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
@@ -20,7 +18,7 @@ import org.mockito.Mockito;
 
 
 @RunWith(Parameterized.class)
-public class ServiceDeletePlanetTest extends ServicePlanetUtil {
+public class ServicePlanetDeleteTest extends ServicePlanetUtil {
     @Parameter(0)
     public Object invalidPlanetName;
 
