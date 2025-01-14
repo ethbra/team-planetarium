@@ -22,11 +22,11 @@
 ### Work Completed
 
 - Finished Jira
-- Worked on RTM
+- Updated the RTM
 
 ### Work to be Done
 
-- Finish RTM
+- Finalize the RTM
 - Study for QC
 
 ## Venjie
