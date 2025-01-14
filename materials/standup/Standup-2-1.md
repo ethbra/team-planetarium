@@ -22,8 +22,13 @@
 
 ### Work Completed
 
+- Setup Postman and started working on it
+- Finished pahse 2 of project
+
 ### Work to be Done
 
+- Finish Postman
+- Work on the practice QC
 
 ## Venjie
 
