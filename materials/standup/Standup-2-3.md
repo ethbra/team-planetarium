@@ -23,8 +23,12 @@
 
 ### Work Completed
 
+- Finalized postman API testing for User Login and User Registration
+
 ### Work to be Done
 
+- Study for QC
+- Code review with the group
 
 ## Venjie
 

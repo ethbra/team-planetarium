@@ -16,8 +16,13 @@
 
 ### Work Completed
 
+- Went over project documentation 
+- Worked on Jira
+
 ### Work to be Done
 
+- Finalize the test data
+- Study for QC
 
 ## Venjie
 

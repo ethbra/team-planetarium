@@ -21,8 +21,14 @@
 
 ### Work Completed
 
+- Infosys Call
+- Interview Prep
+- Finalize everything for code review
+
 ### Work to be Done
 
+- Code Review
+- Start working on unit tests
 
 ## Venjie
 
