@@ -40,5 +40,5 @@
 
 ### Work to be Done
 - Prepare for QC
-- Take QC quic
+- Take QC quiz
 - Continue any remaining Postman work on my end
