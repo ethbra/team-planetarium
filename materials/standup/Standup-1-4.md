@@ -38,5 +38,9 @@
 ## Alex
 
 ### Work Completed
+- Helped with jira board setup
+- Helped with updating the RTM 
 
 ### Work to be Done
+- Help with merging of feature files and test data
+- QC preparation
