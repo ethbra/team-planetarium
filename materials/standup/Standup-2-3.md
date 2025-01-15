@@ -34,7 +34,14 @@
 
 ### Work Completed
 
+- Worked on RevPro assessments
+- Finished API Testing for Planet Endpoints
+
 ### Work to be Done
+
+- Finalize Postman API Testing Requirements
+- Study for QC
+- Pair Programming
 
 ## Alex
 
