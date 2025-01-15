@@ -31,5 +31,8 @@
 ## Alex
 
 ### Work Completed
+- Infosys application
+- Unit tests for service layer (moon negative & positive)
 
 ### Work to be Done
+- Pair programming 
