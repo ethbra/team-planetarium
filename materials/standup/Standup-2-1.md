@@ -39,5 +39,8 @@
 ## Alex
 
 ### Work Completed
+- Setup postman and worked on some of the API endpoint tests
 
 ### Work to be Done
+- Adding appropriate parameterization to postman tests
+- Qc preparation
