@@ -33,7 +33,13 @@
 
 ### Work Completed
 
+- Finished test plan
+- Scrum board organized
+
 ### Work to be Done
+
+- Help with feature files and test data
+- Study for QC
 
 ## Alex
 
