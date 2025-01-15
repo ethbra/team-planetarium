@@ -32,10 +32,10 @@
 
 	(*Only Integration/Unit test suite*)
 		
-	*Creating a functional test suite was like adding layers of paint. I would create a test, notice there are no errors, then use the test to represent structural issues like bad return type because it would otherwise exit early and not represent errors that need defect reports*
+*Creating a functional test suite was like adding layers of paint. I would create a test, notice there are no errors, then use the test to represent structural issues like bad return type because it would otherwise exit early and not represent errors that need defect reports*
 	- what new defects were discovered in your testing?
 
-   (*Unimplemented business rules*)
+(*Unimplemented business rules*)
         - how did your understanding of the underlying causes of the defects discovered in your E2E testing change based on the testing done this sprint?
 
    (*E2E failed, but unit/integration succeeds in some cases*)
