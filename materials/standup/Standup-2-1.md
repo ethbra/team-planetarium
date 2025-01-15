@@ -34,7 +34,13 @@
 
 ### Work Completed
 
+- Reviewed Phase 2 of project
+- Setup Postman and started working on it
+
 ### Work to be Done
+
+- Continue working on Postman API Testing
+- Study for QC
 
 ## Alex
 
