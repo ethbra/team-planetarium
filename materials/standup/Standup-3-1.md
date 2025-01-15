@@ -26,7 +26,13 @@
 
 ### Work Completed
 
+- Started working on Integration Testing requirements
+- Infosys application
+
 ### Work to be Done
+
+- Continue working on Integration Testing
+- Pair Programming
 
 ## Alex
 
