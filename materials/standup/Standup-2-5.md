@@ -40,5 +40,9 @@
 ## Alex
 
 ### Work Completed
+- Fixed some issues with my API endpoint tests
+- Code review
 
 ### Work to be Done
+- Infosys application
+- Working on remainder of unit tests
