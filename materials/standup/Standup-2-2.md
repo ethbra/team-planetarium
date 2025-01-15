@@ -35,5 +35,10 @@
 ## Alex
 
 ### Work Completed
+- Continued work on Postman, particularly the moon API endpoints for postman
+- Studied for QC
 
 ### Work to be Done
+- Prepare for QC
+- Take QC quic
+- Continue any remaining Postman work on my end
