@@ -9,30 +9,37 @@
 	- Ethan will share and prepare visuals
 
 ## Presentation Order of Operations
-1. Present Test Summary Report/s
-	(*Make the summary Thursday*)
+1. Present Test Summary Report/s (*Make the summary Thursday*)
     - describe **how test suite evolved** moving from a solo to group project
+      
 	    (*tests needed reorganization, comprehensive categorization. Reused most test data but required refactoring. We split work first for Divyaj, Alex, and Venjie to do Postman while I set up structure, then switch*)
     - describe **how you combined automated** tests
-	    (*Classes were split into integration/unit, then further into planet/moon/user, and finally into positive/negative. Methods got their own files for negative tests, while positive tests are all in one file and using *)
+	   
+     (*Classes were split into integration/unit, then further into planet/moon/user, and finally into positive/negative. Negative tests have files for each method, using Parameterized class. Positive tests are all in one file and using equivalence partitioning*)
     - describe **what new information was discovered** by your automation test suite
     - conversely, **describe defects** your automated test suite missed that you **discovered during manual testing**
-	    (*Images don't scale with window size*) 
+	   
+     (*Images don't scale with window size*) 
 2. Run your Automated Tests
     - give a mini retrospective on the process of developing the automation suite while the test suite is running
-		(*Only Integration/Unit test suite*)
-		*Creating a functional test suite was like adding layers of paint. I would create a test, notice there are no errors, then use the test to represent structural issues like bad return type because it would otherwise exit early and not represent errors that need defect reports*
+
+	(*Only Integration/Unit test suite*)
+		
+	*Creating a functional test suite was like adding layers of paint. I would create a test, notice there are no errors, then use the test to represent structural issues like bad return type because it would otherwise exit early and not represent errors that need defect reports*
         - what new defects were discovered in your testing?
-			(*Unimplemented business rules*)
+
+   (*Unimplemented business rules*)
         - how did your understanding of the underlying causes of the defects discovered in your E2E testing change based on the testing done this sprint?
-	        (*E2E failed, but unit/integration succeeds in some cases*)
+
+   (*E2E failed, but unit/integration succeeds in some cases*)
         - what parts of the Planetarium source code were the most difficult to test?
-3. Perform Sprint retrospective
+4. Perform Sprint retrospective
     - what went well in the Sprint?
         - you had a good understanding of the work
         - you were quick to implement your test strategy to streamline work
         - you came up with a way to automate much of the setup/tear down for resetting your test environment between tests
-        (*recompiled source code to include a reset db endpoint*)
+        
+	(*recompiled source code to include a reset db endpoint*)
         - etc.
     - what can be improved for next Sprint?
         - did you underestimate how long a phase would take to complete?
@@ -45,7 +52,7 @@
         - are there new testing strategies you can implement next sprint?
         - do you need to update your Story Points / Velocity estimates?
         - etc.
-4. Field questions
+5. Field questions
 
 ## Recommendations
 - visual aids are welcome but not necessary for this presentation
