@@ -45,6 +45,7 @@
 ## Alex
 
 ### Work Completed
+- Phase 2 review
 - Setup postman and worked on some of the API endpoint tests
 
 ### Work to be Done
