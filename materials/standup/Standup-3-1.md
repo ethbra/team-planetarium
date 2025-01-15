@@ -19,8 +19,13 @@
 
 ### Work Completed
 
+- Worked on integration tests for planets and users
+- Infosys application
+
 ### Work to be Done
 
+- Finish the integration tests
+- Pair programming
 
 ## Venjie
 
