@@ -46,10 +46,8 @@
         - you had a good understanding of the work
         - you were quick to implement your test strategy to streamline work
         - you came up with a way to automate much of the setup/tear down for resetting your test environment between tests
-        
 	(*recompiled source code to include a reset db endpoint*)
-
-- etc.
+	- etc.
    
     - what can be improved for next Sprint?
         - did you underestimate how long a phase would take to complete?
