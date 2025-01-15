@@ -5,7 +5,6 @@
 - have your test report ready to go
   
  (*create final report Thursday*)
-
     - You should have your **pre-fix and post-fix reports** as part of your presentation
     
 - all team members should participate in the presentation
@@ -19,11 +18,9 @@
     - describe **how test suite evolved** moving from a solo to group project
       
 	    (*tests needed reorganization, comprehensive categorization. Reused most test data but required refactoring. We split work first for Divyaj, Alex, and Venjie to do Postman while I set up structure, then switch*)
-
     - describe **how you combined automated** tests
 	   
      (*Classes were split into integration/unit, then further into planet/moon/user, and finally into positive/negative. Negative tests have files for each method, using Parameterized class. Positive tests are all in one file and using equivalence partitioning*)
-   
     - describe **what new information was discovered** by your automation test suite
       
     - conversely, **describe defects** your automated test suite missed that you **discovered during manual testing**
@@ -39,11 +36,9 @@
 	- what new defects were discovered in your testing?
 
    (*Unimplemented business rules*)
-   
         - how did your understanding of the underlying causes of the defects discovered in your E2E testing change based on the testing done this sprint?
 
    (*E2E failed, but unit/integration succeeds in some cases*)
-   
         - what parts of the Planetarium source code were the most difficult to test?
    
 4. Perform Sprint retrospective
@@ -53,7 +48,6 @@
         - you came up with a way to automate much of the setup/tear down for resetting your test environment between tests
         
 	(*recompiled source code to include a reset db endpoint*)
-
         - etc.
    
     - what can be improved for next Sprint?
