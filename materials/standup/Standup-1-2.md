@@ -28,7 +28,13 @@
 
 ### Work Completed
 
+- Reviewed project documentation 
+- Reviewed Jira Project Board
+
 ### Work to be Done
+
+- Organize scrum board
+- Organize and improve test data
 
 ## Alex
 
