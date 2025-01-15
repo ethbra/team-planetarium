@@ -14,7 +14,7 @@
     - describe **how test suite evolved** moving from a solo to group project
 	    (*tests needed reorganization, comprehensive categorization. Reused most test data but required refactoring. We split work first for Divyaj, Alex, and Venjie to do Postman while I set up structure, then switch*)
     - describe **how you combined automated** tests
-	    (*Classes were split into integration/unit, then further into planet/moon/user, and finally into positive/negative. Methods got their own files for negative tests, while positive tests are all in one file and using *)
+	    (*Classes were split into integration/unit, then further into planet/moon/user, and finally into positive/negative. Methods each have their own file for negative tests, using @Parameters for each. Positive tests are all in one file use equivalence partitioning*)
     - describe **what new information was discovered** by your automation test suite
     - conversely, **describe defects** your automated test suite missed that you **discovered during manual testing**
 	    (*Images don't scale with window size*) 
