@@ -39,5 +39,10 @@
 ## Alex
 
 ### Work Completed
+- Infosys call
+- Interview prep
+- Review the existing unit tests that have been created
 
 ### Work to be Done
+- Code review
+- Start working on unit tests
