@@ -39,5 +39,9 @@
 ## Alex
 
 ### Work Completed
+- Worked on QC assessments
+- Finished postman API testing for moon retrieval, creation, and deletion and pushed to Github
 
 ### Work to be Done
+- Pair programming
+- Figuring out how to integrate our various postman tests
