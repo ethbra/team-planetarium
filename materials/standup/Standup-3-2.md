@@ -35,6 +35,7 @@
 ### Work to be Done
 
 - Finalize Integration Testing requirements
+- Study for QC
 - Prepare for project presentation
 
 ## Alex
