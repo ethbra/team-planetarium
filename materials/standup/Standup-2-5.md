@@ -35,7 +35,14 @@
 
 ### Work Completed
 
+- Updated Planet Endpoints API Testing
+- Code review
+
 ### Work to be Done
+
+- Continue reviewing code
+- Start on working Integration Testing requirements
+- Infosys job application
 
 ## Alex
 
