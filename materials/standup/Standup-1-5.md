@@ -17,13 +17,11 @@
 
 ### Work Completed
 
-- Finished Jira
-- Updated the RTM
+- Finalize the RTM
+- Study for QC
 
 ### Work to be Done
 
-- Finalize the RTM
-- Study for QC
 
 ## Venjie
 
