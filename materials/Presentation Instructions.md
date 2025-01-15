@@ -5,7 +5,8 @@
 - have your test report ready to go
   
  (*create final report Thursday*)
-    - You should have your **pre-fix and post-fix reports** as part of your presentation
+ <br/>
+&emsp;- You should have your **pre-fix and post-fix reports** as part of your presentation
     
 - all team members should participate in the presentation
 	- write down what you want to say
@@ -15,31 +16,38 @@
 ## Presentation Order of Operations
 
 1. Present Test Summary Report/s (*Make the summary Thursday*)
-    - describe **how test suite evolved** moving from a solo to group project
+   <br/>
+&emsp;- describe **how test suite evolved** moving from a solo to group project
       
-	    (*tests needed reorganization, comprehensive categorization. Reused most test data but required refactoring. We split work first for Divyaj, Alex, and Venjie to do Postman while I set up structure, then switch*)
-    - describe **how you combined automated** tests
+(*tests needed reorganization, comprehensive categorization. Reused most test data but required refactoring. We split work first for Divyaj, Alex, and Venjie to do Postman while I set up structure, then switch*)
+<br/>
+&emsp;- describe **how you combined automated** tests
 	   
-     (*Classes were split into integration/unit, then further into planet/moon/user, and finally into positive/negative. Negative tests have files for each method, using Parameterized class. Positive tests are all in one file and using equivalence partitioning*)
-    - describe **what new information was discovered** by your automation test suite
+(*Classes were split into integration/unit, then further into planet/moon/user, and finally into positive/negative. Negative tests have files for each method, using Parameterized class. Positive tests are all in one file and using equivalence partitioning*)
+   <br/>
+&emsp;- describe **what new information was discovered** by your automation test suite
       
-    - conversely, **describe defects** your automated test suite missed that you **discovered during manual testing**
+&emsp;- conversely, **describe defects** your automated test suite missed that you **discovered during manual testing**
 	   
-     (*Images don't scale with window size*) 
+(*Images don't scale with window size*)
+   <br/>
 3. Run your Automated Tests
    
-    - give a mini retrospective on the process of developing the automation suite while the test suite is running
+&emsp;- give a mini retrospective on the process of developing the automation suite while the test suite is running
 
-	(*Only Integration/Unit test suite*)
+(*Only Integration/Unit test suite*)
 		
 *Creating a functional test suite was like adding layers of paint. I would create a test, notice there are no errors, then use the test to represent structural issues like bad return type because it would otherwise exit early and not represent errors that need defect reports*
-	- what new defects were discovered in your testing?
+<br/>
+&emsp;- what new defects were discovered in your testing?
 
 (*Unimplemented business rules*)
-        - how did your understanding of the underlying causes of the defects discovered in your E2E testing change based on the testing done this sprint?
+<br/>
+&emsp;- how did your understanding of the underlying causes of the defects discovered in your E2E testing change based on the testing done this sprint?
 
-   (*E2E failed, but unit/integration succeeds in some cases*)
-        - what parts of the Planetarium source code were the most difficult to test?
+(*E2E failed, but unit/integration succeeds in some cases*)
+   <br/>
+&emsp;- what parts of the Planetarium source code were the most difficult to test?
    
 4. Perform Sprint retrospective
     - what went well in the Sprint?
