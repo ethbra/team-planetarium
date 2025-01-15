@@ -34,7 +34,8 @@
 
 ### Work Completed
 - Reviewed and accepted pull request on Github
-- Collaborated on how to merge our acceptance testing/finalized test data 
+- Read and analyzed project documentation
+- Collaborated on how to merge our acceptance testing
 
 ### Work to be Done
 - FInalize test data
