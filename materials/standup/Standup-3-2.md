@@ -46,7 +46,7 @@
 ## Alex
 
 ### Work Completed
-- Pair programmed w/ Ethan on many of the unit tests, push changes to Github
+- Pair programmed w/ Ethan on many of the unit tests (e.g., planet & moon), push changes to Github
 
 ### Work to be Done
 - Finish up pair programming on unit testing
