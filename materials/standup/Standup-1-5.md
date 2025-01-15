@@ -35,5 +35,9 @@
 ## Alex
 
 ### Work Completed
+- Review and approve Github pull requests
+- API testing in postman
 
 ### Work to be Done
+- Finish API testing in postman on my end
+- QC study
