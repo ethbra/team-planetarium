@@ -33,7 +33,16 @@
 
 ### Work Completed
 
+- Finalized Integration Testing requirements
+- Updated repository test data on RTM
+- Helped with adding API testing defects on Jira
+- Study for QC
+
 ### Work to be Done
+
+- Continue study for QC on Thursday
+- Preapre for project presentations on Friday
+- Start working on stretch goals if possible
 
 ## Alex
 
