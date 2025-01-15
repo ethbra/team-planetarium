@@ -23,8 +23,13 @@
 
 ### Work Completed
 
+- Pair programmed with Venjie for integration tests
+- Finished integration tests
+
 ### Work to be Done
 
+- Add integration test suite
+- Work on Jira and project presentation
 
 ## Venjie
 
