@@ -30,7 +30,14 @@
 
 ### Work Completed
 
+- Reviewed API Testing Requirements
+- Continued working on Postman API Testing
+
 ### Work to be Done
+
+- Prepare for QC
+- Prepare for RevPro Quiz
+- Continue on API Testing
 
 ## Alex
 
