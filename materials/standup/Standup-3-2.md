@@ -30,7 +30,12 @@
 
 ### Work Completed
 
+- Pair programmed w/ Divyaj on Integration Testing requirements
+
 ### Work to be Done
+
+- Finalize Integration Testing requirements
+- Prepare for project presentation
 
 ## Alex
 
