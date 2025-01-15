@@ -35,7 +35,7 @@
 ## Alex
 
 ### Work Completed
-- Continued work on Postman, particularly the moon API endpoints for postman
+- Continued work on Postman, particularly the moon API endpoint tests 
 - Studied for QC
 
 ### Work to be Done
