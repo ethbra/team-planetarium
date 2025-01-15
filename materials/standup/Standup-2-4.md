@@ -34,7 +34,14 @@
 
 ### Work Completed
 
+- Infosys Meeting
+- Worked on Coding challenge QC
+- Reviewed JUnit and Mockito
+
 ### Work to be Done
+
+- Code review
+- Review Integration Test requirements
 
 ## Alex
 
