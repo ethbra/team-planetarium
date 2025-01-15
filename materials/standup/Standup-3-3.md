@@ -38,5 +38,10 @@
 ## Alex
 
 ### Work Completed
+- Finished pair programming/unit testing and ran full test suite
+- Added defect tickets in Jira
 
 ### Work to be Done
+- Prepare for QC on Thursday
+- Prepare for presentation on Friday
+- Stretch goals (e.g., fixing source code)
