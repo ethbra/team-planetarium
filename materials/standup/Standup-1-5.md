@@ -1,10 +1,12 @@
 # Daily Stand Up
-## Week 1: Thursday
+## Week 1: Friday
 
 ## Ethan
 
 ### Work Completed
 
+- repo organized
+- test suite updates
 - add RTM materials
 - create framework for project tests
 - add readme and stand up videos
@@ -12,6 +14,7 @@
 
 ### Work to be Done
 
+- mock QC prep
 
 ## Divyaj
 
