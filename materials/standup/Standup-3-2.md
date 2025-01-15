@@ -35,5 +35,8 @@
 ## Alex
 
 ### Work Completed
+- Pair programmed w/ Ethan on many of the unit tests
 
 ### Work to be Done
+- Finish up pair programming on unit testing
+- Assess progress on Sprint 2 MVPs
