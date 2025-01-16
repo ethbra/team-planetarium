@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class MoonServiceImp<T> implements MoonService<T> {
-    
+
     private MoonDao moonDao;
 
     public MoonServiceImp(MoonDao moonDao) {
@@ -16,19 +16,22 @@ public class MoonServiceImp<T> implements MoonService<T> {
     }
 
     @Override
-    public Moon createMoon(Moon moon) {
-        if (moon.getMoonName().length() < 1 || moon.getMoonName().length() > 30) {
-            throw new MoonFail("character length fail");
+    public boolean createMoon(Moon moon) {
+        if (moon.getMoonName().isEmpty() || moon.getMoonName().length() > 30) {
+            throw new MoonFail("Invalid moon name");
         }
+
+        // implement business logic
+
         Optional<Moon> existingMoon = moonDao.readMoon(moon.getMoonName());
         if (existingMoon.isPresent()) {
-            throw new MoonFail("unique name fail");
+            throw new MoonFail("Invalid moon name");
         }
-        Optional<Moon> newMoon = moonDao.createMoon(moon);
-        if (newMoon.isEmpty()) {
-            throw new MoonFail("Could not create new moon");
-        }
-        return newMoon.get();
+        boolean newMoon = moonDao.createMoon(moon);
+
+        if (newMoon) return newMoon;
+
+        throw new MoonFail("Invalid planet ID");
     }
 
 
@@ -42,7 +45,7 @@ public class MoonServiceImp<T> implements MoonService<T> {
         } else {
             throw new MoonFail("Identifier must be an Integer or String");
         }
-        if(moon.isPresent()) {
+        if (moon.isPresent()) {
             return moon.get();
         } else {
             throw new MoonFail("Moon not found");

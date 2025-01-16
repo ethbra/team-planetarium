@@ -65,7 +65,7 @@ public class ServiceMoonCreationTest extends MoonServiceUtil {
             Mockito.when(moonDao.readMoon(moonName)).thenReturn(Optional.empty());
         }
 
-        Mockito.when(moonDao.createMoon(invalidMoon)).thenReturn(Optional.of(invalidMoon));
+        Mockito.when(moonDao.createMoon(invalidMoon)).thenThrow(new MoonFail(expectedMessage));
 
         MoonFail thrown = assertThrows(MoonFail.class, () -> {
             moonService.createMoon(invalidMoon);

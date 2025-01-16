@@ -34,7 +34,7 @@ public class DaoCreateUserTest extends UserDaoUtil {
     public static Collection<Object[]> inputs() {
         return Arrays.asList(new Object[][]{
                 {"Batman", "Krypton-was_2000", 0, "Invalid username"},
-                        {"Bane", "Krypton-was_2000", 0, "Invalid username"},
+                        {"Bane", "Iamthenight1939", 0, "Invalid username"},
                         {"wonder_woman_for_the_DC_theming", "Krypton-was_2000", 0, "Invalid username"},
                         {"2face", "Krypton-was_2000", 0, "Invalid username"},
                         {"joker!!!!!!?)", "Krypton-was_2000", 0, "Invalid username"},

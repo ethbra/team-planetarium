@@ -49,9 +49,11 @@ public class PlanetController {
     public void createPlanet(Context ctx) {
         try {
             Planet planet = ctx.bodyAsClass(Planet.class);
-            Planet createdPlanet = planetService.createPlanet(planet);
-            ctx.json(createdPlanet);
-            ctx.status(201);            
+            boolean createdPlanet = planetService.createPlanet(planet);
+            if (createdPlanet) {
+                ctx.json(createdPlanet);
+                ctx.status(201);
+            }
         } catch (PlanetFail e) {
             ctx.result(e.getMessage());
             ctx.status(400);
@@ -76,16 +78,16 @@ public class PlanetController {
         try {
             String identifier = ctx.pathParam("identifier");
             String responseMessage;
-            if(identifier.matches("^[0-9]+$")) {
-                responseMessage = planetService.deletePlanet(Integer.parseInt(identifier));
-            } else {
-                responseMessage = planetService.deletePlanet(identifier);
+
+            if(identifier.matches("^[0-9]+$") && planetService.deletePlanet(Integer.parseInt(identifier))) {
+                ctx.status(204);
+                return;
             }
-            ctx.json(responseMessage);
-            ctx.status(200);
+            ctx.json("Invalid planet name");
+            ctx.status(404);
         } catch (PlanetFail e) {
             ctx.result(e.getMessage());
-            ctx.status(400);
+            ctx.status(404);
         }
     }
 

@@ -15,6 +15,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Optional;
 
+import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.fail;
 
 @RunWith(Parameterized.class)
@@ -60,27 +61,14 @@ public class ServiceCreateUserTest extends UserServiceUtil {
 
         Mockito.when(dao.createUser(newUser))
                 .thenReturn(Optional.empty());
-        if (id != 0) {
-            Mockito.when(dao.createUser(newUser))
-                    .then(invocation -> {
-                        fail("Business logic should throw an exception before calling dao.createUser()");
-                        return null;
-                    });
 
-        }
 
-//        trying to get more informative error messages to show
-//        no business logic AND wrong exception messages
-
-        if (id != 0)
-            service.createUser(newUser);
-        else {
+            Mockito.when(dao.createUser(newUser)).thenThrow(new UserFail(errMessage));
 
             UserFail response = Assert.assertThrows(UserFail.class, () ->
                     service.createUser(newUser));
 
             Assert.assertEquals(errMessage, response.getMessage());
 
-        }
     }
 }

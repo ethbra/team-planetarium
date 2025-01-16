@@ -54,7 +54,7 @@ insert into planets (name, ownerId, image) values ('Mars', 1, ?);
 
 create table moons(
 	id integer primary key,
-	name text not null,
+	name text not null unique,
 	myPlanetId integer not null,
 	image blob,
 	foreign key(myPlanetId) references planets(id) on delete cascade,

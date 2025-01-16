@@ -17,23 +17,42 @@ public class UserServiceImp implements UserService {
 
     @Override
     public String createUser(User newUser) {
-        Optional<User> createdUser = userDao.createUser(newUser);
-        if (createdUser.isPresent()) {
-            return "Created user with username " + createdUser.get().getUsername() + " and password " + createdUser.get().getPassword();
-        } else {
-            throw new UserFail("Failed to create user, please try again");
+        if (newUser.getId() != 0) throw new UserFail("Invalid ID");
+
+        Optional<User> daoUser = userDao.findUserByUsername(newUser.getUsername());
+        if (daoUser.isPresent()) {
+            System.out.println("User already exists in service layer");
+            throw new UserFail("Invalid username");
         }
+
+
+
+        Optional<User> createdUser = userDao.createUser(newUser);
+
+        if (createdUser.isPresent()) {
+            System.out.println("User created successfully");
+            return "User created successfully";
+        }
+
+        System.out.println("I don't know how it gets down here");
+        throw new UserFail("Invalid username");
+
     }
 
     @Override
     public User authenticate(User credentials) {
+
         Optional<User> foundUser = userDao.findUserByUsername(credentials.getUsername());
-        if (foundUser.isPresent()) {
-            if (foundUser.get().getPassword().equals(credentials.getPassword())) {
-                return foundUser.get();
-            }
+        foundUser.ifPresent(user -> System.out.println(user.getUsername() + ", " + user.getPassword()));
+
+        if (foundUser.isPresent() && foundUser.get().getPassword().equals(credentials.getPassword())) {
+            User response = new User();
+            response.setUsername(credentials.getUsername());
+            response.setId(foundUser.get().getId());
+
+            return response;
         }
+
         throw new UserFail("Invalid credentials");
     }
-
 }

@@ -35,7 +35,7 @@ public class DaoPlanetTest extends PlanetDaoUtil {
     @Parameters
     public static Collection<Object[]> inputs() {
         return Arrays.asList(new Object[][]{
-                        {"My 1st _Planet-", "planet-1.jpg", 1},
+                        {"My 1st _Planet-", "planet-2.jpg", 1},
                         {"My 1st _Planet-", "", 1},
                         {"My 1st _Planet-", "gearth.png", 1}
                 }
@@ -50,7 +50,6 @@ public class DaoPlanetTest extends PlanetDaoUtil {
         planet.setPlanetId(planetId);
 
         Path path = Paths.get(Steps.appendFile(imagePath));
-        System.out.println("path = " + path);
 
         if (imagePath.isEmpty()) planet.setImageData("");
         else
