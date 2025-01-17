@@ -26,8 +26,16 @@
 
 ### Work Completed
 
+- Finalized Integration Testing requirements
+- Added integration test suite
+- Worked on Jira defect tickets
+
 ### Work to be Done
 
+- Finish presentation ppt
+- Parctice for presentation
+- Study for QC
+- Work on stretch goals
 
 ## Venjie
 
