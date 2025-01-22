@@ -17,7 +17,10 @@ public class UserDaoImp implements UserDao {
     @Override
     public Optional<User> createUser(User newUser) {
         String u = newUser.getUsername();
-        boolean goodUsername = newUser.getId() == 0 && !u.isEmpty() && u.length() <= 30 && Character.isLetter(u.charAt(0)) && u.chars().allMatch(c -> String.valueOf((char)c).matches("[A-Za-z0-9]+-_"));
+        if (newUser.getId() != 0)
+            throw new UserFail("Invalid ID");
+
+        boolean goodUsername = !u.isEmpty() && u.length() <= 30 && Character.isLetter(u.charAt(0)) && u.chars().allMatch(c -> Character.toString((char)c).matches("[A-Za-z0-9_-]"));
 
         if (!goodUsername) {
             System.err.println("I make a terrible regex");
@@ -45,7 +48,7 @@ public class UserDaoImp implements UserDao {
         } catch (SQLException e) {
             String errMsg = e.getMessage();
             System.out.println("errMsg = " + errMsg);
-            if (errMsg.contains("users.username")) {
+            if (errMsg.contains("username")) {
                 throw new UserFail("Invalid username");
             } else
                 throw new UserFail("Invalid password");

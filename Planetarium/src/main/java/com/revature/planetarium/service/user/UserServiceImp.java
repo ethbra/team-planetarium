@@ -20,21 +20,15 @@ public class UserServiceImp implements UserService {
         if (newUser.getId() != 0) throw new UserFail("Invalid ID");
 
         Optional<User> daoUser = userDao.findUserByUsername(newUser.getUsername());
-        if (daoUser.isPresent()) {
-            System.out.println("User already exists in service layer");
-            throw new UserFail("Invalid username");
-        }
 
-
+        if (daoUser.isPresent()) throw new UserFail("Invalid username");
 
         Optional<User> createdUser = userDao.createUser(newUser);
 
         if (createdUser.isPresent()) {
-            System.out.println("User created successfully");
             return "User created successfully";
         }
 
-        System.out.println("I don't know how it gets down here");
         throw new UserFail("Invalid username");
 
     }
