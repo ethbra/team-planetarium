@@ -1,5 +1,5 @@
 # Daily Stand Up
-## Week 2: Thursday
+## Week 2: Tuesday
 
 ## Ethan
 
@@ -9,7 +9,9 @@
 
 ### Work to be Done
 
-- Team Presentation
+- Start Sprint 3
+- Jira configuration
+- Study for QC & interviews
 
 ## Divyaj
 
