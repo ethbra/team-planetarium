@@ -7,6 +7,7 @@
 
 - Start Sprint 3
 - Jira configuration
+- Create poll for stretch goals
 
 ### Work to be Done
 
