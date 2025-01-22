@@ -50,13 +50,15 @@ public class MoonDaoImp implements MoonDao {
             }
         } catch (SQLException e) {
             String emsg = e.getMessage();
-            switch (emsg) {
-                case "[SQLITE_CONSTRAINT_FOREIGNKEY] A foreign key constraint failed (FOREIGN KEY constraint failed)":
-                    throw new MoonFail("Invalid planet ID");
-                default:
-                    throw new MoonFail("Invalid moon name");
 
+            if(emsg.equals("[SQLITE_CONSTRAINT_FOREIGNKEY] A foreign key constraint failed (FOREIGN KEY constraint failed)")) {
+                throw new MoonFail("Invalid planet ID");
             }
+
+            else {
+                throw new MoonFail("Invalid moon name");
+            }
+
         }
 
         throw new MoonFail("Invalid moon name");
