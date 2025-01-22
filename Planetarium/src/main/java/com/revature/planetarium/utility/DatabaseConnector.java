@@ -17,6 +17,7 @@ public class DatabaseConnector {
         SQLiteConfig config = new SQLiteConfig();
         config.enforceForeignKeys(true);
         String url = AppConfig.DATABASE_URL;
+        System.err.println("Connecting to database at " + url);
         if (url.startsWith("jdbc:sqlite:")) return DriverManager.getConnection(url, config.toProperties());
 
         return DriverManager.getConnection(url, AppConfig.DATABASE_USERNAME, AppConfig.DATABASE_PASSWORD);
