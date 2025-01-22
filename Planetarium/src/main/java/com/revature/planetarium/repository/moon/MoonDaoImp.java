@@ -15,6 +15,8 @@ public class MoonDaoImp implements MoonDao {
 
     @Override
     public boolean createMoon(Moon moon) {
+        if (moon.getMoonId() != 0) return false;
+
 
         String ftype = "ZE";
 

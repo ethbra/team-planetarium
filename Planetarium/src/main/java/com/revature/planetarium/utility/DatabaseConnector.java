@@ -1,8 +1,5 @@
 package com.revature.planetarium.utility;
 
-import io.javalin.http.Context;
-import org.sqlite.SQLiteConfig;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -10,13 +7,20 @@ import java.nio.file.Paths;
 import java.sql.*;
 import java.util.stream.Stream;
 
+import io.javalin.http.Context;
+import org.jetbrains.annotations.NotNull;
+import org.sqlite.SQLiteConfig;
+
 public class DatabaseConnector {
 
     public static Connection getConnection() throws SQLException {
         SQLiteConfig config = new SQLiteConfig();
         config.enforceForeignKeys(true);
         String url = AppConfig.DATABASE_URL;
+        if (url.startsWith("jdbc:sqlite:")) return DriverManager.getConnection(url, config.toProperties());
+
         return DriverManager.getConnection(url, AppConfig.DATABASE_USERNAME, AppConfig.DATABASE_PASSWORD);
+
     }
 
     public static void resetTestDatabase(Context context) {

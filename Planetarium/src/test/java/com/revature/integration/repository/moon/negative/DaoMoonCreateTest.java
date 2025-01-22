@@ -36,7 +36,7 @@ public class DaoMoonCreateTest extends MoonDaoUtil {
 
     @Test
     public void createMoonInvalidExistingName() {
-        Moon invalidMoon = new Moon(2, "Titan", 2);
+        Moon invalidMoon = new Moon(0, "Titan", 2);
         MoonFail exception = assertThrows(MoonFail.class, () -> dao.createMoon(invalidMoon));
         assertEquals("Invalid moon name", exception.getMessage());
     }
