@@ -54,19 +54,21 @@ public class PlanetController {
     }
 
     public void createPlanet(Context ctx) {
-        try {
-            Planet planet = ctx.bodyAsClass(Planet.class);
-            boolean createdPlanet = planetService.createPlanet(planet);
-            if (createdPlanet) {
-                ctx.json(createdPlanet);
-                ctx.status(201);
-            }
-        } catch (PlanetFail e) {
-            ctx.result(e.getMessage());
-            ctx.status(400);
-        }
-
-    }
+       try {
+           Planet planet = ctx.bodyAsClass(Planet.class);
+           boolean createdPlanet = planetService.createPlanet(planet);
+           if (createdPlanet) {
+               ctx.json(createdPlanet);
+               ctx.status(201);
+           }
+       } catch (PlanetFail e) {
+           ctx.result(e.getMessage());
+           ctx.status(400);
+       } catch (Exception e) {
+           ctx.status(400);
+           ctx.json(Map.of("message", "Out-of-range numeric value for owner id"));
+       }
+   }
 
     public void updatePlanet(Context ctx){
         try {
