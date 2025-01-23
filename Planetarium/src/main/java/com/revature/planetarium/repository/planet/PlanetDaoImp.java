@@ -16,16 +16,17 @@ public class PlanetDaoImp implements PlanetDao {
 
     @Override
     public Optional<Planet> createPlanet(Planet planet) {
+        if (planet.getPlanetName() == null || planet.getPlanetName().isEmpty()) throw new PlanetFail("Invalid planet name");
 
-        String ftype = ""; // this is what shows when a JPG is chosen, for some reason
+
+        String ftype = "";
 
         try {
             ftype = FileType.getFileType(planet.imageDataAsByteArray());
-
         } catch (Exception ignored) {}
 
 
-        if (!ftype.isEmpty() & !ftype.contains("PNG") & !ftype.contains("ZE")) {
+        if (!ftype.isEmpty() & !ftype.contains("PNG") & !ftype.contains("ZE")) { // ZE is when a JPG is chosen, for some reason
             throw new PlanetFail("Invalid file type");
         }
 

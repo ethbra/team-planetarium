@@ -20,7 +20,9 @@ public class MoonDaoImp implements MoonDao {
 
         String ftype = "ZE";
 
-        if (this.readAllMoons().stream().anyMatch(moon1 -> moon1.getMoonName().equals(moon.getMoonName())))
+        if (this.readAllMoons().stream().anyMatch(dbMoon ->
+                dbMoon.getMoonName().equals(moon.getMoonName())
+        ))
             throw new MoonFail("Invalid moon name");
 
         try {
@@ -54,6 +56,8 @@ public class MoonDaoImp implements MoonDao {
             String emsg = e.getMessage();
             switch (emsg) {
                 case "[SQLITE_CONSTRAINT_FOREIGNKEY] A foreign key constraint failed (FOREIGN KEY constraint failed)":
+                case "ERROR: insert or update on table \"moons\" violates foreign key constraint \"moons_myplanetid_fkey\"\n" +
+                             "  Detail: Key (myplanetid)=(-1) is not present in table \"planets\".":
                     throw new MoonFail("Invalid planet ID");
                 default:
                     throw new MoonFail("Invalid moon name");
@@ -201,8 +205,7 @@ public class MoonDaoImp implements MoonDao {
             int rowsDeleted = stmt.executeUpdate();
             if (rowsDeleted != 0) {
                 return true;
-            }
-            else {
+            } else {
                 throw new MoonFail("Invalid moon name");
             }
         } catch (SQLException e) {
