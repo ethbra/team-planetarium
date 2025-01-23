@@ -66,7 +66,6 @@ public class ViewController {
                 String imageDataBase64 = Base64.getEncoder().encodeToString(fileBytes);
                 ctx.result(imageDataBase64);
             } else {
-                // Handle resource not found
                 ctx.result("Resource not found");
                 ctx.status(404);
             }
