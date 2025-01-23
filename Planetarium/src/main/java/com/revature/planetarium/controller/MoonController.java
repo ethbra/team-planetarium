@@ -6,7 +6,6 @@ import com.revature.planetarium.service.moon.MoonService;
 import io.javalin.http.Context;
 
 import java.util.List;
-import java.util.Map;
 
 public class MoonController {
 
@@ -55,28 +54,25 @@ public class MoonController {
                 ctx.status(201);
             }
         } catch (MoonFail e) {
-            ctx.status(400).json(Map.of("message", e.getMessage()));
+            ctx.result(e.getMessage());
+            ctx.status(400);
         }
     }
 
     public void deleteMoon(Context ctx) {
         try {
             String identifier = ctx.pathParam("identifier");
-            boolean isDeleted;
+            String responseMessage;
             if (identifier.matches("^[0-9]+$")) {
-                isDeleted = moonService.deleteMoon(Integer.parseInt(identifier));
+                responseMessage = moonService.deleteMoon(Integer.parseInt(identifier));
             } else {
-                isDeleted = moonService.deleteMoon(identifier);
+                responseMessage = moonService.deleteMoon(identifier);
             }
-            if (isDeleted) {
-                ctx.status(204);
-            } else {
-                ctx.status(404)
-                        .json(Map.of("message", "Invalid moon name"));
-            }
+            ctx.json(responseMessage);
+            ctx.status(200);
         } catch (MoonFail e) {
             ctx.result(e.getMessage());
-            ctx.status(404);
+            ctx.status(400);
         }
     }
 
