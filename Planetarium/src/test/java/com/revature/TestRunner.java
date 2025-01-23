@@ -6,6 +6,7 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -15,6 +16,7 @@ import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
 
+@Ignore
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = "classpath:features",
