@@ -11,7 +11,6 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) {
-//		javafy();
 		try {
 			AppConfig.configureAppProperties(args);
 			Javalin app = Javalin.create(config ->{
