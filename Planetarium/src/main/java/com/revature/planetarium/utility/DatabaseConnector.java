@@ -22,7 +22,6 @@ public class DatabaseConnector {
 
     public static void resetTestDatabase(Context context) {
 
-        // TODO probably needs you to have "setup-reset.sql" where you downloaded the jar
         Path sql = Path.of("setup-reset.sql");
         StringBuilder sqlBuilder = new StringBuilder();
         try (Connection conn = DatabaseConnector.getConnection(); Stream<String> lines = Files.lines(sql)) {
