@@ -36,8 +36,9 @@
 ## Alex
 
 ### Work Completed
-
+- Sprint 2 Presentation
 
 
 ### Work to be Done
-
+- Start sprint 3
+- QC/interview prep
