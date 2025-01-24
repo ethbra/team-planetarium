@@ -6,6 +6,7 @@ import com.revature.planetarium.utility.JavalinSetup;
 
 import io.javalin.Javalin;
 
+import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
@@ -21,6 +22,16 @@ public class Main {
 				config.bundledPlugins.enableDevLogging();
 			});
 			JavalinSetup.mapRoutes(app);
+
+			//Error handler for 413
+			app.error(413, ctx -> {
+				// Override the status code to 400 if needed
+				ctx.status(400);
+				// Return custom JSON response for large file uploads
+				ctx.json(Map.of("message", "Invalid file type"));
+			});
+
+
 			app.start(8080);
 		} catch (ConfigurationFail e) {
 			e.printStackTrace();
