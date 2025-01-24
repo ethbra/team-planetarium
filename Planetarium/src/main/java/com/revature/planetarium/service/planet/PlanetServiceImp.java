@@ -3,6 +3,7 @@ package com.revature.planetarium.service.planet;
 import com.revature.planetarium.entities.Planet;
 import com.revature.planetarium.exceptions.PlanetFail;
 import com.revature.planetarium.repository.planet.PlanetDao;
+import com.revature.planetarium.utility.FileType;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,19 +17,30 @@ public class PlanetServiceImp<T> implements PlanetService<T> {
     }
 
     @Override
-    public Planet createPlanet(Planet planet) {
+    public boolean createPlanet(Planet planet) {
         if (planet.getPlanetName().length() < 1 || planet.getPlanetName().length() > 30) {
-            throw new PlanetFail("character length fail");
+            throw new PlanetFail("Invalid planet name");
         }
+        if (planet.getPlanetId() != 0)
+            throw new PlanetFail("Invalid planet ID");
+
+        String res = FileType.getFileType(planet.imageDataAsByteArray());
+
+        if (!(res.equals("ZE") || res.equals("PNG"))) {
+            throw new PlanetFail("Invalid file type");
+        }
+
         Optional<Planet> existingPlanet = planetDao.readPlanet(planet.getPlanetName());
         if (existingPlanet.isPresent()) {
-            throw new PlanetFail("unique name fail");
+            System.out.println("dao returned an existing planet, invalid planet name");
+            throw new PlanetFail("Invalid planet name");
         }
         Optional<Planet> createdPlanet = planetDao.createPlanet(planet);
         if (createdPlanet.isPresent()) {
-            return createdPlanet.get();
+            return true;
         } else {
-            throw new PlanetFail("Could not create planet");
+            System.out.println("dao failed to create planet, invalid planet name");
+            throw new PlanetFail("Invalid planet name");
         }
     }
 
@@ -82,19 +94,19 @@ public class PlanetServiceImp<T> implements PlanetService<T> {
     }
 
     @Override
-    public String deletePlanet(T idOrName) {
+    public boolean deletePlanet(T idOrName) {
         boolean deleted;
         if (idOrName instanceof Integer) {
             deleted = planetDao.deletePlanet((int) idOrName);
         } else if (idOrName instanceof String) {
             deleted = planetDao.deletePlanet((String) idOrName);
         } else {
-            throw new PlanetFail("identifier must be an Integer or String");
+            throw new PlanetFail("Invalid planet name");
         }
         if (deleted) {
-            return "Planet deleted successfully";
+            return true;
         } else {
-            throw new PlanetFail("Planet delete failed, please try again");
+            throw new PlanetFail("Invalid planet name");
         }
     }
 

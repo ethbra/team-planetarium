@@ -1,9 +1,12 @@
 package com.revature.planetarium.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import com.revature.planetarium.entities.Planet;
+import com.revature.planetarium.entities.User;
 import com.revature.planetarium.exceptions.PlanetFail;
+import com.revature.planetarium.exceptions.UserFail;
 import com.revature.planetarium.service.planet.PlanetService;
 
 import io.javalin.http.Context;
@@ -24,9 +27,13 @@ public class PlanetController {
 
     public void findAllByOwner(Context ctx) {
         int ownerId = Integer.parseInt(ctx.pathParam("ownerId"));
-        List<Planet> planets = planetService.selectByOwner(ownerId);
-        ctx.json(planets);
-        ctx.status(200);
+        if (((User) ctx.sessionAttribute("user")).getId() == ownerId) {
+            List<Planet> planets = planetService.selectByOwner(ownerId);
+            ctx.json(planets);
+            ctx.status(200);
+        } else
+            ctx.status(401);
+
     }
 
     public void findByIdentifier(Context ctx) {
@@ -49,9 +56,11 @@ public class PlanetController {
     public void createPlanet(Context ctx) {
         try {
             Planet planet = ctx.bodyAsClass(Planet.class);
-            Planet createdPlanet = planetService.createPlanet(planet);
-            ctx.json(createdPlanet);
-            ctx.status(201);            
+            boolean createdPlanet = planetService.createPlanet(planet);
+            if (createdPlanet) {
+                ctx.json(createdPlanet);
+                ctx.status(201);
+            }
         } catch (PlanetFail e) {
             ctx.result(e.getMessage());
             ctx.status(400);
@@ -75,17 +84,18 @@ public class PlanetController {
     public void deletePlanet(Context ctx) {
         try {
             String identifier = ctx.pathParam("identifier");
-            String responseMessage;
-            if(identifier.matches("^[0-9]+$")) {
-                responseMessage = planetService.deletePlanet(Integer.parseInt(identifier));
-            } else {
-                responseMessage = planetService.deletePlanet(identifier);
+            int ownerId = ((User) ctx.sessionAttribute("user")).getId();
+
+            if (planetService.selectByOwner(ownerId).stream().anyMatch(o ->
+                    ((Planet) o).getOwnerId() == ownerId)) {
+
+                if (planetService.deletePlanet(identifier))
+                    ctx.status(204);
+                else ctx.status(404);
+
             }
-            ctx.json(responseMessage);
-            ctx.status(200);
         } catch (PlanetFail e) {
-            ctx.result(e.getMessage());
-            ctx.status(400);
+            ctx.status(404).json(Map.of("message", e.getMessage()));
         }
     }
 

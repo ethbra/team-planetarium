@@ -19,7 +19,8 @@ public class ServiceMoonTests extends MoonServiceUtil {
         Mockito.when(moonDao.readMoon("My 1st_Moon-")).thenReturn(Optional.empty());
 
         Moon createdMoon = new Moon(3, "My 1st_Moon-", 1);
-        Mockito.when(moonDao.createMoon(validMoonInput)).thenReturn(Optional.of(createdMoon));
+
+        Mockito.when(moonDao.createMoon(validMoonInput)).thenReturn(true);
 
         Object result = (Object) moonService.createMoon(validMoonInput);
 

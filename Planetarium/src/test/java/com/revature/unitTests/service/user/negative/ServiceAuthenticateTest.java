@@ -41,11 +41,8 @@ public class ServiceAuthenticateTest extends UserServiceUtil {
     @Test
     public void authenticateNegative() {
         User user = new User(id, username, password);
-
         Mockito.when(dao.findUserByUsername(Mockito.anyString()))
                 .thenReturn(Optional.empty());
-        Mockito.when(dao.findUserByUsername("Batman"))
-                .thenReturn(Optional.of(user));
         UserFail fail = assertThrows(UserFail.class, () -> service.authenticate(user));
 
         assertEquals(authFailureResponse, fail.getMessage());

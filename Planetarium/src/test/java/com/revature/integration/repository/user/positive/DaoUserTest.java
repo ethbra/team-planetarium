@@ -30,7 +30,7 @@ public class DaoUserTest extends UserDaoUtil {
     @Test
     public void findUserByNamePositive() {
         Optional<User> response = dao.findUserByUsername("Batman");
-        System.out.println("response.toString() = " + response.toString());
+
         assertTrue(response.isPresent());
     }
 }

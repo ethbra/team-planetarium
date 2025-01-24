@@ -74,7 +74,7 @@ public class JavalinSetup {
             DatabaseConnector.resetTestDatabase(ctx);
 
 
-            ctx.json("{ \"message\" : \"Database has been reset!\" } \" }");
+            ctx.json("{ \"message\" : \"Database has been reset!\" }");
             ctx.status(200);
         });
 

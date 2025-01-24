@@ -9,7 +9,6 @@ import io.javalin.Javalin;
 import java.util.Scanner;
 
 public class Main {
-
 	public static void main(String[] args) {
 //		javafy();
 		try {

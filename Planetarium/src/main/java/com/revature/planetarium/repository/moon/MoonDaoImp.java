@@ -1,41 +1,71 @@
 package com.revature.planetarium.repository.moon;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import com.revature.planetarium.entities.Moon;
+import com.revature.planetarium.exceptions.MoonFail;
+import com.revature.planetarium.utility.DatabaseConnector;
+import com.revature.planetarium.utility.FileType;
+
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 
-import com.revature.planetarium.entities.Moon;
-import com.revature.planetarium.exceptions.MoonFail;
-import com.revature.planetarium.utility.DatabaseConnector;
-
 public class MoonDaoImp implements MoonDao {
 
     @Override
-    public Optional<Moon> createMoon(Moon moon) {
+    public boolean createMoon(Moon moon) {
+        if (moon.getMoonId() != 0) return false;
+
+
+        String ftype = "ZE";
+
+        if (this.readAllMoons().stream().anyMatch(dbMoon ->
+                dbMoon.getMoonName().equals(moon.getMoonName())
+        ))
+            throw new MoonFail("Invalid moon name");
+
+        try {
+            ftype = FileType.getFileType(moon.imageDataAsByteArray());
+        } catch (Exception ignore) {
+        }
+
+        if (!ftype.isEmpty() & !ftype.contains("PNG") & !ftype.contains("ZE")) {
+            throw new MoonFail("Invalid file type");
+        }
+
         try (Connection conn = DatabaseConnector.getConnection();
-             PreparedStatement stmt = conn.prepareStatement("INSERT INTO moons (name, myPlanetId, image) VALUES (?, ?, ?)", Statement.RETURN_GENERATED_KEYS)){
+             PreparedStatement stmt = conn.prepareStatement("INSERT INTO moons (name, myPlanetId, image) VALUES (?, ?, ?)", Statement.RETURN_GENERATED_KEYS)) {
             stmt.setString(1, moon.getMoonName());
             stmt.setInt(2, moon.getOwnerId());
             stmt.setBytes(3, moon.imageDataAsByteArray());
-            stmt.executeUpdate();
-            try (ResultSet rs = stmt.getGeneratedKeys()){
+            int numRowsChanged = stmt.executeUpdate();
+
+            if (numRowsChanged == 0) {
+                throw new MoonFail("Invalid moon name");
+            }
+
+            try (ResultSet rs = stmt.getGeneratedKeys()) {
                 if (rs.next()) {
                     int newMoonId = rs.getInt(1);
                     moon.setMoonId(newMoonId);
-                    return Optional.of(moon);
+                    return true;
                 }
             }
         } catch (SQLException e) {
-            System.out.println(e);
-            throw new MoonFail(e.getMessage());
+            String emsg = e.getMessage();
+            switch (emsg) {
+                case "[SQLITE_CONSTRAINT_FOREIGNKEY] A foreign key constraint failed (FOREIGN KEY constraint failed)":
+                case "ERROR: insert or update on table \"moons\" violates foreign key constraint \"moons_myplanetid_fkey\"\n" +
+                             "  Detail: Key (myplanetid)=(-1) is not present in table \"planets\".":
+                    throw new MoonFail("Invalid planet ID");
+                default:
+                    throw new MoonFail("Invalid moon name");
+
+            }
         }
-        return Optional.empty();
+
+        throw new MoonFail("Invalid moon name");
     }
 
     @Override
@@ -50,7 +80,7 @@ public class MoonDaoImp implements MoonDao {
                 moon.setMoonName(rs.getString("name"));
                 moon.setOwnerId(rs.getInt("myPlanetId"));
                 byte[] byteImageData = rs.getBytes("image");
-                if (byteImageData != null){
+                if (byteImageData != null) {
                     String base64ImageData = Base64.getEncoder().encodeToString(byteImageData);
                     moon.setImageData(base64ImageData);
                 }
@@ -75,7 +105,7 @@ public class MoonDaoImp implements MoonDao {
                 moon.setMoonName(rs.getString("name"));
                 moon.setOwnerId(rs.getInt("myPlanetId"));
                 byte[] byteImageData = rs.getBytes("image");
-                if (byteImageData != null){
+                if (byteImageData != null) {
                     String base64ImageData = Base64.getEncoder().encodeToString(byteImageData);
                     moon.setImageData(base64ImageData);
                 }
@@ -100,7 +130,7 @@ public class MoonDaoImp implements MoonDao {
                 moon.setMoonName(rs.getString("name"));
                 moon.setOwnerId(rs.getInt("myPlanetId"));
                 byte[] byteImageData = rs.getBytes("image");
-                if (byteImageData != null){
+                if (byteImageData != null) {
                     String base64ImageData = Base64.getEncoder().encodeToString(byteImageData);
                     moon.setImageData(base64ImageData);
                 }
@@ -126,7 +156,7 @@ public class MoonDaoImp implements MoonDao {
                 moon.setMoonName(rs.getString("name"));
                 moon.setOwnerId(rs.getInt("myPlanetId"));
                 byte[] byteImageData = rs.getBytes("image");
-                if (byteImageData != null){
+                if (byteImageData != null) {
                     String base64ImageData = Base64.getEncoder().encodeToString(byteImageData);
                     moon.setImageData(base64ImageData);
                 }
@@ -173,11 +203,15 @@ public class MoonDaoImp implements MoonDao {
              PreparedStatement stmt = conn.prepareStatement("DELETE FROM moons WHERE name = ?")) {
             stmt.setString(1, name);
             int rowsDeleted = stmt.executeUpdate();
-            return rowsDeleted > 0;
+            if (rowsDeleted != 0) {
+                return true;
+            } else {
+                throw new MoonFail("Invalid moon name");
+            }
         } catch (SQLException e) {
             System.out.println(e);
             throw new MoonFail(e.getMessage());
         }
     }
-    
+
 }

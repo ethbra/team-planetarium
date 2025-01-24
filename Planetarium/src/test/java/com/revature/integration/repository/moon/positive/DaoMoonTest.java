@@ -16,10 +16,8 @@ public class DaoMoonTest extends MoonDaoUtil {
 
     @Test
     public void createMoonPositive() {
-        Optional<Moon> response = dao.createMoon(new Moon(0, "My 1st_Moon-", 1));
-        assertTrue(response.isPresent());
-        assertEquals("My 1st_Moon-", response.get().getMoonName());
-        assertNotEquals(0, response.get().getMoonId());
+        boolean response = dao.createMoon(new Moon(0, "My 1st_Moon-", 1));
+        assertTrue(response);
     }
 
 

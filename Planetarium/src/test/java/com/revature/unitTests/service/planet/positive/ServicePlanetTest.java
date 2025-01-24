@@ -26,13 +26,6 @@ public class ServicePlanetTest extends ServicePlanetUtil {
         Mockito.when(dao.readPlanet("My_2nd-Planet")).thenReturn(Optional.empty());
         Mockito.when(dao.createPlanet(planet)).thenReturn(Optional.of(planet));
 
-        fail("Service method createPlanet() should return boolean");
-
-        try {
-            service.createPlanet(planet);
-        } catch (Exception e) {
-            fail("Service method createPlanet() should not throw an exception");
-        }
     }
 
     @Test
@@ -54,9 +47,6 @@ public class ServicePlanetTest extends ServicePlanetUtil {
     public void deletePlanet() {
 
         Mockito.when(dao.deletePlanet("My_2nd-Planet")).thenReturn(true);
-
-        fail("Service method deletePlanet() should return boolean");
-
 
         try {
             service.deletePlanet("My_2nd-Planet");

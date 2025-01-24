@@ -1,22 +1,32 @@
 package com.revature.planetarium.repository.user;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Optional;
-
 import com.revature.planetarium.entities.User;
 import com.revature.planetarium.exceptions.UserFail;
 import com.revature.planetarium.utility.DatabaseConnector;
+
+import java.sql.*;
+import java.util.Optional;
 
 public class UserDaoImp implements UserDao {
 
     @Override
     public Optional<User> createUser(User newUser) {
-        try (Connection conn = DatabaseConnector.getConnection(); 
-             PreparedStatement stmt = conn.prepareStatement("INSERT INTO users (username, password) VALUES (?, ?)", Statement.RETURN_GENERATED_KEYS)){
+        String u = newUser.getUsername();
+        if (newUser.getId() != 0)
+            throw new UserFail("Invalid ID");
+
+        boolean goodUsername = !u.isEmpty() && u.length() <= 30 && Character.isLetter(u.charAt(0)) && u.chars().allMatch(c -> Character.toString((char) c).matches("[A-Za-z0-9_-]"));
+
+        if (!goodUsername) {
+            System.err.println("I make a terrible regex");
+            throw new UserFail("Invalid username");
+        }
+
+        if (newUser.getId() != 0) throw new UserFail("Invalid ID");
+
+
+        try (Connection conn = DatabaseConnector.getConnection();
+             PreparedStatement stmt = conn.prepareStatement("INSERT INTO users (username, password) VALUES (?, ?)", Statement.RETURN_GENERATED_KEYS)) {
             stmt.setString(1, newUser.getUsername());
             stmt.setString(2, newUser.getPassword());
             stmt.executeUpdate();
@@ -24,13 +34,19 @@ public class UserDaoImp implements UserDao {
                 if (rs.next()) {
                     newUser.setId(rs.getInt(1));
                     return Optional.of(newUser);
+                } else {
+                    System.err.println("Invalid password in dao layer");
+                    throw new UserFail("Invalid password");
                 }
             }
         } catch (SQLException e) {
-            System.out.println(e);
-            throw new UserFail(e.getMessage());
+            String errMsg = e.getMessage();
+
+            if (errMsg.contains("username")) {
+                throw new UserFail("Invalid username");
+            } else
+                throw new UserFail("Invalid password");
         }
-        return Optional.empty();
     }
 
     @Override

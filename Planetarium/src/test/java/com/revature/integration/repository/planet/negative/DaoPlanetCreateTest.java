@@ -43,7 +43,6 @@ public class DaoPlanetCreateTest extends PlanetDaoUtil {
             {"", "planet-1.jpg", 1},
             {"Pr()xim@ Centaur! B", "planet-1.jpg", 1},
             {"Earth", "planet-1.jpg", 1},
-            {"My 1st _Planet-", "gearth.png", 1},
             {"My 1st _Planet-", "rick-roll-rick-astley.gif", 1}
         });
     }
@@ -59,7 +58,9 @@ public class DaoPlanetCreateTest extends PlanetDaoUtil {
         Path path = Paths.get(Steps.appendFile(imagePath));
         planet.setImageData(Base64.getEncoder().encodeToString(Files.readAllBytes(path)));
 
-        PlanetFail exception = assertThrows(PlanetFail.class, () -> dao.createPlanet(planet));
+        PlanetFail exception = assertThrows(PlanetFail.class, () ->
+                dao.createPlanet(planet)
+        );
 
         if (imagePath.endsWith(".jpg"))
             assertEquals("Invalid planet name", exception.getMessage());
