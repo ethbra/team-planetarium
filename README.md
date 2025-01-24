@@ -1,21 +1,48 @@
-# Bug Busters Planetarium Test Suite
+# Team Planetarium - Bugs Busted
+_A fully integrated testing suite_
 
-A full-depth testing suite for the Planetarium 
-
-
-## TODOs   
+_**Team Bug Busters**: [Alex](https://github.com/alexylv), [Divyaj](https://github.com/DivyajR), [Ethan](https://github.com/ethbra-revature), [Venjie](https://venjiebanks.github.io/)_
 
 
-- Daily Stand-ups
-- Unit Testing
-  - API
-  - Repository Layer
-    - Where is the Planet constructor?
-  - Service Layer
-- Integration Testing
-  - API <> Repo
-  - Repo <> Service
-- Defect Reports
-  - [Port Newman to AIO](https://aiosupport.atlassian.net/wiki/spaces/AioTests/pages/2027225147/Postman+via+Newman+Report#Newman-Setup)
-  - Jira Tickets
-- Acceptance testing
+Our project is an exposition of our utilization of learned technologies throughout SDET training at 
+Revature. We implemented common practices found throughout the software testing lifecycle
+
+This is a continuation of our previous Planetarium test suite, which focused on system and acceptance
+testing. 
+
+## Completed Objectives
+
+**Consistent Jira Utilization**: Jira was a critical tool for effectively dividing our effort to 
+achieve our goals on time. 
+
+**JUnit & Mockito**: 
+
+## Technologies
+- Testing
+  - JUnit
+  - Mockito
+  - Postman
+  - Newman
+- DevOps
+  - Jenkins
+- Agile
+  - Jira
+- Cloud
+  - AWS (RDS, EC2)
+
+## JUnit & Mockito
+
+
+## Amazon Web Services
+
+- RDS
+  - Postgres Database
+
+- EC2
+  - Jenkins
+
+## Agile Methodology
+
+- Frequent commits
+
+## Retrospective
