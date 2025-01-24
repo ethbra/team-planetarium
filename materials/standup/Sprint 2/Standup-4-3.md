@@ -18,11 +18,14 @@
 
 ### Work Completed
 
-
+- Started sprint 3
+- Went over project documentation
 
 ### Work to be Done
 
-
+- Decide on stretch goals
+- Start fixing defects
+- Study for QC
 
 ## Venjie
 
