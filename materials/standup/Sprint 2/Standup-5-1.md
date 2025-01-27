@@ -6,7 +6,8 @@
 ### Work Completed
 
 - Create a readme
-
+- QC Interviews
+- Set up emails
 
 ### Work to be Done
 
