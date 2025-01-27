@@ -32,7 +32,7 @@ Typically, users might just use `driver.get("url")`, but this doesn't have persi
 - `navigate().to("url")`
 ### Wait
 Latency is an unavoidable part of development, so we must be able to test an application with the expectation that some actions take longer than others. We use **Waits** to tell the driver to suspend further actions until a criterion is met.
-- **Implicit waits** are the dumbest, and simply keep calling whatever method, handling a `NoElementFoundException` until a time constraint is met
+- **Implicit waits** are the dumbest, and simply keep calling whatever method, handling a `NotFoundException` until a time constraint is met
 	```
 	driver.manage().timeouts().wait(Duration.ofSeconds(1));
 	```
