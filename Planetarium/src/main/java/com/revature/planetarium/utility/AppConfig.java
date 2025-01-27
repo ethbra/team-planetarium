@@ -29,6 +29,7 @@ public class AppConfig {
                         String propertyName = configProperties.get(arg);
                         switch (propertyName) {
                             case "DATABASE_URL":
+                                System.out.println("Setting database URL to " + args[i + 1]);
                                 DATABASE_URL = args[++i];
                                 break;
                             case "PLANETARIUM_URL":
