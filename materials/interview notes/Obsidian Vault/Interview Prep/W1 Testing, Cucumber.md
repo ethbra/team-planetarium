@@ -25,16 +25,12 @@
 - **Test early**
 - **Defects tend to cluster**
 	- 80% of defects occur in 20% of the code
-- **Pesticide Paradox** / Tests wear out
+- **Pesticide Paradox** / **Tests wear out**
 - **Testing is contextual**
 - **Absence of Error Fallacy**
-
-
-
 ## Terminology
 - **Test Object** - the item which is being testing
 - **Equivalence Partitioning** - using one test case/value to represent a class of defects
 - **Velocity** - in the context of Agile, *velocity* is the number of story points completed in a sprint
-
 ## System vs. End-to-End Testing
 System testing looks for defects by testing the overall functionality and performance of the fully integrated application. End-to-end is more limited in scope, looking only at how components interact with each other and measuring the flow of the software

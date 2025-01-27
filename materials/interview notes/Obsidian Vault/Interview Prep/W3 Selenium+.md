@@ -16,3 +16,4 @@ User stories generally follow this syntax: *actor*, *action*, *intent*.
 	**As a** user, **I want to** save my pictures **so that I** can view them later
 
 ## POM vs PageFactory
+The **Page Object Model** is a user-written abstraction of the expected interactions in a webpage. **POMs** feature the elements in a page (buttons, text fields, drop-down menus) and common methods that manipulate those elements. The **PageFactory** is a class used to make Page Objects easier and simpler. Fields annotated with `@FindBy()` are initialized by the static method `PageFactory.initElements()`

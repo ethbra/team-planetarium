@@ -13,19 +13,16 @@
 - Cloud Models
 - Terminology
 - Benefits of Using Cloud
----
 ## Cloud Models
 **Cloud services** offer various forms of hosting for users to access the resources they need. These are differentiated by their scope of access provided to the user
 - **SaaS** - Software as a Service; any remotely hosted software, where the *CSP* controls the entire application stack and the user only utilizes the service
 - **PaaS** - Platform as a Service; provides backend and platform tools needed for application development
 - **IaaS** - Infrastructure as a Service; provides computing resources for all levels of hosting: servers, storage, networking, virtualization, etc. Users manage the OS, middleware, data, and applications
----
 ## Terminology
-- **CSP** - Cloud Service Provider, e.g. Azure, AWS
-- **RDS** - Relational Database Service; 
-- **EC2** - Elastic Cloud Compute; 
-- **S3** - Simple Storage Service;
+- **CSP** - Cloud Service Provider; e.g. Microsoft Azure, AWS
+- **RDS** - Relational Database Service; a service for hosting user databases; AWS manages your OS, resources, scaling, drivers, etc.
+- **EC2** - Elastic Cloud Compute; platform for developing in a remotely hosted virtual machine; AWS manages OS, resources, scaling, etc.
+- **S3** - Simple Storage Service; host for static object storage, can also host a public website
 - **Cloud Infrastructure** - the physical resources that cloud providers need to maintain their services; data clusters, virtual machines, GPUs, networking, etc.
----
 ## Benefits of Using Cloud
 *Cloud service providers* handle much of the infrastructure that would typically be an incredibly large amount of overhead for developers. This includes scaling compute, expanding regional access, constructing hardware infrastructure (datacenters, servers, etc.), and optimizing compute deployment for dynamic load
