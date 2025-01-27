@@ -5,7 +5,6 @@ import com.revature.planetarium.exceptions.MoonFail;
 import com.revature.planetarium.service.moon.MoonService;
 import io.javalin.http.Context;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -56,10 +55,8 @@ public class MoonController {
                 ctx.status(201);
             }
         } catch (MoonFail e) {
-            ctx.json(new HashMap<String, String>() {{
-                put("message", "Invalid file type");
-            }});
-            ctx.status(400);
+            ctx.json(Map.of("message", e.getMessage()))
+                    .status(400);
         }
     }
 
@@ -79,8 +76,8 @@ public class MoonController {
                         .json(Map.of("message", "Invalid moon name"));
             }
         } catch (MoonFail e) {
-            ctx.result(e.getMessage());
-            ctx.status(404);
+            ctx.json(Map.of("message", e.getMessage()))
+                    .status(404);
         }
     }
 

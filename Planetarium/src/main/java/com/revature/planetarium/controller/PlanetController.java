@@ -1,15 +1,13 @@
 package com.revature.planetarium.controller;
 
-import java.util.List;
-import java.util.Map;
-
 import com.revature.planetarium.entities.Planet;
 import com.revature.planetarium.entities.User;
 import com.revature.planetarium.exceptions.PlanetFail;
-import com.revature.planetarium.exceptions.UserFail;
 import com.revature.planetarium.service.planet.PlanetService;
-
 import io.javalin.http.Context;
+
+import java.util.List;
+import java.util.Map;
 
 public class PlanetController {
 
@@ -33,14 +31,13 @@ public class PlanetController {
             ctx.status(200);
         } else
             ctx.status(401);
-
     }
 
     public void findByIdentifier(Context ctx) {
         try {
             String identifier = ctx.pathParam("identifier");
             Planet planet;
-            if(identifier.matches("^[0-9]+$")) {
+            if (identifier.matches("^[0-9]+$")) {
                 planet = planetService.selectPlanet(Integer.parseInt(identifier));
             } else {
                 planet = planetService.selectPlanet(identifier);
@@ -54,23 +51,27 @@ public class PlanetController {
     }
 
     public void createPlanet(Context ctx) {
-       try {
-           Planet planet = ctx.bodyAsClass(Planet.class);
-           boolean createdPlanet = planetService.createPlanet(planet);
-           if (createdPlanet) {
-               ctx.json(createdPlanet);
-               ctx.status(201);
-           }
-       } catch (PlanetFail e) {
-           ctx.result(e.getMessage());
-           ctx.status(400);
-       } catch (Exception e) {
-           ctx.status(400);
-           ctx.json(Map.of("message", "Out-of-range numeric value for owner id"));
-       }
-   }
+        User reqUser = ctx.cachedSessionAttribute("user");
+        try {
+            Planet planet = ctx.bodyAsClass(Planet.class);
 
-    public void updatePlanet(Context ctx){
+            if (reqUser.getId() != planet.getOwnerId()) {
+//               Creating other user's planet not allowed
+                ctx.status(400);
+                return;
+            }
+
+            boolean createdPlanet = planetService.createPlanet(planet);
+            if (createdPlanet) {
+                ctx.status(201);
+            }
+        } catch (PlanetFail e) {
+            ctx.result(e.getMessage());
+            ctx.status(400);
+        }
+    }
+
+    public void updatePlanet(Context ctx) {
         try {
             Planet planet = ctx.bodyAsClass(Planet.class);
             Planet updatedPlanet = planetService.updatePlanet(planet);

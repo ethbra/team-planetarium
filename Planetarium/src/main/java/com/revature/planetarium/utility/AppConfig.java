@@ -32,6 +32,7 @@ public class AppConfig {
                                 DATABASE_URL = args[++i];
                                 break;
                             case "PLANETARIUM_URL":
+                                System.out.println("Setting planetarium URL to " + args[i + 1]);
                                 PLANETARIUM_URL = args[++i];
                                 break;
                             case "DATABASE_USERNAME":
