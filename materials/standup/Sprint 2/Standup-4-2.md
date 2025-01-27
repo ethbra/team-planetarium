@@ -1,5 +1,5 @@
 # Daily Stand Up
-## Week 2: Tuesday
+## Week 4: Tuesday
 
 ## Ethan
 

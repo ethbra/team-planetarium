@@ -1,18 +1,19 @@
 # Daily Stand Up
-## Week 4: Wednesday
+## Week 5: Monday
 
 ## Ethan
 
 ### Work Completed
 
-- Start Sprint 3
-- Jira configuration
-- Create poll for stretch goals
+- Create a readme
+
 
 ### Work to be Done
 
-- Study for QC & interviews
-- Configure EC2/RDS
+- Improve newman
+- Create separate jobs for newman/maven
+- Work on adding fields to the Planetarium
+- Go over course materials
 
 ## Divyaj
 
