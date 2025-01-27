@@ -1,5 +1,5 @@
 # Daily Stand Up
-## Week 2: Monday
+## Week 2: Wednesday
 
 ## Ethan
 
@@ -23,17 +23,32 @@
 
 ### Work Completed
 
+- Finalized postman API testing for User Login and User Registration
+
 ### Work to be Done
 
+- Study for QC
+- Code review with the group
 
 ## Venjie
 
 ### Work Completed
 
+- Worked on RevPro assessments
+- Finished API Testing for Planet Endpoints
+
 ### Work to be Done
+
+- Finalize Postman API Testing Requirements
+- Study for QC
+- Pair Programming
 
 ## Alex
 
 ### Work Completed
+- Worked on QC assessments
+- Finished postman API testing for moon retrieval, creation, and deletion and pushed to Github
 
 ### Work to be Done
+- Pair programming
+- Figuring out how to integrate our various postman tests

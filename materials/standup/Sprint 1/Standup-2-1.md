@@ -22,17 +22,32 @@
 
 ### Work Completed
 
+- Setup Postman and started working on it
+- Finished pahse 2 of project
+
 ### Work to be Done
 
+- Finish Postman
+- Work on the practice QC
 
 ## Venjie
 
 ### Work Completed
 
+- Reviewed Phase 2 of project
+- Setup Postman and started working on it
+
 ### Work to be Done
+
+- Continue working on Postman API Testing
+- Study for QC
 
 ## Alex
 
 ### Work Completed
+- Phase 2 review
+- Setup postman and worked on some of the API endpoint tests
 
 ### Work to be Done
+- Adding appropriate parameterization to postman tests
+- Qc preparation

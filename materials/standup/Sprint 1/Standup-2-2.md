@@ -1,5 +1,5 @@
 # Daily Stand Up
-## Week 2: Monday
+## Week 2: Tuesday
 
 ## Ethan
 
@@ -30,10 +30,22 @@
 
 ### Work Completed
 
+- Reviewed API Testing Requirements
+- Continued working on Postman API Testing
+
 ### Work to be Done
+
+- Prepare for QC
+- Prepare for RevPro Quiz
+- Continue on API Testing
 
 ## Alex
 
 ### Work Completed
+- Continued work on Postman, particularly the moon API endpoint tests 
+- Studied for QC
 
 ### Work to be Done
+- Prepare for QC
+- Take QC quiz
+- Continue any remaining Postman work on my end

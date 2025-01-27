@@ -1,32 +1,43 @@
 # Daily Stand Up
-## Week 1: Tuesday
+## Week 2: Friday
 
 ## Ethan
 
 ### Work Completed
 
-- Finished Jira work
+- Study for QC
+- Finish Presentations
+  - Do a practice round
 
 ### Work to be Done
 
-- structured the GitHub repo
-- Fix missed test data from Sprint 1
+- Team Presentation
 
 ## Divyaj
 
 ### Work Completed
 
+
+
 ### Work to be Done
+
 
 
 ## Venjie
 
 ### Work Completed
 
+
+
 ### Work to be Done
+
+
 
 ## Alex
 
 ### Work Completed
 
+
+
 ### Work to be Done
+
