@@ -8,6 +8,7 @@ public class Moon {
     private int moonId;
     private String moonName;
     private int ownerId;
+    private String galaxy;
     private byte[] imageData;
 
 
@@ -56,6 +57,14 @@ public class Moon {
             return null;
         }
     }
+
+    public String getGalaxy() { 
+        return galaxy; 
+    }
+    public void setGalaxy(String galaxy) { 
+        this.galaxy = galaxy; 
+    }
+
     @Override
     public String toString() {
         return "Moon [moonId=" + moonId + ", moonName=" + moonName + ", ownerId=" + ownerId + "]";

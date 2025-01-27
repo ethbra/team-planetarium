@@ -33,7 +33,7 @@ public class JavalinSetup {
     final public static PlanetController planetController = new PlanetController(planetService);
 
     final public static MoonDao moonDao = new MoonDaoImp();
-    final public static MoonService moonService = new MoonServiceImp(moonDao);
+    final public static MoonService moonService = new MoonServiceImp(moonDao, planetDao);
     final public static MoonController moonController = new MoonController(moonService);
 
     final public static ViewController viewController = new ViewController();

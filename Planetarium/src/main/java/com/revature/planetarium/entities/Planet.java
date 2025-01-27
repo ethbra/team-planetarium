@@ -10,6 +10,7 @@ public class Planet {
     private String planetName;
     private int ownerId;
     private byte[] imageData;
+    private String galaxy;
     
     public int getPlanetId() {
         return planetId;
@@ -49,6 +50,14 @@ public class Planet {
             return null;
         }
     }
+
+    public String getGalaxy() { 
+        return galaxy; 
+    }
+    public void setGalaxy(String galaxy) { 
+        this.galaxy = galaxy; 
+    }
+
     @Override
     public String toString() {
         return "Planet [planetId=" + planetId + ", planetName=" + planetName + ", ownerId=" + ownerId + "]";

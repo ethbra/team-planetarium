@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.revature.FullSuite
--------------------------------------------------------------------------------
-Tests run: 92, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.002 s -- in com.revature.FullSuite

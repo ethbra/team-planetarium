@@ -35,10 +35,11 @@ public class MoonDaoImp implements MoonDao {
         }
 
         try (Connection conn = DatabaseConnector.getConnection();
-             PreparedStatement stmt = conn.prepareStatement("INSERT INTO moons (name, myPlanetId, image) VALUES (?, ?, ?)", Statement.RETURN_GENERATED_KEYS)) {
+             PreparedStatement stmt = conn.prepareStatement("INSERT INTO moons (name, myPlanetId, galaxy, image) VALUES (?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS)) {
             stmt.setString(1, moon.getMoonName());
             stmt.setInt(2, moon.getOwnerId());
-            stmt.setBytes(3, moon.imageDataAsByteArray());
+            stmt.setString(3, moon.getGalaxy()); 
+            stmt.setBytes(4, moon.imageDataAsByteArray());
             int numRowsChanged = stmt.executeUpdate();
 
             if (numRowsChanged == 0) {
@@ -79,6 +80,7 @@ public class MoonDaoImp implements MoonDao {
                 moon.setMoonId(rs.getInt("id"));
                 moon.setMoonName(rs.getString("name"));
                 moon.setOwnerId(rs.getInt("myPlanetId"));
+                moon.setGalaxy(rs.getString("galaxy"));
                 byte[] byteImageData = rs.getBytes("image");
                 if (byteImageData != null) {
                     String base64ImageData = Base64.getEncoder().encodeToString(byteImageData);
@@ -104,6 +106,7 @@ public class MoonDaoImp implements MoonDao {
                 moon.setMoonId(rs.getInt("id"));
                 moon.setMoonName(rs.getString("name"));
                 moon.setOwnerId(rs.getInt("myPlanetId"));
+                moon.setGalaxy(rs.getString("galaxy"));
                 byte[] byteImageData = rs.getBytes("image");
                 if (byteImageData != null) {
                     String base64ImageData = Base64.getEncoder().encodeToString(byteImageData);
@@ -129,6 +132,7 @@ public class MoonDaoImp implements MoonDao {
                 moon.setMoonId(rs.getInt("id"));
                 moon.setMoonName(rs.getString("name"));
                 moon.setOwnerId(rs.getInt("myPlanetId"));
+                moon.setGalaxy(rs.getString("galaxy"));
                 byte[] byteImageData = rs.getBytes("image");
                 if (byteImageData != null) {
                     String base64ImageData = Base64.getEncoder().encodeToString(byteImageData);
@@ -155,6 +159,7 @@ public class MoonDaoImp implements MoonDao {
                 moon.setMoonId(rs.getInt("id"));
                 moon.setMoonName(rs.getString("name"));
                 moon.setOwnerId(rs.getInt("myPlanetId"));
+                moon.setGalaxy(rs.getString("galaxy"));
                 byte[] byteImageData = rs.getBytes("image");
                 if (byteImageData != null) {
                     String base64ImageData = Base64.getEncoder().encodeToString(byteImageData);
@@ -172,10 +177,11 @@ public class MoonDaoImp implements MoonDao {
     @Override
     public Optional<Moon> updateMoon(Moon moon) {
         try (Connection conn = DatabaseConnector.getConnection();
-             PreparedStatement stmt = conn.prepareStatement("UPDATE moons SET name = ?, myPlanetId = ? WHERE id = ?")) {
+             PreparedStatement stmt = conn.prepareStatement("UPDATE moons SET name = ?, myPlanetId = ?, galaxy = ? WHERE id = ?")) {
             stmt.setString(1, moon.getMoonName());
             stmt.setInt(2, moon.getOwnerId());
-            stmt.setInt(3, moon.getMoonId());
+            stmt.setString(3, moon.getGalaxy());
+            stmt.setInt(4, moon.getMoonId());
             int rowsUpdated = stmt.executeUpdate();
             return rowsUpdated > 0 ? Optional.of(moon) : Optional.empty();
         } catch (SQLException e) {

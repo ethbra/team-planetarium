@@ -31,6 +31,7 @@ create table planets(
                         id serial primary key,
                         name text unique not null,
                         ownerId integer not null,
+                        galaxy VARCHAR(50),
                         image bytea,
                         foreign key(ownerId) references users(id) on delete restrict,
                         constraint name_length_check check (length(name) <= 30),
@@ -39,13 +40,14 @@ create table planets(
 )
     );
 
-insert into planets (name, ownerId, image) values ('Earth', 1, null);
-insert into planets (name, ownerId, image) values ('Mars', 1, null);
+insert into planets (name, ownerId, galaxy, image) values ('Earth', 1, 'Milky Way', null);
+insert into planets (name, ownerId, galaxy, image) values ('Mars', 1, 'Milky Way', null);
 
 create table moons(
                       id serial primary key,
                       name text not null unique,
                       myPlanetId integer not null,
+                      galaxy VARCHAR(50),
                       image bytea,
                       foreign key(myPlanetId) references planets(id) on delete cascade,
                       constraint name_length_check check (length(name) <= 30),
@@ -54,5 +56,5 @@ create table moons(
 )
     );
 
-insert into moons (name, myPlanetId, image) values ('Luna', 1, null);
-insert into moons (name, myPlanetId, image) values ('Titan', 2, null);
+insert into moons (name, myPlanetId, galaxy, image) values ('Luna', 1, 'Milky Way', null);
+insert into moons (name, myPlanetId, galaxy, image) values ('Titan', 2, 'Milky Way', null);
