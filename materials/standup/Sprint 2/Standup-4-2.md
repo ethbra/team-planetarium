@@ -17,11 +17,13 @@
 
 ### Work Completed
 
-
+- Sprint 2 team presentation
 
 ### Work to be Done
 
-
+- Start Sprint 3
+- Go over porject documentation
+- Study for QC
 
 ## Venjie
 
