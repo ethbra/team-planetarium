@@ -31,7 +31,7 @@ static private final Logger logger = LoggerFactory.getLogger(DatabaseConnector.c
 
     public static void resetTestDatabase(Context context) {
 
-        Path sql = Path.of("Planetarium/setup-reset.sql");
+        Path sql = Path.of("setup-reset.sql");
         StringBuilder sqlBuilder = new StringBuilder();
         try (Connection conn = DatabaseConnector.getConnection(); Stream<String> lines = Files.lines(sql)) {
             conn.setAutoCommit(false);
