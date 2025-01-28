@@ -49,6 +49,7 @@ public class UserDaoImp implements UserDao {
         }
     }
 
+    // test
     @Override
     public Optional<User> findUserByUsername(String username) {
         try (Connection conn = DatabaseConnector.getConnection();
