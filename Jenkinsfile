@@ -5,7 +5,6 @@ pipeline {
 	//
 	//}
 
-	//plz
 	stages {
 		//stage('Checkout Repository') {
 		//    steps {
