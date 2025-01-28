@@ -9,16 +9,18 @@ import java.util.stream.Stream;
 
 import io.javalin.http.Context;
 import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.sqlite.SQLiteConfig;
 import org.postgresql.Driver;
 
 public class DatabaseConnector {
-
+static private final Logger logger = LoggerFactory.getLogger(DatabaseConnector.class);
     public static Connection getConnection() throws SQLException {
         SQLiteConfig config = new SQLiteConfig();
         config.enforceForeignKeys(true);
         String url = AppConfig.DATABASE_URL;
-        System.err.printf("URL: %s, Username: %s, Password: %s \n", url, AppConfig.DATABASE_USERNAME, AppConfig.DATABASE_PASSWORD);
+        logger.info("URL: {}, Username: {}, Password: {} \n", url, AppConfig.DATABASE_USERNAME, AppConfig.DATABASE_PASSWORD);
 
         if (url.startsWith("jdbc:sqlite:")) return DriverManager.getConnection(url, config.toProperties());
 
