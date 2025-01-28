@@ -65,10 +65,7 @@ pipeline {
 							mvn test -f pom.xml
             	   		'''
 					} catch (Exception e){
-						echo "Test failed with exception: ${e.getMessage()}"
-
-						echo "Stack trace: ${e.printStackTrace()}"
-
+						echo "Test failed, but continuing..."
 						currentBuild.result = 'UNSTABLE'
 					}
 				}
