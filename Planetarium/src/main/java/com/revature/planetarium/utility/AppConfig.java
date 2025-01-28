@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.revature.planetarium.exceptions.ConfigurationFail;
+import org.postgresql.Driver;
 
 public class AppConfig {
 
@@ -12,7 +13,7 @@ public class AppConfig {
     public static String DATABASE_USERNAME = System.getenv("DATABASE_USERNAME");
     public static String DATABASE_PASSWORD = System.getenv("DATABASE_PASSWORD");
     private static final Map<String, String> configProperties = new HashMap<>();
-
+    public static final Driver postgresDriver = new org.postgresql.Driver();
     static {
         configProperties.put("--database-url", "DATABASE_URL");
         configProperties.put("--planetarium-url", "PLANETARIUM_URL");
