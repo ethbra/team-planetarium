@@ -17,11 +17,11 @@ public class DatabaseConnector {
         SQLiteConfig config = new SQLiteConfig();
         config.enforceForeignKeys(true);
         String url = AppConfig.DATABASE_URL;
+        System.out.printf("URL: %s, Username: %s, Password: %s \n", url, AppConfig.DATABASE_USERNAME, AppConfig.DATABASE_PASSWORD);
 
         if (url.startsWith("jdbc:sqlite:")) return DriverManager.getConnection(url, config.toProperties());
 
         DriverManager.registerDriver(new org.postgresql.Driver());
-        System.out.printf("URL: %s, Username: %s, Password: %s \n", url, AppConfig.DATABASE_USERNAME, AppConfig.DATABASE_PASSWORD);
         return DriverManager.getConnection(url, AppConfig.DATABASE_USERNAME, AppConfig.DATABASE_PASSWORD);
 
     }
