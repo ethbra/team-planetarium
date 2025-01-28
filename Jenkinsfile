@@ -59,8 +59,8 @@ pipeline {
 				sh 'ls'
 				sh '''
                     pwd
-
-                    mvn test -f Planetarium/pom.xml
+					cd Planetarium
+                    mvn test -f pom.xml
                 '''
 			}
 		}
