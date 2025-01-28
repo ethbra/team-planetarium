@@ -4,7 +4,9 @@ import com.revature.planetarium.entities.Moon;
 import com.revature.planetarium.exceptions.MoonFail;
 import com.revature.planetarium.repository.moon.MoonDao;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 public class MoonServiceImp<T> implements MoonService<T> {
@@ -59,6 +61,16 @@ public class MoonServiceImp<T> implements MoonService<T> {
 
     @Override
     public List<Moon> selectByPlanet(int planetId) {
+        List<Moon> moons = moonDao.readAllMoons();
+        boolean ownerExists = false;
+        for (Moon moon : moons) {
+            if (moon.getOwnerId() == planetId) {
+                ownerExists = true;
+            }
+        }
+        if (!ownerExists) {
+            return new ArrayList<>();
+        }
         return moonDao.readMoonsByPlanet(planetId);
     }
 
@@ -85,19 +97,46 @@ public class MoonServiceImp<T> implements MoonService<T> {
 
     @Override
     public boolean deleteMoon(T idOrName) {
+
         boolean deleted;
+//        delete moon by ID
         if (idOrName instanceof Integer) {
-            deleted = moonDao.deleteMoon((int) idOrName);
+
+            List<Moon> moons = moonDao.readAllMoons();
+            boolean hasMoon = false;
+
+//            Look for moon with ID idOrName
+            for (Moon moon : moons) {
+                if ((Integer) idOrName == moon.getMoonId()) {
+                    hasMoon = true;
+                    break;
+                }
+            }
+
+            if (!hasMoon) {
+                throw new MoonFail("Invalid moon ID");
+            } else deleted = moonDao.deleteMoon((int) idOrName);
+
         } else if (idOrName instanceof String) {
-            deleted = moonDao.deleteMoon((String) idOrName);
-        } else {
-            throw new MoonFail("Invalid moon name");
-        }
-        if (deleted) {
-            return true;
-        } else {
-            throw new MoonFail("Invalid moon name");
-        }
+            List<Moon> moons = moonDao.readAllMoons();
+            boolean hasMoon = false;
+            for (Moon moon : moons) {
+                if (Objects.equals(moon.getMoonName(), idOrName)) {
+                    hasMoon = true;
+                    break;
+                }
+            }
+
+            if (!hasMoon) {
+                throw new MoonFail("Invalid moon name");
+            } else
+                deleted = moonDao.deleteMoon((String) idOrName);
+
+        } else throw new MoonFail("Invalid moon name");
+
+        if (deleted) return true;
+
+        throw new MoonFail("Invalid moon name");
     }
 
 }

@@ -9,10 +9,13 @@ import java.util.stream.Stream;
 
 import io.javalin.http.Context;
 import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.sqlite.SQLiteConfig;
+import org.postgresql.Driver;
 
 public class DatabaseConnector {
-
+static private final Logger logger = LoggerFactory.getLogger(DatabaseConnector.class);
     public static Connection getConnection() throws SQLException {
         SQLiteConfig config = new SQLiteConfig();
         config.enforceForeignKeys(true);
@@ -20,14 +23,13 @@ public class DatabaseConnector {
 
         if (url.startsWith("jdbc:sqlite:")) return DriverManager.getConnection(url, config.toProperties());
 
-        DriverManager.registerDriver(new org.postgresql.Driver());
+        DriverManager.registerDriver(AppConfig.postgresDriver);
         return DriverManager.getConnection(url, AppConfig.DATABASE_USERNAME, AppConfig.DATABASE_PASSWORD);
 
     }
 
     public static void resetTestDatabase(Context context) {
 
-        // TODO probably needs you to have "setup-reset.sql" where you downloaded the jar
         Path sql = Path.of("setup-reset.sql");
         StringBuilder sqlBuilder = new StringBuilder();
         try (Connection conn = DatabaseConnector.getConnection(); Stream<String> lines = Files.lines(sql)) {

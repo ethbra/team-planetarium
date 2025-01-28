@@ -23,10 +23,15 @@ public class MoonController {
     }
 
     public void findAllByPlanet(Context ctx) {
-        int ownerId = Integer.parseInt(ctx.pathParam("planetId"));
-        List<Moon> moons = moonService.selectByPlanet(ownerId);
-        ctx.json(moons);
-        ctx.status(200);
+        try{
+            int ownerId = Integer.parseInt(ctx.pathParam("planetId"));
+            List<Moon> moons = moonService.selectByPlanet(ownerId);
+
+            ctx.json(moons).status(200);
+
+        } catch (Exception e) {
+            ctx.status(400);
+        }
     }
 
     public void findByIdentifier(Context ctx) {
@@ -55,7 +60,8 @@ public class MoonController {
                 ctx.status(201);
             }
         } catch (MoonFail e) {
-            ctx.status(400).json(Map.of("message", e.getMessage()));
+            ctx.json(Map.of("message", e.getMessage()))
+                    .status(400);
         }
     }
 
@@ -75,8 +81,8 @@ public class MoonController {
                         .json(Map.of("message", "Invalid moon name"));
             }
         } catch (MoonFail e) {
-            ctx.result(e.getMessage());
-            ctx.status(404);
+            ctx.json(Map.of("message", e.getMessage()))
+                    .status(404);
         }
     }
 

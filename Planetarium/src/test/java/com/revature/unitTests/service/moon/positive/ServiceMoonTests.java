@@ -40,6 +40,7 @@ public class ServiceMoonTests extends MoonServiceUtil {
         mockMoons.add(new Moon(3, "Nyx_Orion 6-7", 2));
 
         Mockito.when(moonDao.readMoonsByPlanet(validPlanetId)).thenReturn(mockMoons);
+        Mockito.when(moonDao.readAllMoons()).thenReturn(mockMoons);
 
         List<Moon> result = moonService.selectByPlanet(validPlanetId);
 
@@ -51,10 +52,11 @@ public class ServiceMoonTests extends MoonServiceUtil {
 
     @Test
     public void deleteMoonSuccess() {
-        String validMoonName = "Titan";
+        Moon validMoonInput = new Moon(2, "Titan", 1);
+        String validMoonName = validMoonInput.getMoonName();
 
         Mockito.when(moonDao.deleteMoon(validMoonName)).thenReturn(true);
-
+        Mockito.when(moonDao.readAllMoons()).thenReturn((List.of(validMoonInput)));
         Object result = (Object) moonService.deleteMoon(validMoonName);
 
         if (result instanceof Boolean) {

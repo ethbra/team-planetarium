@@ -18,9 +18,10 @@ public class PlanetServiceImp<T> implements PlanetService<T> {
 
     @Override
     public boolean createPlanet(Planet planet) {
-        if (planet.getPlanetName().length() < 1 || planet.getPlanetName().length() > 30) {
+        if (planet.getPlanetName().isEmpty() || planet.getPlanetName().length() > 30) {
             throw new PlanetFail("Invalid planet name");
         }
+
         if (planet.getPlanetId() != 0)
             throw new PlanetFail("Invalid planet ID");
 
@@ -32,14 +33,14 @@ public class PlanetServiceImp<T> implements PlanetService<T> {
 
         Optional<Planet> existingPlanet = planetDao.readPlanet(planet.getPlanetName());
         if (existingPlanet.isPresent()) {
-            System.out.println("dao returned an existing planet, invalid planet name");
             throw new PlanetFail("Invalid planet name");
         }
+
         Optional<Planet> createdPlanet = planetDao.createPlanet(planet);
+
         if (createdPlanet.isPresent()) {
             return true;
         } else {
-            System.out.println("dao failed to create planet, invalid planet name");
             throw new PlanetFail("Invalid planet name");
         }
     }
@@ -77,7 +78,7 @@ public class PlanetServiceImp<T> implements PlanetService<T> {
         if (existingPlanet.isEmpty()) {
             throw new PlanetFail("Planet not found, could not update");
         }
-        if (planet.getPlanetName().length() < 1 || planet.getPlanetName().length() > 30) {
+        if (planet.getPlanetName().isEmpty() || planet.getPlanetName().length() > 30) {
             throw new PlanetFail("Planet name must be between 1 and 30 characters, could not update");
         }
         if (!planet.getPlanetName().equals(existingPlanet.get().getPlanetName())) {
@@ -96,10 +97,37 @@ public class PlanetServiceImp<T> implements PlanetService<T> {
     @Override
     public boolean deletePlanet(T idOrName) {
         boolean deleted;
+
+//        delete planet by ID
         if (idOrName instanceof Integer) {
-            deleted = planetDao.deletePlanet((int) idOrName);
+            List<Planet> planets = planetDao.readAllPlanets();
+            boolean hasPlanet = false;
+
+            for (Planet planet : planets) {
+                if ((Integer) idOrName == planet.getPlanetId()) {
+                    hasPlanet = true;
+                    break;
+                }
+            }
+            if (!hasPlanet) {
+                throw new PlanetFail("Invalid planet ID");
+            } else deleted = planetDao.deletePlanet((int) idOrName);
+
+
         } else if (idOrName instanceof String) {
-            deleted = planetDao.deletePlanet((String) idOrName);
+            List<Planet> planets = planetDao.readAllPlanets();
+            System.out.println();
+            boolean hasPlanet = false;
+
+            for (Planet planet : planets) {
+                if (idOrName.equals(planet.getPlanetName())) {
+                    hasPlanet = true;
+                    break;
+                }
+            }
+            if (!hasPlanet) {
+                throw new PlanetFail("Invalid planet name");
+            } else deleted = planetDao.deletePlanet((String) idOrName);
         } else {
             throw new PlanetFail("Invalid planet name");
         }
