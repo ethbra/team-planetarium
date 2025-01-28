@@ -4,7 +4,7 @@ pipeline {
 	//	pollSCM('H/5 * * * *')
 	//
 	//}
-
+// test
 	stages {
 		//stage('Checkout Repository') {
 		//    steps {
