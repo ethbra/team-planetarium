@@ -17,6 +17,7 @@ pipeline {
 		//        }
 		//    }
 		//}
+
 		//stage('Get Latest Commit Hash') {
 		//    steps {
 		//        script {
@@ -30,6 +31,7 @@ pipeline {
 		//        }
 		//    }
 		//}
+
 		//stage('Checkout Latest Commit') {
 		//    steps {
 		//        script {
