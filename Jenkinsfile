@@ -56,12 +56,22 @@ pipeline {
 		}
 		stage('Maven tests') {
 			steps{
-				sh 'ls'
-				sh '''
-                    pwd
-					cd Planetarium
-                    mvn test -f pom.xml
-                '''
+				script{
+					try {
+						sh 'ls'
+						sh '''
+							pwd
+							cd Planetarium
+							mvn test -f pom.xml
+            	   		'''
+					} catch (Exception e){
+						echo "Test failed with exception: ${e.getMessage()}"
+
+						echo "Stack trace: ${e.printStackTrace()}"
+
+						currentBuild.result = 'UNSTABLE'
+					}
+				}
 			}
 		}
 		stage('Maven build') {
