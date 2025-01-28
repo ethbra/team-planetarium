@@ -12,8 +12,6 @@ import io.javalin.http.Context;
 
 public class ViewController {
 
-    // TODO: update web pages to use placeholders for url and port via AppConfig
-
     public String loadPage(String page) throws IOException{
         ClassLoader classLoader = getClass().getClassLoader();
         InputStream inputStream = classLoader.getResourceAsStream(String.format("pages/%s", page));
