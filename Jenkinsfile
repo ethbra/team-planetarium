@@ -5,45 +5,53 @@ pipeline {
     }
 
     stages {
-        stage('Checkout Repository') {
+        //stage('Checkout Repository') {
+        //    steps {
+        //        script {
+        //            // Checkout the repository and fetch all branches
+        //            checkout([
+        //                $class: 'GitSCM',
+        //                branches: [[name: '*/main']],  // Checkout the main branch to get all branches
+        //                userRemoteConfigs: [[
+        //                    url: 'https://github.com/ethbra-revature/team-planetarium.git',
+        //                ]],
+        //                extensions: [[$class: 'CloneOption', noTags: false, shallow: false]]  // Ensure all branches are fetched
+        //            ])
+        //        }
+        //    }
+        //}
+        //stage('Get Latest Commit Hash') {
+        //    steps {
+        //        script {
+        //            // Fetch all branches and get the latest commit hash from the entire repo
+        //            def latestCommitHash = sh(script: "git log --all --pretty=format:'%H' -n 1", returnStdout: true).trim()
+        //            echo "Latest commit hash: ${latestCommitHash}"
+        //
+        //            // Save the commit hash to an environment variable
+        //            env.LATEST_COMMIT_HASH = latestCommitHash
+        //
+        //        }
+        //    }
+        //}
+        //stage('Checkout Latest Commit') {
+        //    steps {
+        //        script {
+        //            // Checkout the specific commit using the latest commit hash
+        //            checkout([
+        //                $class: 'GitSCM',
+        //                branches: [[name: "${env.LATEST_COMMIT_HASH}"]],  // Checkout using the commit hash
+        //                userRemoteConfigs: [[
+        //                    url: 'https://github.com/ethbra-revature/team-planetarium.git',  // Replace with your repo URL
+        //                ]]
+        //            ])
+        //        }
+        //    }
+        //}
+        stage('Checkout') {
             steps {
-                script {
-                    // Checkout the repository and fetch all branches
-                    checkout([
-                        $class: 'GitSCM',
-                        branches: [[name: '*/main']],  // Checkout the main branch to get all branches
-                        userRemoteConfigs: [[
-                            url: 'https://github.com/ethbra-revature/team-planetarium.git',
-                        ]],
-                        extensions: [[$class: 'CloneOption', noTags: false, shallow: false]]  // Ensure all branches are fetched
-                    ])
-                }
-            }
-        }
-        stage('Get Latest Commit Hash') {
-            steps {
-                script {
-                    // Fetch all branches and get the latest commit hash from the entire repo
-                    def latestCommitHash = sh(script: "git log --all --pretty=format:'%H' -n 1", returnStdout: true).trim()
-                    echo "Latest commit hash: ${latestCommitHash}"
-
-                    // Save the commit hash to an environment variable
-                    env.LATEST_COMMIT_HASH = latestCommitHash
-
-                }
-            }
-        }
-        stage('Checkout Latest Commit') {
-            steps {
-                script {
-                    // Checkout the specific commit using the latest commit hash
-                    checkout([
-                        $class: 'GitSCM',
-                        branches: [[name: "${env.LATEST_COMMIT_HASH}"]],  // Checkout using the commit hash
-                        userRemoteConfigs: [[
-                            url: 'https://github.com/ethbra-revature/team-planetarium.git',  // Replace with your repo URL
-                        ]]
-                    ])
+                script{
+                    checkout scm
+                    echo "Checked out to branch: ${env.BRANCH_NAME}"
                 }
             }
         }
