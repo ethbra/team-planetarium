@@ -132,12 +132,9 @@ public class PlanetServiceImp<T> implements PlanetService<T> {
                 }
             }
             if (!hasPlanet) {
-                System.out.println("Planet with name " + idOrName + " not found");
                 throw new PlanetFail("Invalid planet name");
             } else deleted = planetDao.deletePlanet((String) idOrName);
         } else {
-            System.out.println("Planet not String or Integer");
-
             throw new PlanetFail("Invalid planet name");
         }
         if (deleted) {
