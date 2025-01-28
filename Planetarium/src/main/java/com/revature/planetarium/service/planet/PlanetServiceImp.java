@@ -118,10 +118,6 @@ public class PlanetServiceImp<T> implements PlanetService<T> {
 
         } else if (idOrName instanceof String) {
             List<Planet> planets = planetDao.readAllPlanets();
-            System.out.println("list of planets: ");
-            for (Planet planet : planets) {
-                System.out.print(planet.getPlanetId() + ", ");
-            }
             System.out.println();
             boolean hasPlanet = false;
 
