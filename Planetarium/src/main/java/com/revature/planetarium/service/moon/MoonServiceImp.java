@@ -60,6 +60,16 @@ public class MoonServiceImp<T> implements MoonService<T> {
 
     @Override
     public List<Moon> selectByPlanet(int planetId) {
+        List<Moon> moons = moonDao.readAllMoons();
+        boolean ownerExists = false;
+        for (Moon moon : moons) {
+            if (moon.getOwnerId() == planetId) {
+                ownerExists = true;
+            }
+        }
+        if (!ownerExists) {
+            throw new MoonFail("Owner planet doesn't exist");
+        }
         return moonDao.readMoonsByPlanet(planetId);
     }
 

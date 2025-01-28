@@ -10,6 +10,7 @@ import java.util.stream.Stream;
 import io.javalin.http.Context;
 import org.jetbrains.annotations.NotNull;
 import org.sqlite.SQLiteConfig;
+import org.postgresql.Driver;
 
 public class DatabaseConnector {
 
@@ -17,7 +18,7 @@ public class DatabaseConnector {
         SQLiteConfig config = new SQLiteConfig();
         config.enforceForeignKeys(true);
         String url = AppConfig.DATABASE_URL;
-        System.out.printf("URL: %s, Username: %s, Password: %s \n", url, AppConfig.DATABASE_USERNAME, AppConfig.DATABASE_PASSWORD);
+        System.err.printf("URL: %s, Username: %s, Password: %s \n", url, AppConfig.DATABASE_USERNAME, AppConfig.DATABASE_PASSWORD);
 
         if (url.startsWith("jdbc:sqlite:")) return DriverManager.getConnection(url, config.toProperties());
 

@@ -23,10 +23,15 @@ public class MoonController {
     }
 
     public void findAllByPlanet(Context ctx) {
-        int ownerId = Integer.parseInt(ctx.pathParam("planetId"));
-        List<Moon> moons = moonService.selectByPlanet(ownerId);
-        ctx.json(moons);
-        ctx.status(200);
+        try{
+            int ownerId = Integer.parseInt(ctx.pathParam("planetId"));
+            List<Moon> moons = moonService.selectByPlanet(ownerId);
+
+            ctx.json(moons).status(200);
+
+        } catch (Exception e) {
+            ctx.status(400);
+        }
     }
 
     public void findByIdentifier(Context ctx) {
