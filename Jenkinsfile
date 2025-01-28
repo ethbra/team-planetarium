@@ -37,7 +37,6 @@ pipeline {
                 '''
 			}
 		}
-
 		stage('Newman Test') {
 			steps {
 				sh '''
@@ -49,7 +48,10 @@ pipeline {
 
                     sleep 2
 				'''
-                    sh 'newman run materials/postman/Planetarium.postman_collection.json -e materials/postman/Planetarium.postman_environment.json --env-var url=localhost:8080 -r cli,json'
+				sh '''
+					pwd
+					newman run materials/postman/Planetarium.postman_collection.json -e materials/postman/Planetarium.postman_environment.json --env-var url=localhost:8080 -r cli,json
+				'''
 			}
 		}
 	}
