@@ -20,7 +20,6 @@ static private final Logger logger = LoggerFactory.getLogger(DatabaseConnector.c
         SQLiteConfig config = new SQLiteConfig();
         config.enforceForeignKeys(true);
         String url = AppConfig.DATABASE_URL;
-        logger.info("URL: {}, Username: {}, Password: {} \n", url, AppConfig.DATABASE_USERNAME, AppConfig.DATABASE_PASSWORD);
 
         if (url.startsWith("jdbc:sqlite:")) return DriverManager.getConnection(url, config.toProperties());
 

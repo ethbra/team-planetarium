@@ -45,9 +45,13 @@ public class ServicePlanetTest extends ServicePlanetUtil {
 
     @Test
     public void deletePlanet() {
+        Planet mockPlanet = new Planet();
+        mockPlanet.setPlanetId(0);
+        mockPlanet.setPlanetName("My_2nd-Planet");
+        mockPlanet.setOwnerId(1);
 
         Mockito.when(dao.deletePlanet("My_2nd-Planet")).thenReturn(true);
-
+        Mockito.when(dao.readAllPlanets()).thenReturn(List.of(mockPlanet));
         try {
             service.deletePlanet("My_2nd-Planet");
         } catch (Exception e) {

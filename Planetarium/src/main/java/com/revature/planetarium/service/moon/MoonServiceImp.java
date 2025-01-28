@@ -4,6 +4,7 @@ import com.revature.planetarium.entities.Moon;
 import com.revature.planetarium.exceptions.MoonFail;
 import com.revature.planetarium.repository.moon.MoonDao;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -68,7 +69,7 @@ public class MoonServiceImp<T> implements MoonService<T> {
             }
         }
         if (!ownerExists) {
-            throw new MoonFail("Owner planet doesn't exist");
+            return new ArrayList<>();
         }
         return moonDao.readMoonsByPlanet(planetId);
     }

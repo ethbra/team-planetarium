@@ -22,6 +22,8 @@ public class PlanetServiceImp<T> implements PlanetService<T> {
             throw new PlanetFail("Invalid planet name");
         }
 
+        if (planet.getPlanetId() != 0)
+            throw new PlanetFail("Invalid planet ID");
 
         String res = FileType.getFileType(planet.imageDataAsByteArray());
 
