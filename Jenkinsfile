@@ -80,7 +80,9 @@ pipeline {
 				sh '''
                     ls
                     pwd
-                    java -jar Planetarium/Planetarium-1.0.jar > output.txt 2>&1  &
+
+                    cd Planetarium
+                    java -jar Planetarium-1.0.jar > output.txt 2>&1  &
 
                     sleep 2
 
