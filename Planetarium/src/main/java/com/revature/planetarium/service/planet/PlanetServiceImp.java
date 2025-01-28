@@ -33,7 +33,6 @@ public class PlanetServiceImp<T> implements PlanetService<T> {
 
         Optional<Planet> existingPlanet = planetDao.readPlanet(planet.getPlanetName());
         if (existingPlanet.isPresent()) {
-            System.out.println("dao returned an existing planet, invalid planet name");
             throw new PlanetFail("Invalid planet name");
         }
 
@@ -42,7 +41,6 @@ public class PlanetServiceImp<T> implements PlanetService<T> {
         if (createdPlanet.isPresent()) {
             return true;
         } else {
-            System.out.println("dao failed to create planet, invalid planet name");
             throw new PlanetFail("Invalid planet name");
         }
     }

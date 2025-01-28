@@ -92,10 +92,9 @@ pipeline {
                     java -jar Planetarium-1.0.jar > output.txt 2>&1  &
 
                     sleep 2
-
+				'''
                     pwd
-                    newman run materials/postman/Planetarium.postman_collection.json -e materials/postman/Planetarium.postman_environment.json --env-var url=localhost:8080 -r cli,json
-                '''
+                    sh 'newman run materials/postman/Planetarium.postman_collection.json -e materials/postman/Planetarium.postman_environment.json --env-var url=localhost:8080 -r cli,json'
 			}
 		}
 	}
