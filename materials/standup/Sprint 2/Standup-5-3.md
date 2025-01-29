@@ -6,14 +6,22 @@
 ### Work Completed
 
 - Completed Jenkins
+  - Added agent
 - Java QC
 - Created Pipeline Job
+- Updated Jira
 
 ### Work to be Done
 
 - Maybe disable Jenkins build-in node
-- Study
+- Interview Study
+  - Update study guide
+- SQL Mock QC
+  - Review all languages (DDL, DML, DQL, etc.)
 - Work on adding fields to the Planetarium
+  - Pair programming
+  - Improve front end
+- Create presentation
 
 ## Divyaj
 
