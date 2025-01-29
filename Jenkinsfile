@@ -18,7 +18,7 @@ pipeline {
 				script{
 					try {
 						sh '''
-							ls
+							pwd
 							mvn test -f Planetarium/pom.xml
             	   		'''
 					} catch (Exception e){
