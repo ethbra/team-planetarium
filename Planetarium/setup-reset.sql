@@ -7,6 +7,7 @@ create table users(
                       username text unique not null,
                       password text not null,
                       constraint username_length_check check (
+
                           length(username) >= 5 and
                           length(username) <= 30
                           ),
@@ -40,8 +41,8 @@ create table planets(
 )
     );
 
-insert into planets (name, ownerId, galaxy, image) values ('Earth', 1, 'Milky Way', null);
-insert into planets (name, ownerId, galaxy, image) values ('Mars', 1, 'Milky Way', null);
+insert into planets (name, ownerId, galaxy, image) values ('Earth', 1, 'Milky Way', ?);
+insert into planets (name, ownerId, galaxy, image) values ('Mars', 1, 'Milky Way', ?);
 
 create table moons(
                       id serial primary key,
@@ -56,5 +57,5 @@ create table moons(
 )
     );
 
-insert into moons (name, myPlanetId, galaxy, image) values ('Luna', 1, 'Milky Way', null);
-insert into moons (name, myPlanetId, galaxy, image) values ('Titan', 2, 'Milky Way', null);
+insert into moons (name, myPlanetId, galaxy, image) values ('Luna', 1, 'Milky Way', ?);
+insert into moons (name, myPlanetId, galaxy, image) values ('Titan', 2, 'Milky Way', ?);
