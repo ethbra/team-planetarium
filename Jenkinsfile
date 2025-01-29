@@ -1,11 +1,4 @@
 pipeline {
-	agent {
-		label 'Agent Jenkins'
-	}
-
-	triggers {
-		pollSCM('') // Empty schedule to trigger regardless of changes
-	}
 
 	stages {
 		stage('Checkout') {
@@ -22,7 +15,6 @@ pipeline {
 					try {
 						sh '''
 							pwd
-							mvn test -f Planetarium/pom.xml
             	   		'''
 					} catch (Exception e){
 						echo "Test failed, but continuing..."

@@ -17,6 +17,8 @@ public class ServiceMoonRetrievalTest extends MoonServiceUtil {
     public void selectByPlanetFailure() {
         int planetIdWithNoMoons = 10000; 
         Mockito.when(moonDao.readMoonsByPlanet(planetIdWithNoMoons)).thenReturn(new ArrayList<>());
+        Mockito.when(moonDao.readAllMoons()).thenReturn(new ArrayList<>());
+
         List<Moon> result = moonService.selectByPlanet(planetIdWithNoMoons);
 
         assertNotNull("Result should not be null", result);

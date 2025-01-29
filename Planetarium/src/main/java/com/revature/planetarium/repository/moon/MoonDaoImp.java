@@ -211,7 +211,8 @@ public class MoonDaoImp implements MoonDao {
             int rowsDeleted = stmt.executeUpdate();
             if (rowsDeleted != 0) {
                 return true;
-            } else {
+            }
+            else {
                 throw new MoonFail("Invalid moon name");
             }
         } catch (SQLException e) {

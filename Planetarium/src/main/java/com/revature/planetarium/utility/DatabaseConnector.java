@@ -1,8 +1,5 @@
 package com.revature.planetarium.utility;
 
-import io.javalin.http.Context;
-import org.sqlite.SQLiteConfig;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -10,8 +7,13 @@ import java.nio.file.Paths;
 import java.sql.*;
 import java.util.stream.Stream;
 
-public class DatabaseConnector {
+import io.javalin.http.Context;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.sqlite.SQLiteConfig;
 
+public class DatabaseConnector {
+static private final Logger logger = LoggerFactory.getLogger(DatabaseConnector.class);
     public static Connection getConnection() throws SQLException {
         SQLiteConfig config = new SQLiteConfig();
         config.enforceForeignKeys(true);
@@ -36,6 +38,7 @@ public class DatabaseConnector {
 
     public static void resetTestDatabase(Context context) {
 
+        // TODO probably needs you to have "setup-reset.sql" where you downloaded the jar
         Path sql = Path.of("setup-reset.sql");
         StringBuilder sqlBuilder = new StringBuilder();
         try (Connection conn = DatabaseConnector.getConnection(); Stream<String> lines = Files.lines(sql)) {
