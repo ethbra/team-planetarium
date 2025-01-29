@@ -14,8 +14,9 @@
 
         th, td {
             padding: 8px;
-            text-align: left;
+            text-align: center;
             border-bottom: 1px solid #ddd;
+            font-size: large;
         }
 
         h1 {
@@ -35,8 +36,8 @@
 
         tr:hover {
             img {
-                max-width: 256px;
-                max-height: 256px;
+                max-width: 128px;
+                max-height: 128px;
             }
         }
 
@@ -63,6 +64,10 @@
             padding: 5px 10px;
         }
 
+        #celestialTable {
+            min-height: 60vh
+        }
+
         .logout-button {
             position: fixed;
             top: 10px;
@@ -71,7 +76,7 @@
 
         .center {
             margin: auto;
-            width: 50%;
+            width: 80%;
             padding: 10px;
             background-color: rgba(192, 192, 192, 0.85);
             text-align: center;
@@ -104,6 +109,8 @@
             <th>ID</th>
             <th>Name</th>
             <th>Owner</th>
+            <th>Galaxy</th>
+            <th>Image</th>
         </tr>
     </table>
 </div>
@@ -124,7 +131,7 @@
   });
 
   async function populateCelestialTable() {
-    document.getElementById('celestialTable').innerHTML = '<tr><th>Type</th><th>ID</th><th>Name</th><th>Owner</th><th>Galaxy</th></tr>';
+    document.getElementById('celestialTable').innerHTML = '<tr><th>Type</th><th>ID</th><th>Name</th><th>Owner</th><th>Galaxy</th><th>Image</th></tr>';
     const response = await fetch(`http://{URL}:{PORT}/planetarium/planet/owner/${sessionStorage.getItem("userId")}`, {credentials: 'include'});
     if (response.ok) {
       const data = await response.json();
