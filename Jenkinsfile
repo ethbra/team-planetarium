@@ -1,5 +1,8 @@
 pipeline {
 
+	agent {
+		label 'Agent Jenkins'
+	}
 	stages {
 		stage('Checkout') {
 			steps {
