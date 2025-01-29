@@ -1,5 +1,8 @@
 pipeline {
 	agent Agent Jenkins
+	triggers {
+		pollSCM('') // Empty schedule to trigger regardless of changes
+	}
 
 	stages {
 		stage('Checkout') {
@@ -14,11 +17,9 @@ pipeline {
 			steps{
 				script{
 					try {
-						sh 'ls'
 						sh '''
-							pwd
-							cd Planetarium
-							mvn test -f pom.xml
+							ls
+							mvn test -f Planetarium/pom.xml
             	   		'''
 					} catch (Exception e){
 						echo "Test failed, but continuing..."
@@ -27,27 +28,8 @@ pipeline {
 				}
 			}
 		}
-		stage('Maven build') {
-			steps {
-				sh '''
-                    pwd
-                    mvn package -DskipTests=true -f Planetarium/pom.xml
-
-                    mv -f Planetarium/target/Planetarium-1.0.jar Planetarium/
-                '''
-			}
-		}
 		stage('Newman Test') {
 			steps {
-				sh '''
-                    ls
-                    pwd
-
-                    cd Planetarium
-                    java -jar Planetarium-1.0.jar > output.txt 2>&1  &
-
-                    sleep 2
-				'''
 				sh '''
 					pwd
 					newman run materials/postman/Planetarium.postman_collection.json -e materials/postman/Planetarium.postman_environment.json --env-var url=localhost:8080 -r cli,json
@@ -57,7 +39,6 @@ pipeline {
 	}
 	post {
 		always {
-
 			emailext(
 				subject: "Build Results: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
 				body: "The build has finished. Please find the attached log file.",
