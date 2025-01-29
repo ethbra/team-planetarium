@@ -1,3 +1,8 @@
+properties([
+	pipelineTriggers([
+		[$class: 'GenericTrigger', quietPeriod: 15]	])
+])
+
 pipeline {
 
 	agent {
