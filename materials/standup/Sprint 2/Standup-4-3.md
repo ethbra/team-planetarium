@@ -40,8 +40,10 @@
 ## Alex
 
 ### Work Completed
-
-
+- Start sprint 3
+- Review & understand project documentation
+- vote on stretch goals in poll
 
 ### Work to be Done
-
+- fix defects
+- Qc study
