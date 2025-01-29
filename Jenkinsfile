@@ -1,5 +1,8 @@
 pipeline {
-	agent Agent Jenkins
+	agent {
+		label 'Agent Jenkins'
+	}
+
 	triggers {
 		pollSCM('') // Empty schedule to trigger regardless of changes
 	}
