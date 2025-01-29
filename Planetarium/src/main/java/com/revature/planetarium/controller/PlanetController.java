@@ -10,6 +10,7 @@ import com.revature.planetarium.exceptions.UserFail;
 import com.revature.planetarium.service.planet.PlanetService;
 
 import io.javalin.http.Context;
+import io.javalin.json.JavalinJackson;
 
 public class PlanetController {
 
@@ -58,7 +59,6 @@ public class PlanetController {
             Planet planet = ctx.bodyAsClass(Planet.class);
             boolean createdPlanet = planetService.createPlanet(planet);
             if (createdPlanet) {
-                ctx.json(createdPlanet);
                 ctx.status(201);
             }
         } catch (PlanetFail e) {

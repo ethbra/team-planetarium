@@ -9,9 +9,9 @@ public class Planet {
     private int planetId;
     private String planetName;
     private int ownerId;
-    private byte[] imageData;
     private String galaxy;
-    
+    private byte[] imageData;
+
     public int getPlanetId() {
         return planetId;
     }
@@ -30,7 +30,12 @@ public class Planet {
     public void setOwnerId(int ownerId) {
         this.ownerId = ownerId;
     }
-
+    public String getGalaxy() {
+        return galaxy;
+    }
+    public void setGalaxy(String galaxy) {
+        this.galaxy = galaxy;
+    }
     public void setImageData(String base64ImageData){
         imageData = Base64.getDecoder().decode(base64ImageData);
     }
@@ -51,16 +56,9 @@ public class Planet {
         }
     }
 
-    public String getGalaxy() { 
-        return galaxy; 
-    }
-    public void setGalaxy(String galaxy) { 
-        this.galaxy = galaxy; 
-    }
-
     @Override
     public String toString() {
-        return "Planet [planetId=" + planetId + ", planetName=" + planetName + ", ownerId=" + ownerId + "]";
+        return "Planet [planetId=" + planetId + ", planetName=" + planetName + ", ownerId=" + ownerId + ", galaxy=" + galaxy + "]";
     }
     @Override
     public int hashCode() {

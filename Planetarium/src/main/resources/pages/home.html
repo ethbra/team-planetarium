@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Home</title>
+    <title>Planetarium Home</title>
     <style>
         body {
         overscroll-behavior-y: none;
@@ -130,7 +130,7 @@
                 idCell.textContent = planet.planetId;
                 nameCell.textContent = planet.planetName;
                 ownerCell.textContent = planet.ownerId;
-                galaxyCell.textContent = planet.galaxy ?? '';
+                galaxyCell.textContent = planet.galaxy;
                 const planetImageElement = document.createElement('img');
                 planetImageElement.src = `data:image/jpeg;base64,${planet.imageData}`;
                 imageCell.appendChild(planetImageElement);
@@ -154,7 +154,7 @@
                     idCell.textContent = moon.moonId;
                     nameCell.textContent = moon.moonName;
                     ownerCell.textContent = moon.ownerId;
-                    galaxyCell.textContent = moon.galaxy ?? '';
+                    galaxyCell.textContent = moon.galaxy;
                     const moonImageElement = document.createElement('img');
                     moonImageElement.src = `data:image/jpeg;base64,${moon.imageData}`;
                     imageCell.appendChild(moonImageElement);
@@ -283,7 +283,7 @@
 
         async function createPlanet(){
             let planetName = document.getElementById('planetNameInput').value;
-            let planetGalaxy = document.getElementById('planetGalaxyInput').value; // Added
+            let galaxy = document.getElementById('planetGalaxyInput').value; // Added
             if (!checkCelestialName(planetName)) {
                 alert("Invalid planet name");
                 return;
@@ -295,15 +295,18 @@
                 bodyData = {
                     "planetName": planetName,
                     "ownerId": sessionStorage.getItem("userId"),
+                    "galaxy": galaxy,
                     "imageData": imageData
                 }
             } else{
                 bodyData = {
                     "planetName": planetName,
-                    "ownerId": sessionStorage.getItem("userId")
+                    "ownerId": sessionStorage.getItem("userId"),
+                    "galaxy": galaxy
                 }
             }
             const bodyJson = JSON.stringify(bodyData);
+            console.log(bodyJson);
             const headersList = {
                 "Accept": "*/*",
                 "Content-Type": "application/json"
