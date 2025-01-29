@@ -198,7 +198,7 @@
       method: 'DELETE',
       credentials: 'include'
     });
-    if (response.status === 200) {
+    if (response.status === 204) {
       populateCelestialTable();
     } else {
       alert(`Invalid ${selectedOption} name`);

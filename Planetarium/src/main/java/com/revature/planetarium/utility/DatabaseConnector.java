@@ -1,15 +1,14 @@
 package com.revature.planetarium.utility;
 
+import io.javalin.http.Context;
+import org.sqlite.SQLiteConfig;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.*;
 import java.util.stream.Stream;
-
-import io.javalin.http.Context;
-import org.jetbrains.annotations.NotNull;
-import org.sqlite.SQLiteConfig;
 
 public class DatabaseConnector {
 
@@ -20,14 +19,23 @@ public class DatabaseConnector {
 
         if (url.startsWith("jdbc:sqlite:")) return DriverManager.getConnection(url, config.toProperties());
 
-        DriverManager.registerDriver(new org.postgresql.Driver());
-        return DriverManager.getConnection(url, AppConfig.DATABASE_USERNAME, AppConfig.DATABASE_PASSWORD);
+        try {
+
+            DriverManager.registerDriver(new org.postgresql.Driver());
+            return DriverManager.getConnection(url, AppConfig.DATABASE_USERNAME, AppConfig.DATABASE_PASSWORD);
+
+        } catch (SQLException e) {
+            System.err.println("#########################");
+            System.err.println(e.getMessage());
+            e.printStackTrace();
+            System.err.println("\n\n");
+            throw new SQLException(e);
+        }
 
     }
 
     public static void resetTestDatabase(Context context) {
 
-        // TODO probably needs you to have "setup-reset.sql" where you downloaded the jar
         Path sql = Path.of("setup-reset.sql");
         StringBuilder sqlBuilder = new StringBuilder();
         try (Connection conn = DatabaseConnector.getConnection(); Stream<String> lines = Files.lines(sql)) {
