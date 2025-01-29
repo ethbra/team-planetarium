@@ -46,8 +46,9 @@
 ## Alex
 
 ### Work Completed
-
-
+- Study for interview w/ Infosys
+- Study for QC w/ Eric
 
 ### Work to be Done
-
+- Finish adding fields to planetarium stretch goal
+- QC + interview prep
