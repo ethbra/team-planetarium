@@ -13,6 +13,23 @@
 					"name": "Happy Path",
 					"item": [
 						{
+							"name": "Reset Database",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/resetDB",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"resetDB"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Successful Registration",
 							"event": [
 								{
