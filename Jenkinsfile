@@ -1,6 +1,7 @@
 properties([
 	pipelineTriggers([
-		[$class: 'GenericTrigger', quietPeriod: 15]	])
+		[$class: 'SCMTrigger', scmpoll_spec: '', quietPeriod: 15]
+	])
 ])
 
 pipeline {
