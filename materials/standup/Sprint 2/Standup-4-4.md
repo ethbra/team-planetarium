@@ -22,11 +22,14 @@
 
 ### Work Completed
 
-
+- Fixed defects from previous sprint
+- Connected to cloud
+- Connected to Jenkins
 
 ### Work to be Done
 
-
+- Study for QC
+- Fix remaning defects
 
 ## Venjie
 
