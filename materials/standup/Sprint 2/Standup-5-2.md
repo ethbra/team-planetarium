@@ -37,7 +37,7 @@
 ## Alex
 
 ### Work Completed
-- Basics of adding galaxy field to homepage for planets & moons 
+- Basics of adding galaxy field to homepage for planets & moons and pushed to feature/fields branch on github
 - Study
 
 ### Work to be Done
