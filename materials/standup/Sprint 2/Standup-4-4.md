@@ -45,7 +45,7 @@
 
 ### Work Completed
 - Fixing defects for API testing
-- Connecting to cloud resources
+- Connecting to cloud resources & jenkins
 - Studying for QC
 
 ### Work to be Done
