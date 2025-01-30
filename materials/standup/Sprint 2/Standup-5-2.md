@@ -43,5 +43,4 @@
 - Study
 
 ### Work to be Done
-- Study
 - Pair programming for continuation of adding fields to planetarium stretch goal
