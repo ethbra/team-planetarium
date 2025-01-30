@@ -37,8 +37,9 @@
 ## Alex
 
 ### Work Completed
-
-
+- Basics of adding galaxy field to homepage for planets & moons 
+- Study
 
 ### Work to be Done
-
+- Study
+- Pair programming for adding fields to planetarium stretch goal
