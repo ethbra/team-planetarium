@@ -20,11 +20,13 @@
 
 ### Work Completed
 
-
+- Pushed defect fixes to github
+- Interview Prep
 
 ### Work to be Done
 
-
+- Work on adding field to planetarium
+- Continue interview prep
 
 ## Venjie
 
