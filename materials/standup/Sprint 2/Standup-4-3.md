@@ -31,10 +31,15 @@
 
 ### Work Completed
 
+- Started Sprint 3 
+- Reviewed project requirements
 
 
 ### Work to be Done
 
+- Identify stretch goals
+- Fix defects
+- Study for QC
 
 
 ## Alex
