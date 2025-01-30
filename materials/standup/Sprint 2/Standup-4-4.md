@@ -41,8 +41,10 @@
 ## Alex
 
 ### Work Completed
-
-
+- Fixing defects for API testing
+- Connecting to cloud resources
+- Studying for QC
 
 ### Work to be Done
-
+- Finish defect fixes
+- Study for QC
