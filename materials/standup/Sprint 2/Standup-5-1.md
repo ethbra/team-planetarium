@@ -39,8 +39,9 @@
 ## Alex
 
 ### Work Completed
-
-
+- Fixed assigned defects and pushed to github feature/fixes branch
+- Final QC
 
 ### Work to be Done
-
+- Work on adding fields stretch goal
+- Go over course materials
