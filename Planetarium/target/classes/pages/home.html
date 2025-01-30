@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Home</title>
+    <title>Planetarium Home</title>
     <style>
         body {
         overscroll-behavior-y: none;
@@ -112,7 +112,7 @@
         });
 
         async function populateCelestialTable() {
-        document.getElementById('celestialTable').innerHTML = '<tr><th>Type</th><th>ID</th><th>Name</th><th>Owner</th></tr>';
+            document.getElementById('celestialTable').innerHTML = '<tr><th>Type</th><th>ID</th><th>Name</th><th>Owner</th><th>Galaxy</th></tr>';
         const response = await fetch(`http://{URL}:{PORT}/planetarium/planet/owner/${sessionStorage.getItem("userId")}`, {credentials: 'include'});
         if (response.ok) {
             const data = await response.json();
@@ -124,11 +124,13 @@
                 const idCell = row.insertCell(1);
                 const nameCell = row.insertCell(2);
                 const ownerCell = row.insertCell(3);
-                const imageCell = row.insertCell(4);
+                const galaxyCell = row.insertCell(4); 
+                const imageCell = row.insertCell(5);
                 typeCell.textContent = 'planet';
                 idCell.textContent = planet.planetId;
                 nameCell.textContent = planet.planetName;
                 ownerCell.textContent = planet.ownerId;
+                galaxyCell.textContent = planet.galaxy;
                 const planetImageElement = document.createElement('img');
                 planetImageElement.src = `data:image/jpeg;base64,${planet.imageData}`;
                 imageCell.appendChild(planetImageElement);
@@ -146,11 +148,13 @@
                     const idCell = row.insertCell(1);
                     const nameCell = row.insertCell(2);
                     const ownerCell = row.insertCell(3);
-                    const imageCell = row.insertCell(4);
+                    const galaxyCell = row.insertCell(4); 
+                    const imageCell = row.insertCell(5);
                     typeCell.textContent = 'moon';
                     idCell.textContent = moon.moonId;
                     nameCell.textContent = moon.moonName;
                     ownerCell.textContent = moon.ownerId;
+                    galaxyCell.textContent = moon.galaxy;
                     const moonImageElement = document.createElement('img');
                     moonImageElement.src = `data:image/jpeg;base64,${moon.imageData}`;
                     imageCell.appendChild(moonImageElement);
@@ -224,6 +228,14 @@
             planetNameInput.placeholder = 'Enter Planet Name';
             inputContainer.appendChild(planetNameInput);
 
+            // Added 
+            let planetGalaxyInput = document.createElement('input');
+            planetGalaxyInput.type = 'text';
+            planetGalaxyInput.id = 'planetGalaxyInput';
+            planetGalaxyInput.placeholder = 'Enter Galaxy Name';
+            inputContainer.appendChild(planetGalaxyInput);
+
+
             let planetImageInput = document.createElement('input');
             planetImageInput.type = 'file';
             planetImageInput.id = 'planetImageInput';
@@ -271,6 +283,7 @@
 
         async function createPlanet(){
             let planetName = document.getElementById('planetNameInput').value;
+            let galaxy = document.getElementById('planetGalaxyInput').value; // Added
             if (!checkCelestialName(planetName)) {
                 alert("Invalid planet name");
                 return;
@@ -282,15 +295,18 @@
                 bodyData = {
                     "planetName": planetName,
                     "ownerId": sessionStorage.getItem("userId"),
+                    "galaxy": galaxy,
                     "imageData": imageData
                 }
             } else{
                 bodyData = {
                     "planetName": planetName,
-                    "ownerId": sessionStorage.getItem("userId")
+                    "ownerId": sessionStorage.getItem("userId"),
+                    "galaxy": galaxy
                 }
             }
             const bodyJson = JSON.stringify(bodyData);
+            console.log(bodyJson);
             const headersList = {
                 "Accept": "*/*",
                 "Content-Type": "application/json"

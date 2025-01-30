@@ -1,8 +1,11 @@
 package com.revature.planetarium.service.moon;
 
 import com.revature.planetarium.entities.Moon;
+import com.revature.planetarium.entities.Planet;
 import com.revature.planetarium.exceptions.MoonFail;
 import com.revature.planetarium.repository.moon.MoonDao;
+import com.revature.planetarium.repository.planet.PlanetDao;
+import com.revature.planetarium.repository.planet.PlanetDaoImp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,10 +15,17 @@ import java.util.Optional;
 public class MoonServiceImp<T> implements MoonService<T> {
 
     private MoonDao moonDao;
+    private PlanetDao planetDao; 
+
+    public MoonServiceImp(MoonDao moonDao, PlanetDao planetDao) {
+        this.moonDao = moonDao;
+        this.planetDao = planetDao;
+    }
 
     public MoonServiceImp(MoonDao moonDao) {
-        this.moonDao = moonDao;
+        this(moonDao, new PlanetDaoImp());
     }
+
 
     @Override
     public boolean createMoon(Moon moon) {
@@ -24,6 +34,11 @@ public class MoonServiceImp<T> implements MoonService<T> {
         }
 
         // implement business logic
+
+        Planet parentPlanet = planetDao
+            .readPlanet(moon.getOwnerId()) 
+            .orElseThrow(() -> new MoonFail("Invalid planet ID"));
+        moon.setGalaxy(parentPlanet.getGalaxy());
 
         Optional<Moon> existingMoon = moonDao.readMoon(moon.getMoonName());
         if (existingMoon.isPresent()) {

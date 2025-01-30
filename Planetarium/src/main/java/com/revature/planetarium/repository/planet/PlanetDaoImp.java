@@ -31,10 +31,11 @@ public class PlanetDaoImp implements PlanetDao {
         }
 
         try (Connection conn = DatabaseConnector.getConnection();
-             PreparedStatement stmt = conn.prepareStatement("INSERT INTO planets (name, ownerId, image) VALUES (?, ?, ?)", Statement.RETURN_GENERATED_KEYS)) {
+             PreparedStatement stmt = conn.prepareStatement("INSERT INTO planets (name, ownerId, galaxy, image) VALUES (?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS)) {
             stmt.setString(1, planet.getPlanetName());
             stmt.setInt(2, planet.getOwnerId());
-            stmt.setBytes(3, planet.imageDataAsByteArray());
+            stmt.setString(3, planet.getGalaxy());
+            stmt.setBytes(4, planet.imageDataAsByteArray());
             int numRowsChanged = stmt.executeUpdate();
             if (numRowsChanged == 0) throw new MoonFail("Invalid planet name");
             try (ResultSet rs = stmt.getGeneratedKeys()) {
@@ -62,6 +63,7 @@ public class PlanetDaoImp implements PlanetDao {
                     planet.setPlanetId(rs.getInt("id"));
                     planet.setPlanetName(rs.getString("name"));
                     planet.setOwnerId(rs.getInt("ownerId"));
+                    planet.setGalaxy(rs.getString("galaxy"));
                     return Optional.of(planet);
                 }
             }
@@ -83,6 +85,7 @@ public class PlanetDaoImp implements PlanetDao {
                         planet.setPlanetId(rs.getInt("id"));
                         planet.setPlanetName(rs.getString("name"));
                         planet.setOwnerId(rs.getInt("ownerId"));
+                        planet.setGalaxy(rs.getString("galaxy"));
                         return Optional.of(planet);
                     }
                 }
@@ -105,6 +108,7 @@ public class PlanetDaoImp implements PlanetDao {
                 planet.setPlanetId(rs.getInt("id"));
                 planet.setPlanetName(rs.getString("name"));
                 planet.setOwnerId(rs.getInt("ownerId"));
+                planet.setGalaxy(rs.getString("galaxy"));
                 if (rs.getBytes("image") != null) {
                     byte[] imageDataAsBytes = rs.getBytes("image");
                     String imageDataBase64 = Base64.getEncoder().encodeToString(imageDataAsBytes);
@@ -131,6 +135,7 @@ public class PlanetDaoImp implements PlanetDao {
                     planet.setPlanetId(rs.getInt("id"));
                     planet.setPlanetName(rs.getString("name"));
                     planet.setOwnerId(rs.getInt("ownerId"));
+                    planet.setGalaxy(rs.getString("galaxy"));
                     if (rs.getBytes("image") != null) {
                         byte[] imageDataAsBytes = rs.getBytes("image");
                         String imageDataBase64 = Base64.getEncoder().encodeToString(imageDataAsBytes);
@@ -149,10 +154,11 @@ public class PlanetDaoImp implements PlanetDao {
     @Override
     public Optional<Planet> updatePlanet(Planet planet) {
         try (Connection conn = DatabaseConnector.getConnection();
-             PreparedStatement stmt = conn.prepareStatement("UPDATE planets SET name = ?, ownerId = ? WHERE id = ?")) {
+             PreparedStatement stmt = conn.prepareStatement("UPDATE planets SET name = ?, ownerId = ?, galaxy = ? WHERE id = ?")) {
             stmt.setString(1, planet.getPlanetName());
             stmt.setInt(2, planet.getOwnerId());
-            stmt.setInt(3, planet.getPlanetId());
+            stmt.setString(3, planet.getGalaxy());
+            stmt.setInt(4, planet.getPlanetId());
             int rowsUpdated = stmt.executeUpdate();
             return rowsUpdated > 0 ? Optional.of(planet) : Optional.empty();
         } catch (SQLException e) {

@@ -5,8 +5,7 @@ import java.util.List;
 
 public class FileType {
     public static String getFileType(byte[] file) {
-        if (file == null)
-            return "ZE";
+        if (file == null) return "ZE";
 
         List<Character> fileType = new ArrayList<>();
         for (byte b : file) {

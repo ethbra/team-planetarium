@@ -18,24 +18,29 @@ public class PlanetServiceImp<T> implements PlanetService<T> {
 
     @Override
     public boolean createPlanet(Planet planet) {
+//        Name constraints
         if (planet.getPlanetName().isEmpty() || planet.getPlanetName().length() > 30) {
             throw new PlanetFail("Invalid planet name");
         }
 
+        // enforce business rule planet ID = 0
         if (planet.getPlanetId() != 0)
             throw new PlanetFail("Invalid planet ID");
 
+//        File must be JPG/PNG
         String res = FileType.getFileType(planet.imageDataAsByteArray());
 
         if (!(res.equals("ZE") || res.equals("PNG"))) {
             throw new PlanetFail("Invalid file type");
         }
 
+//        Search for duplicate planet name
         Optional<Planet> existingPlanet = planetDao.readPlanet(planet.getPlanetName());
         if (existingPlanet.isPresent()) {
             throw new PlanetFail("Invalid planet name");
         }
 
+//        Create new planet
         Optional<Planet> createdPlanet = planetDao.createPlanet(planet);
 
         if (createdPlanet.isPresent()) {

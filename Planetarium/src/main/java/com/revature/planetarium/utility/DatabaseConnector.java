@@ -8,11 +8,9 @@ import java.sql.*;
 import java.util.stream.Stream;
 
 import io.javalin.http.Context;
-import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sqlite.SQLiteConfig;
-import org.postgresql.Driver;
 
 public class DatabaseConnector {
 static private final Logger logger = LoggerFactory.getLogger(DatabaseConnector.class);
@@ -23,8 +21,18 @@ static private final Logger logger = LoggerFactory.getLogger(DatabaseConnector.c
 
         if (url.startsWith("jdbc:sqlite:")) return DriverManager.getConnection(url, config.toProperties());
 
-        DriverManager.registerDriver(AppConfig.postgresDriver);
-        return DriverManager.getConnection(url, AppConfig.DATABASE_USERNAME, AppConfig.DATABASE_PASSWORD);
+        try {
+
+            DriverManager.registerDriver(new org.postgresql.Driver());
+            return DriverManager.getConnection(url, AppConfig.DATABASE_USERNAME, AppConfig.DATABASE_PASSWORD);
+
+        } catch (SQLException e) {
+            System.err.println("#########################");
+            System.err.println(e.getMessage());
+            e.printStackTrace();
+            System.err.println("\n\n");
+            throw new SQLException(e);
+        }
 
     }
 
