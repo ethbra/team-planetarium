@@ -43,8 +43,10 @@
 ## Alex
 
 ### Work Completed
-
-
+- Studied QC
+- QC, Exam
+- Defect fixing
 
 ### Work to be Done
-
+- Defect fixing continued
+- Studying
