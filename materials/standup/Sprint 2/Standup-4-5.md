@@ -24,11 +24,14 @@
 
 ### Work Completed
 
-
+- Finished QC
+- Fixed Defects
 
 ### Work to be Done
 
-
+- Start working on stretch goals
+- Verify defects fixes
+- Interview Prep
 
 ## Venjie
 
