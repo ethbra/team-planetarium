@@ -29,11 +29,13 @@
 
 ### Work Completed
 
-
+- Sprint 2 Presentation
 
 ### Work to be Done
 
-
+- Start Sprint 3
+- Review sprint 3 requirements
+- Study for QC
 
 ## Alex
 
