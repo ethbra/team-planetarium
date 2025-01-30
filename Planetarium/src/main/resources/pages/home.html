@@ -53,6 +53,15 @@
             max-height: 800px;
         }
 
+        @media (max-width: 1024px) {
+            .banner {
+            max-width: 475px;
+            max-height: 475px;
+        }
+
+
+        }
+
         .submit-button {
             margin-top: 10px;
         }
@@ -98,7 +107,7 @@
 <body>
 
 <div class="center">
-    <img src="/images/banner.jpg" alt="Responsive Image" class="responsive-image banner">
+    <img src="https://raw.githubusercontent.com/ethbra-revature/team-planetarium/refs/heads/feature/ui/Planetarium/src/main/resources/images/banner.jpg" alt="Responsive Image" class="responsive-image banner">
     <br><br>
     <nav>
         <div class="nav nav-tabs nav-fill justify-content-center" id="nav-tab" role="tablist">
@@ -112,8 +121,10 @@
         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
             <br>
             <h1 id="greeting">Welcome to the Home Page</h1>
+            <br>
         </div>
         <div class="tab-pane fade" id="nav-create" role="tabpanel" aria-labelledby="nav-create-tab" tabindex="0">
+            <br>
             <h6>Choose a celestial object:
                 <select id="locationSelect" class="heading">
                     <option value="moon">Moon</option>
@@ -121,6 +132,7 @@
                 </select>
             </h6>
             <div id="inputContainer"></div>
+            <br>
         </div>
         <div class="tab-pane fade" id="nav-delete" role="tabpanel" aria-labelledby="nav-delete-tab" tabindex="0">
             <select id="locationSelect" class="heading">
@@ -131,12 +143,13 @@
                 <input type="text" id="deleteInput" placeholder="name for celestial body to be deleted">
                 <button id="deleteButton" onclick="deleteCelestial()">Delete</button>
             </div>
+            <br><br>
         </div>
         <div class="tab-pane fade" id="nav-logout" role="tabpanel" aria-labelledby="nav-logout-tab" tabindex="0">
             <br>
             <p>Are you sure you want to log out?</p>
             <button id="logoutButton" onclick="logout()">Logout</button>
-            <br>
+            <br><br>
         </div>
    </div>
 
