@@ -51,5 +51,6 @@
 - Defect fixing
 
 ### Work to be Done
-- Defect fixing continued
+- Verify defect fixes
+- Begin stretch goal work
 - Studying
