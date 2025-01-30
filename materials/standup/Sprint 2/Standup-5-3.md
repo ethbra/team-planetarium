@@ -50,5 +50,6 @@
 - Study for QC w/ Eric
 
 ### Work to be Done
-- Finish adding fields to planetarium stretch goal
+- Pair programming for finishing adding fields to planetarium stretch goal
 - QC + interview prep
+- Create presentation
