@@ -18,11 +18,13 @@
 
 ### Work Completed
 
-
+- Study for mock interview
+- Study Java and SQL
 
 ### Work to be Done
 
-
+- Work on adding fields
+- Pair programming 
 
 ## Venjie
 
