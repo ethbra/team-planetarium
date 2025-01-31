@@ -40,11 +40,14 @@
 
 ### Work Completed
 
-
+- Mock QC
+- Continued working on UI overhaul
 
 ### Work to be Done
 
-
+- Finish on UI Overhaul
+- Create project presentation
+- Interview prep
 
 ## Alex
 
