@@ -54,6 +54,7 @@
 ### Work Completed
 - Mock QC
 - Pair programming for stretch goal
+- start work on presentation
 
 ### Work to be Done
 - Interview prep
