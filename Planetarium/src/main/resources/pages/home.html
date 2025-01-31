@@ -8,7 +8,7 @@
         body {
             overscroll-behavior-y: none;
         }
-
+t ad
         table {
             width: 100%;
             border-collapse: collapse;
@@ -172,7 +172,7 @@
 
   populateCelestialTable();
   createMoonInputs();
-  greeting.textContent = `Welcome to the Home Page ${sessionStorage.getItem("user")}`
+  greeting.textContent = `Welcome to the Home Page, ${sessionStorage.getItem("user")}!`
   document.getElementById('locationSelect').addEventListener('change', function () {
     let selectedValue = this.value;
     let inputContainer = document.getElementById('inputContainer');
