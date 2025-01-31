@@ -24,6 +24,7 @@ pipeline {
 					try {
 						sh '''
 							pwd
+							mvn test
             	   		'''
 					} catch (Exception e){
 						echo "Test failed, but continuing..."
@@ -47,7 +48,6 @@ pipeline {
 				subject: "Build Results: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
 				body: "The build has finished. Please find the attached log file.",
 				attachLog: true,
-				attachmentsPattern: 'Planetarium/output.txt',
 				to: '$DEFAULT_RECIPIENTS'
 			)
 		}
