@@ -27,11 +27,14 @@
 
 ### Work Completed
 
-
+- Mock QC
+- Pair Programming done
+- Started working on presentation 
 
 ### Work to be Done
 
-
+- Finish presentation
+- Interview Prep
 
 ## Venjie
 
