@@ -30,11 +30,13 @@
 
 ### Work Completed
 
-
+- Started working on UI overhaul
+- Go over course materials
 
 ### Work to be Done
 
-
+- Continue working UI overhaul
+- Study and interview prep
 
 ## Alex
 
