@@ -37,11 +37,14 @@
 
 ### Work Completed
 
-
+- Finised QC and Exam
+- Fixed defects
 
 ### Work to be Done
 
-
+- Start working on stretch goals
+- Verify defects fixes
+- Interview Prep
 
 ## Alex
 
