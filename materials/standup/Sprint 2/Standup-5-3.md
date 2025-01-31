@@ -58,4 +58,5 @@
 
 ### Work to be Done
 - Interview prep
+- Pair programming for continuation of adding fields to homepage stretch goal
 - Create and prepare for presentation
