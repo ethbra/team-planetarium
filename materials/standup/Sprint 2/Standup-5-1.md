@@ -32,11 +32,13 @@
 
 ### Work Completed
 
-
+- Pushed defect fixes to github
+- Interview Prep
 
 ### Work to be Done
 
-
+- Work on UI Overhaul as part of stretch goals
+- Go over course materials
 
 ## Alex
 
