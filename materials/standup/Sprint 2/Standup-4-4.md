@@ -35,10 +35,13 @@
 
 ### Work Completed
 
-
+- Reviewed Jenkins and RDS
+- Fixed defects
 
 ### Work to be Done
 
+- Continue working on defects
+- Study for QC
 
 
 ## Alex
