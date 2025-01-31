@@ -52,10 +52,9 @@
 ## Alex
 
 ### Work Completed
-- Study for interview w/ Infosys
-- Study for QC w/ Eric
+- Mock QC
+- Pair programming for stretch goal
 
 ### Work to be Done
-- Pair programming for finishing adding fields to planetarium stretch goal
-- QC + interview prep
-- Create presentation
+- Interview prep
+- Create and prepare for presentation
