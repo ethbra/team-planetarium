@@ -25,7 +25,9 @@ for generating tests and created an even more comprehensive battery of tests to 
 the application
 
 **Defects**: We reported over 60 defects, and fixed the large majority of these defects ahead of 
-schedule in Sprint 2 as a stretch goal
+schedule in Sprint 2 as a stretch goal, and completely fixed 
+
+**Added Features**: As another stretch goal for Sprint 3, the Planetarium 
 
 **DevOps Pipeline**: We developed an almost complete Continuous Deployment pipeline for our test 
 suite, which could only be further automated by having a real production environment. After pushing 
