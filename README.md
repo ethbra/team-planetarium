@@ -59,5 +59,42 @@ environment, or running newman and unit/integration tests
 - **Jira** and AIO let us structure our work into epics/sub-tasks and embed defects into them for a more
 intuitive and visually comprehensive format
 ### Cloud
-- **AWS** provided a cloud-hosted VM (**EC2**) and database (**RDS**) to remotely deploy our application as part
-of the test environment CI/CD pipeline
+- **AWS** provided a cloud-hosted VM (**EC2**) and database (**RDS**) to remotely deploy our application as
+part of the test environment CI/CD pipeline
+
+## Retrospective
+
+As a collaborative effort, we managed to do exceedingly well compared to other teams who trained with us.
+This was a challenging, but gratifying, project that gave us real, hands-on experience with the 
+technologies we trained on. With that said, there are particular areas where we either did very well on 
+or would benefit from changing in the future. 
+
+### What Went Well
+
+Throughout the project, MVP requirements were met quickly and gave us ample time to work on stretch goals. 
+We fixed defects in the application early, and implemented several complicated stretch goals that pushed 
+us to research our technologies more deeply. During the 3rd sprint, we were given optional tasks to 
+complete and we managed to finalize the application with a *lot* of extra features: improved flexibility 
+and categorization on the home page, a Jenkins Pipeline job that uses Jenkinsfiles, added a new field for 
+planets and moons (which required changing every layer of the application, including test mocks), and 
+added a systemctl service to the EC2 instance that automatically launches new jar versions of the 
+Planetarium.
+
+Beyond our functional accomplishments, we also comprehensively implemented an agile methodology to follow
+good practices of development. We were attentive in updating Jira with our progress and assigning 
+contributors, recorded daily stand ups in markdown files and video, and worked together to develop test 
+suites in pair programming and frequent contact on changes.
+
+### Improvements
+
+While we believe this project was a great success at demonstrating our capabilities and striving beyond 
+the given expectations, there can still be room for improvement. First, we slowed ourselves down by not 
+having a more structured way of creating test data later on through the process. Test data should've been 
+generated based on the technology we would implement it through (e.g., Postman, JUnit, Cucumber) and 
+understanding what would need to be included for each class of tests. And second, we needed a better 
+understanding of Jenkins before configuring our jobs. Our lesson content didn't go in depth on parts of 
+Jenkins like Pipeline jobs, so we relied heavily on reading Jenkins documentation and lots of trial and
+error. 
+
+That being said, the process of going through this project has been mutually enlightening for the team,
+and we are confident that the project would be even better if we went through it again. 
