@@ -27,12 +27,14 @@ the application
 **Defects**: We reported over 60 defects, and fixed the large majority of these defects ahead of 
 schedule in Sprint 2 as a stretch goal, and completely fixed 
 
-**Added Features**: As another stretch goal for Sprint 3, the Planetarium 
+**Added Features**: As another stretch goal for Sprint 3, we added UI improvements to the Planetarium, 
+with dynamic sizing for each planet list, a new "galaxy" field for each body, and improvements to the 
+selection menu for deleting/creating planets, or logging out
 
 **DevOps Pipeline**: We developed an almost complete Continuous Deployment pipeline for our test 
-suite, which could only be further automated by having a real production environment. After pushing 
-code to GitHub, it is automatically tested (unit, integration, and API tests) and deployed to the 
-simulated production environment if successful on our AWS RDS and EC2 instances.  
+suite, which could only be further automated by having a production environment to push to. After pushing 
+code to GitHub, it is automatically tested (unit, integration, and API tests) and, if successful,
+deployed to the simulated production environment on our AWS EC2 instance. 
 
 ## Technologies
 
@@ -59,5 +61,3 @@ intuitive and visually comprehensive format
 ### Cloud
 - **AWS** provided a cloud-hosted VM (**EC2**) and database (**RDS**) to remotely deploy our application as part
 of the test environment CI/CD pipeline
-
-## Retrospective
